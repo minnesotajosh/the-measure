@@ -473,6 +473,23 @@ function capsuleHTML(style){
   }).join('');
 }
 
+var LIFE_LABELS = {
+  travel: "Where They'd Go", reading: "What They'd Read", music: "What They'd Listen To",
+  home: "How They'd Furnish a Room", pastimes: "How They'd Spend a Saturday"
+};
+var LIFE_ORDER = ['travel','reading','music','home','pastimes'];
+
+function lifeHTML(style){
+  if(!style.lifestyle) return '<p class="capsule-empty">This dimension hasn\'t been written for '+escapeHtml(style.name)+' yet.</p>';
+  return LIFE_ORDER.map(function(k){
+    return '' +
+      '<div class="life-item">' +
+        '<div class="life-label">'+escapeHtml(LIFE_LABELS[k])+'</div>' +
+        '<p>'+escapeHtml(style.lifestyle[k])+'</p>' +
+      '</div>';
+  }).join('');
+}
+
 /* ---------------- results ---------------- */
 function rankStyles(user){
   return STYLES.map(function(s){
@@ -500,6 +517,7 @@ function renderResults(user){
   document.getElementById('rTrademarks').innerHTML = trademarksListItems(primary);
   document.getElementById('rBrands').innerHTML = brandsHTML(primary);
   document.getElementById('rCapsule').innerHTML = capsuleHTML(primary);
+  document.getElementById('rLife').innerHTML = lifeHTML(primary);
 
   var mEl = document.getElementById('rMeters');
   mEl.innerHTML = '';
@@ -542,7 +560,9 @@ function styleDetailHTML(style){
     '<div class="mini-title">The Wardrobe</div>' +
     '<div class="brandline">'+brandsHTML(style)+'</div>' +
     '<div class="mini-title">The Capsule Wardrobe</div>' +
-    '<div class="capsule-list">'+capsuleHTML(style)+'</div>';
+    '<div class="capsule-list">'+capsuleHTML(style)+'</div>' +
+    '<div class="mini-title">Beyond the Closet</div>' +
+    '<div class="life-grid">'+lifeHTML(style)+'</div>';
 }
 
 function buildAccordion(containerEl, items){

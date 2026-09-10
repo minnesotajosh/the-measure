@@ -161,6 +161,13 @@
       "url": "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f",
       "credit": "Mohamad Khosravi",
       "profile": "https://unsplash.com/@mohamadkhosravi"
+    },
+    "lifestyle": {
+      "travel": "New England in October — the Cape, coastal Maine, a college-town Saturday with a football game attached. Further afield, Bermuda or a grand tour of England's older universities, taken the summer after graduation and referenced fondly for decades after.",
+      "reading": "John Cheever and John O'Hara for the fiction, George Frazier's essays for the reference material, The New Yorker read cover to cover, and a battered Fitzgerald novel kept around less to reread than to have visible.",
+      "music": "Dave Brubeck and the Modern Jazz Quartet on the record player, a soft spot for the Kingston Trio's collegiate folk, and whatever the a cappella group down the hall was rehearsing. Sinatra at a wedding, without apology.",
+      "home": "A wood-paneled study with more books than shelf space, a worn leather club chair inherited rather than bought, a crew oar or two mounted on the wall, and exactly one loud piece of art someone brought back from a semester abroad.",
+      "pastimes": "Sailing, squash, a standing golf game, and a genuine interest in college football rivalries that predate his own enrollment. Tends the same garden his parents did."
     }
   },
   {
@@ -325,6 +332,13 @@
       "url": "https://images.unsplash.com/photo-1662311893663-274ed75741f2",
       "credit": "Mathias Reding",
       "profile": "https://unsplash.com/@matreding"
+    },
+    "lifestyle": {
+      "travel": "Naples itself, but also Capri for a long lunch, the Amalfi coast off-season, and Puglia for the olive oil and the quiet. Trips get planned around a specific trattoria as often as a view.",
+      "reading": "Elena Ferrante for the city as much as the story, Curzio Malaparte's 'The Skin,' and any biography of a Neapolitan tailor that happens to exist. Reads at a cafe table, not a desk.",
+      "music": "Classic Neapolitan song — 'O Sole Mio' unironically — alongside Pino Daniele's bluesy reinvention of the same tradition, and opera, attended live whenever the chance arises rather than streamed.",
+      "home": "Sun-faded plaster walls, a table built for long lunches rather than efficient ones, mismatched but beautiful ceramics collected over years, and windows kept open regardless of season.",
+      "pastimes": "Long lunches treated as the day's main event, a standing card game, and an interest in food that borders on the scholarly — knowing exactly which market stall has the best of anything."
     }
   },
   {
@@ -489,6 +503,13 @@
       "url": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7",
       "credit": "Ali Morshedlou",
       "profile": "https://unsplash.com/@alimorshedlou"
+    },
+    "lifestyle": {
+      "travel": "The Scottish Highlands for the shooting season, a London club for everything else, and Venice once, taken seriously rather than as a honeymoon cliche. Prefers a place with a proper concierge to one with a view.",
+      "reading": "Anthony Trollope and Evelyn Waugh, a well-thumbed Debrett's kept more as reference than aspiration, and the Financial Times read in full at breakfast, paper edition only.",
+      "music": "Elgar and Vaughan Williams, an opera subscription taken as seriously as club membership, and exactly the right amount of enthusiasm for a military brass band at the right occasion.",
+      "home": "A London townhouse with a proper library, leather-bound sets acquired rather than curated, family portraits nobody quite remembers commissioning, and a drinks trolley that has never been empty.",
+      "pastimes": "Shooting, a standing tailor's appointment treated with the gravity of a doctor's visit, and chess played slowly, over weeks, by correspondence if necessary."
     }
   },
   {
@@ -653,6 +674,13 @@
       "url": "https://images.unsplash.com/photo-1631112230741-446762ee05ac",
       "credit": "Dylann Hendricks",
       "profile": "https://unsplash.com/@dylanhendricks"
+    },
+    "lifestyle": {
+      "travel": "A cross-country drive over a coastal flight every time, national parks over resorts, and small industrial towns visited specifically to see how something is still made there — a mill, a tannery, a foundry.",
+      "reading": "Cormac McCarthy and John Steinbeck, biographies of tradesmen and inventors, and any well-illustrated history of American manufacturing. Reads at night, after the work is actually done.",
+      "music": "Woody Guthrie and early Johnny Cash, Springsteen's blue-collar records specifically, and a genuine, unpretentious love of country radio on a long drive.",
+      "home": "A workbench that gets more attention than the living room, tools organized with real reverence, furniture built rather than bought where possible, and nothing precious enough to worry about.",
+      "pastimes": "Woodworking, fixing whatever's broken before replacing it, fishing that's more about the quiet than the catch, and a garage project that's been 'almost done' for a year."
     }
   },
   {
@@ -817,6 +845,13 @@
       "url": "https://images.unsplash.com/photo-1611261302709-ff944e64ba9e",
       "credit": "Maxim Mushnikov",
       "profile": "https://unsplash.com/@maxim_mushnikov"
+    },
+    "lifestyle": {
+      "travel": "Copenhagen, Kyoto, and a week off-grid at a design-forward cabin with no cell service — the common thread is architecture that respects negative space. Packs one bag, always.",
+      "reading": "Marie Kondo taken more seriously than she's usually credited for, Kenya Hara's writing on emptiness and design, and Scandinavian crime fiction read for the atmosphere as much as the plot.",
+      "music": "Nils Frahm, Olafur Arnalds, and ambient records meant to be background rather than foreground — music chosen the way everything else is, for what it doesn't do as much as what it does.",
+      "home": "White walls, one exceptional chair rather than five good ones, no visible cords, and a level of tidiness that looks effortless because it's actually enforced daily.",
+      "pastimes": "Running, a considered coffee ritual performed the same way every morning, and a habit of getting rid of one thing every time something new comes in."
     }
   },
   {
@@ -980,6 +1015,13 @@
       "url": "https://images.unsplash.com/photo-1619603364937-8d7af41ef206",
       "credit": "Taras Chernus",
       "profile": "https://unsplash.com/@chernus_tr"
+    },
+    "lifestyle": {
+      "travel": "Paris, obviously, but specifically the same six blocks of it, revisited rather than explored. Otherwise, a small French coastal town in the off-season, empty of other tourists.",
+      "reading": "Camus and Sartre, less for the philosophy than the posture, Patrick Modiano for the melancholy, and Le Monde read at a cafe rather than a desk.",
+      "music": "Serge Gainsbourg, Francoise Hardy, and jazz — specifically the American expatriates who played Paris in the 1950s and '60s, treated as more authentically French than most French music.",
+      "home": "A small apartment with excellent bones, a few genuinely good books rather than many mediocre ones, and a record player that's used, not displayed.",
+      "pastimes": "Long, aimless walks with a destination pretended, a firm opinion about which cafe makes the best espresso, and cinema — the kind with subtitles, seen alone."
     }
   },
   {
@@ -1143,6 +1185,13 @@
       "url": "https://images.unsplash.com/photo-1552710307-537199cd41c0",
       "credit": "Eva Blue",
       "profile": "https://unsplash.com/@evablue"
+    },
+    "lifestyle": {
+      "travel": "Venice during Carnevale, Marrakech for the color, and a costume party thrown by someone else, attended as though it were the whole point of the trip.",
+      "reading": "Oscar Wilde, obviously, plus biographies of anyone who ever caused a stir by what they wore — Beau Brummell, the Sitwells, early Bowie.",
+      "music": "Glam-adjacent, theatrical pop — Bowie, Roxy Music, Prince at his most maximal — and a fondness for cabaret that borders on the literal.",
+      "home": "Wallpaper with real pattern, a velvet sofa nobody's allowed to be too casual on, and at least one genuinely strange object bought purely because it made a good story.",
+      "pastimes": "Costume parties taken far more seriously than the invitation implied, collecting vintage accessories, and an audience, ideally, for most activities."
     }
   },
   {
@@ -1307,6 +1356,13 @@
       "url": "https://images.unsplash.com/photo-1579293465947-81bbeafa486a",
       "credit": "Philipp Lansing",
       "profile": "https://unsplash.com/@philipp_lansing"
+    },
+    "lifestyle": {
+      "travel": "The Scottish Highlands, the Lake District, and any coastline with real weather. Prefers a walking holiday to a beach one, and packs for rain regardless of forecast.",
+      "reading": "James Herriot, a well-worn field guide to birds or fly-fishing, and Country Life read for the property listings as much as the articles.",
+      "music": "Folk that hasn't been electrified much — Nic Jones, early Fairport Convention — and brass band recordings played at Christmas without fail.",
+      "home": "A boot room that sees more daily use than the front hall, a wood-burning stove, dogs allowed on the furniture, and mud treated as a fact of life rather than a problem.",
+      "pastimes": "Shooting, fishing, long dog walks regardless of weather, and a genuine, hands-on relationship with a garden or a bit of land."
     }
   },
   {
@@ -1470,6 +1526,13 @@
       "url": "https://images.unsplash.com/photo-1788362773893-d401bc303e8c",
       "credit": "Elias Orlik",
       "profile": "https://unsplash.com/@rhimes"
+    },
+    "lifestyle": {
+      "travel": "Tokyo and Antwerp for the design, Berlin for the nightlife, and post-industrial cities more generally — the more derelict the architecture, the better.",
+      "reading": "Susan Sontag, Rei Kawakubo interviews wherever they can be found, and architecture and design monographs read as closely as novels.",
+      "music": "Aphex Twin, industrial and noise records, and whatever's currently being played at the one club that still matters in whichever city he's in.",
+      "home": "Concrete, exposed structure, furniture chosen for form over comfort, and a near-total absence of color, broken by one deliberately jarring object.",
+      "pastimes": "Gallery openings, a genuine interest in architecture as a spectator sport, and a habit of rearranging the furniture just to see if a room can say something different."
     }
   },
   {
@@ -1633,6 +1696,13 @@
       "url": "https://images.unsplash.com/photo-1619466122087-e1ff06cf234b",
       "credit": "Malvestida",
       "profile": "https://unsplash.com/@malvestida"
+    },
+    "lifestyle": {
+      "travel": "Tokyo, Seoul, and wherever the next sneaker collaboration is dropping — travel planned around culture and release calendars in equal measure.",
+      "reading": "Streetwear and culture archives read the way older generations read the sports page, biographies of genre-crossing designers, and graphic novels taken as seriously as literary fiction.",
+      "music": "Genre-agnostic by design — hip-hop, hyperpop, and whatever's algorithmically adjacent, played loud, switched constantly.",
+      "home": "A sneaker wall treated with more curatorial care than the art on the other walls, a mix of vintage furniture and something clearly 3D-printed, and a setup built for content as much as comfort.",
+      "pastimes": "Sneaker collecting as a genuine hobby rather than a purchase habit, basketball, and a running group chat dedicated entirely to what just dropped."
     }
   },
   {
@@ -1797,6 +1867,13 @@
       "url": "https://images.unsplash.com/photo-1649639763329-dccbd16fbf4d",
       "credit": "Brice Cooper",
       "profile": "https://unsplash.com/@brice_cooper18"
+    },
+    "lifestyle": {
+      "travel": "Wyoming, Montana, and the actual working ranches of West Texas rather than the dude-ranch version. A rodeo circuit followed the way other people follow a sports league.",
+      "reading": "Louis L'Amour, Larry McMurtry's 'Lonesome Dove,' and a well-worn almanac. Reads outside, when there's time, which isn't often.",
+      "music": "George Strait, Merle Haggard, and western swing — Bob Wills specifically — played loud enough to hear over a truck engine.",
+      "home": "A big front porch built for sitting, mounted antlers with an actual story behind them, and furniture sturdy enough to survive boots and dogs both.",
+      "pastimes": "Actual ranch work treated as recreation as much as labor, team roping, and a standing bet at the county fair."
     }
   },
   {
@@ -1960,6 +2037,13 @@
       "url": "https://images.unsplash.com/photo-1628035514544-ebd32b766089",
       "credit": "Kristian Angelo",
       "profile": "https://unsplash.com/@kgadia87"
+    },
+    "lifestyle": {
+      "travel": "Route 66 taken seriously, not ironically, Sturgis for the rally, and small-town diners chosen over any chain, anywhere.",
+      "reading": "Jack Kerouac, Hunter S. Thompson, and motorcycle maintenance manuals read cover to cover more than once.",
+      "music": "Elvis's early Sun Records output, rockabilly more broadly, and whatever's loudest on the jukebox in a bar that still has one.",
+      "home": "A garage that's cleaner than the living room, band posters that predate the internet, and a record collection organized by memory rather than alphabet.",
+      "pastimes": "Motorcycle maintenance as genuine meditation, pool played for money, and a standing Friday night ritual that hasn't changed in years."
     }
   },
   {
@@ -2123,6 +2207,13 @@
       "url": "https://images.unsplash.com/photo-1645499683497-22662a9b1704",
       "credit": "DARKROOMLABS",
       "profile": "https://unsplash.com/@darkroomlabs"
+    },
+    "lifestyle": {
+      "travel": "Bali, the North Shore of Oahu, and any coastline with a reliable swell — the itinerary is basically a surf forecast.",
+      "reading": "Kem Nunn's surf noir, biographies of big-wave surfers, and whatever paperback got left at the last Airbnb.",
+      "music": "Surf-rock revivalists, reggae, and whatever's playing at the beach bar — never chosen carefully, always fine.",
+      "home": "A garage full of boards in various states of repair, sand permanently in the entryway, and furniture nobody worries about ruining.",
+      "pastimes": "Surfing before anything else gets scheduled, skateboarding as a rainy-day backup, and a nap treated as a legitimate afternoon activity."
     }
   },
   {
@@ -2286,6 +2377,13 @@
       "url": "https://images.unsplash.com/photo-1786467469637-f8d0bd74eb96",
       "credit": "Ghavam Cheraghali",
       "profile": "https://unsplash.com/@ghavix"
+    },
+    "lifestyle": {
+      "travel": "The Hamptons in summer, Aspen in winter, and a business trip to London extended by exactly one extra day for personal reasons.",
+      "reading": "The Wall Street Journal cover to cover, biographies of takeover artists, and 'Liar's Poker' reread every few years like a class reunion.",
+      "music": "Classic rock played loud in a car that costs more than most people's first home, and a season subscription to whatever's considered the serious orchestra in town.",
+      "home": "A corner office's worth of ambition applied to a living room — a real wet bar, art bought partly as investment, and a view treated as a line item worth paying for.",
+      "pastimes": "Golf as a genuine second job, squash before the market opens, and a fantasy football league taken with real competitive intensity."
     }
   },
   {
@@ -2449,6 +2547,13 @@
       "url": "https://images.unsplash.com/photo-1611107683227-e9060eccd846",
       "credit": "Syed F Hashemi",
       "profile": "https://unsplash.com/@sfhashemi"
+    },
+    "lifestyle": {
+      "travel": "Dubai, Miami, and wherever the next major sneaker or fashion drop is happening in person rather than online.",
+      "reading": "Rap biographies, especially the self-made ones, and magazines read more for the ads than the articles.",
+      "music": "Whatever's currently at the top of the charts, played loud, plus a genuine, encyclopedic knowledge of hip-hop's back catalog.",
+      "home": "A closet bigger than most people's bedroom, organized like a boutique, and a media setup that costs more than the car.",
+      "pastimes": "Shopping treated as a competitive sport, a genuine passion for sneaker and streetwear history, and a car that gets more grooming than most pets."
     }
   },
   {
@@ -2612,6 +2717,13 @@
       "url": "https://images.unsplash.com/photo-1620064913221-c137b534f9da",
       "credit": "Dieter Blom",
       "profile": "https://unsplash.com/@versysmedia"
+    },
+    "lifestyle": {
+      "travel": "The Amalfi Coast, the French Riviera, and a boat, chartered rather than owned, for the month of August specifically.",
+      "reading": "Patricia Highsmith's Ripley novels, obviously, plus whatever paperback thriller matches the vacation's mood exactly.",
+      "music": "Bossa nova, French ye-ye pop, and whatever the beach club's DJ is playing at golden hour.",
+      "home": "A summer house that only gets used three months a year, furnished entirely in white and rattan, with sand tracked in as a feature, not a flaw.",
+      "pastimes": "Long lunches that become long afternoons, a genuine tan maintained with real discipline, and tennis played more for the outfit than the score."
     }
   },
   {
@@ -2775,6 +2887,13 @@
       "url": "https://images.unsplash.com/photo-1625910513399-c9fcba54338c",
       "credit": "Clément Vatte",
       "profile": "https://unsplash.com/@clement_vatte"
+    },
+    "lifestyle": {
+      "travel": "London, obviously, plus any city with a genuine scooter club and a decent record shop within walking distance.",
+      "reading": "Nik Cohn's 'Awopbopaloobop Alopbamboom,' biographies of the Small Faces and the Jam, and mod-scene fanzines, vintage or otherwise.",
+      "music": "The Who, the Jam, and Northern Soul deep cuts, sought out specifically for their obscurity.",
+      "home": "A small, immaculate flat, a scooter parked as close to the door as physically possible, and a record collection more impressive than the furniture.",
+      "pastimes": "Scooter rallies, a genuine and ongoing hunt for the perfect vintage record, and dancing taken more seriously than most people take exercise."
     }
   },
   {
@@ -2938,6 +3057,13 @@
       "url": "https://images.unsplash.com/photo-1779870668916-f26bf1dd26cb",
       "credit": "Bien'arts",
       "profile": "https://unsplash.com/@bienarts14"
+    },
+    "lifestyle": {
+      "travel": "Oxford, a New England college town in autumn, and a research trip to an archive somewhere that doubles as a vacation.",
+      "reading": "Everything, constantly, across several books at once — but if pressed, George Eliot, and whatever journal in his own field just published something worth arguing about.",
+      "music": "Bach played on a Sunday morning, choral recordings, and a genuine, decades-long loyalty to whatever radio station still plays classical.",
+      "home": "Floor-to-ceiling bookshelves that ran out of room years ago, a good reading lamp, and a desk that's more organized than it looks.",
+      "pastimes": "Crossword puzzles done in ink, gardening as a form of thinking, and office hours that run long because the conversation got interesting."
     }
   },
   {
@@ -3101,6 +3227,13 @@
       "url": "https://images.unsplash.com/photo-1667498235575-ba110d39d27f",
       "credit": "Michael Starkie",
       "profile": "https://unsplash.com/@starkie_pics"
+    },
+    "lifestyle": {
+      "travel": "Wherever the story is — historically a warzone or a revolution, currently anywhere with a good airport and an uncertain outcome.",
+      "reading": "Hemingway's dispatches, Ryszard Kapuscinski, and whatever local paper he can get his hands on, in whatever language.",
+      "music": "Whatever's playing in the hotel bar in whatever city he's currently filing from — genuinely no strong preference, by design.",
+      "home": "A home base that's more storage unit than showcase, a wall map with pins in it, and a go-bag that's always, genuinely, packed.",
+      "pastimes": "Learning just enough of a language to order a drink and ask a real question, chess with strangers, and a running list of places he'll go back to properly, someday."
     }
   },
   {
@@ -3264,6 +3397,13 @@
       "url": "https://images.unsplash.com/photo-1764592746235-837525d72227",
       "credit": "Dwayne joe",
       "profile": "https://unsplash.com/@spliff_dj_joe"
+    },
+    "lifestyle": {
+      "travel": "Berlin, London in the 1970s if time travel were an option, and wherever the after-party actually is.",
+      "reading": "Bowie biographies, glam-era music journalism, and whatever's scandalous enough to read on a train specifically to be noticed.",
+      "music": "Bowie, T. Rex, Roxy Music — the whole glam canon — played loud enough that the neighbors have opinions.",
+      "home": "Mirrors, more mirrors, a lighting setup better than most photo studios, and at least one piece of furniture that looks like it belongs on a stage.",
+      "pastimes": "Karaoke treated as legitimate performance, a standing invitation to whatever's happening after midnight, and a genuine talent for making an entrance."
     }
   },
   {
@@ -3427,6 +3567,13 @@
       "url": "https://images.unsplash.com/photo-1627686011747-74adda3d2343",
       "credit": "Ricardo Morales",
       "profile": "https://unsplash.com/@ricardoaaron"
+    },
+    "lifestyle": {
+      "travel": "Montmartre, a Greek island in the off-season, and anywhere with cheap rent and good light.",
+      "reading": "Rilke, Anais Nin, and whatever's dog-eared and borrowed from a friend rather than bought new.",
+      "music": "Nick Drake, Joni Mitchell, and whatever's playing on vinyl at the one bar that still has a turntable.",
+      "home": "Plants in every window, art made by people he actually knows, and furniture that arrived via a sidewalk more often than a store.",
+      "pastimes": "Life drawing classes, long conversations that run past closing time, and a journal that's more full than any calendar."
     }
   },
   {
@@ -3589,6 +3736,13 @@
       "url": "https://images.unsplash.com/photo-1527016021513-b09758b777bd",
       "credit": "James Balensiefen",
       "profile": "https://unsplash.com/@balensiefenphoto"
+    },
+    "lifestyle": {
+      "travel": "Seattle, Portland, and wherever the next show is, van travel preferred to flying.",
+      "reading": "Whatever's been passed around the van, zines more than books, and liner notes read as closely as literature.",
+      "music": "Nirvana, Mudhoney, and whatever local band is playing the basement show nobody advertised.",
+      "home": "A mattress on the floor, records in milk crates, and absolutely nothing anyone's worried about damaging.",
+      "pastimes": "Thrifting as a genuine skill, a garage band that's more about the practice than the gigs, and skateboarding as a low-key daily ritual."
     }
   },
   {
@@ -3752,6 +3906,13 @@
       "url": "https://images.unsplash.com/photo-1772155055378-e55748970e9e",
       "credit": "Gowtham AGM",
       "profile": "https://unsplash.com/@gowthamagm"
+    },
+    "lifestyle": {
+      "travel": "Newport, Nantucket, and the coast of Maine — always somewhere a boat can actually go.",
+      "reading": "Patrick O'Brian's naval novels, sailing memoirs, and the yacht club newsletter read cover to cover.",
+      "music": "Jimmy Buffett, sea shanties revived without irony, and whatever's playing at the club's Friday happy hour.",
+      "home": "Navy and white everywhere, ship's models on the mantel, and a porch built specifically for watching the water.",
+      "pastimes": "Sailing, obviously, plus a standing tennis game and a genuine, competitive interest in the club's annual regatta."
     }
   },
   {
@@ -3915,6 +4076,13 @@
       "url": "https://images.unsplash.com/photo-1695742434688-4f5942b98e2e",
       "credit": "Jas Rolyn",
       "profile": "https://unsplash.com/@jasrolyn"
+    },
+    "lifestyle": {
+      "travel": "Berlin, Tokyo's Shibuya district at night, and wherever the next warehouse party is being whispered about.",
+      "reading": "Cyberpunk fiction — Gibson, obviously — rave-culture oral histories, and whatever's trending in three different feeds at once.",
+      "music": "Techno, hyperpop, and whatever's dropping on a label nobody's heard of yet but everyone will in six months.",
+      "home": "LED strip lighting, a setup built around a sound system rather than a sofa, and reflective surfaces everywhere.",
+      "pastimes": "Raves that start after most people's bedtime, a genuine interest in emerging producers, and a wardrobe that gets more curatorial attention than the furniture."
     }
   },
   {
@@ -4078,6 +4246,13 @@
       "url": "https://images.unsplash.com/photo-1629353689974-af4d5c70440f",
       "credit": "iam_os",
       "profile": "https://unsplash.com/@iam_os"
+    },
+    "lifestyle": {
+      "travel": "Wherever he was stationed, revisited; otherwise, historical battlefields and military museums, toured with real attention.",
+      "reading": "Military history almost exclusively, memoirs of specific campaigns, and field manuals read for the writing as much as the content.",
+      "music": "Military band recordings, and otherwise not much — the radio stays off more often than it's on.",
+      "home": "Everything has a place and stays in it, a display case for medals or memorabilia, and a level of order that borders on inspection-ready.",
+      "pastimes": "A genuine, self-imposed fitness routine, model-building with real precision, and an annual reunion that's never missed."
     }
   },
   {
@@ -4241,6 +4416,13 @@
       "url": "https://images.unsplash.com/photo-1602471615287-d733c59b79c4",
       "credit": "Ben den Engelsen",
       "profile": "https://unsplash.com/@bendenengelsen"
+    },
+    "lifestyle": {
+      "travel": "Patagonia, the Dolomites, and any range with a peak still on the list. Vacation and expedition are the same word.",
+      "reading": "Jon Krakauer, mountaineering memoirs, and gear reviews read with the seriousness other people reserve for stock picks.",
+      "music": "Whatever's on the playlist for a long approach — often nothing at all, in favor of just the wind.",
+      "home": "Gear drying everywhere, a wall of topographic maps, and furniture that's second to the equipment closet in both size and care.",
+      "pastimes": "Actual mountaineering, trail running as cross-training, and a gear-maintenance ritual performed with real reverence."
     }
   },
   {
@@ -4404,6 +4586,13 @@
       "url": "https://images.unsplash.com/photo-1760458955495-9712cc8f79c0",
       "credit": "Omar Fernández",
       "profile": "https://unsplash.com/@oferr_gr"
+    },
+    "lifestyle": {
+      "travel": "Wherever the tournament or the team's away game is, plus a genuine pilgrimage to at least one hall of fame.",
+      "reading": "Sports biographies almost exclusively, box scores read the way other people read the news, and not much else, by choice.",
+      "music": "Whatever's on the pregame playlist — hip-hop and hype tracks, chosen for energy over nuance.",
+      "home": "A den built around a big screen and team memorabilia, trophies actually displayed rather than boxed, and a fridge stocked for game day specifically.",
+      "pastimes": "Pickup games that never really stopped since high school, fantasy leagues taken seriously, and sneaker maintenance as a genuine ritual."
     }
   }
 ]

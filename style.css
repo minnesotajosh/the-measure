@@ -433,6 +433,19 @@ h1,h2,h3,.display{
 .tier-shop:hover{ color:var(--oxblood-soft); border-color:var(--oxblood-soft); }
 .capsule-empty{ font-size:15px; color:var(--ink-faint); font-style:italic; padding:8px 0 0; }
 
+/* ---------- beyond the closet (lifestyle) ---------- */
+.life-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); }
+@media (max-width:560px){ .life-grid{ grid-template-columns:1fr; } }
+.life-item{ background:var(--paper); padding:22px 20px; animation:fadeIn .5s ease both; }
+.life-item:nth-child(1){ animation-delay:.03s; } .life-item:nth-child(2){ animation-delay:.08s; }
+.life-item:nth-child(3){ animation-delay:.13s; } .life-item:nth-child(4){ animation-delay:.18s; }
+.life-item:nth-child(5){ animation-delay:.23s; grid-column:1 / -1; }
+.life-item .life-label{
+  font-family:'Archivo', sans-serif; font-size:10px; font-weight:700; letter-spacing:0.1em;
+  text-transform:uppercase; color:var(--brass); margin-bottom:9px;
+}
+.life-item p{ font-size:15px; margin:0; color:var(--ink); }
+
 /* ---------- resume banner ---------- */
 .resume-banner{
   margin:0 0 28px; padding:22px 24px; background:var(--paper-raised); border:1px solid var(--rule);
