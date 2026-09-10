@@ -4,6 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Measure — A Style Diagnostic</title>
+<script>
+// Set before first paint so the page never flashes the system's dark theme —
+// this app defaults to light regardless of OS setting, remembering only an
+// explicit choice the reader makes with the toggle.
+(function(){
+  try{
+    var saved = localStorage.getItem('measure:theme');
+    document.documentElement.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+  }catch(e){
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+})();
+</script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -124,6 +137,8 @@
       <button class="footer-link" id="footerBrowseBtn">Browse All Styles →</button>
       <span class="footer-sep" id="footerSep">·</span>
       <button class="footer-link" id="footerHomeBtn" hidden>← Back</button>
+      <span class="footer-sep">·</span>
+      <button class="footer-link" id="themeToggle" aria-pressed="false">☾ Dark Mode</button>
     </div>
     <div class="colophon">The Measure — a style diagnostic, drafted for one reader at a time.<br>Your answers and result are saved to this browser only, never sent anywhere. Photography is free-licensed via Unsplash, credited beneath each photo.</div>
   </footer>

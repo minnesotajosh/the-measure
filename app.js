@@ -4,6 +4,33 @@
 var loadState = document.getElementById('loadState');
 var appEl = document.getElementById('app');
 
+/* ---------------- theme toggle ----------------
+   Wired outside boot() so it works immediately, before (or even if) the
+   question/style data ever loads. The inline script in <head> already set
+   data-theme before paint; this just keeps the button and localStorage
+   in sync with it. Default is light, always — the toggle is the only way
+   to reach dark, regardless of the OS setting. */
+(function initThemeToggle(){
+  var root = document.documentElement;
+  var btn = document.getElementById('themeToggle');
+
+  function label(theme){
+    return theme === 'dark' ? '☀ Light Mode' : '☾ Dark Mode';
+  }
+  function apply(theme){
+    root.setAttribute('data-theme', theme);
+    btn.textContent = label(theme);
+    btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+    try{ localStorage.setItem('measure:theme', theme); }catch(e){}
+  }
+
+  apply(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+
+  btn.addEventListener('click', function(){
+    apply(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+})();
+
 /* ---------------- boot: fetch data, then wire up the app ---------------- */
 Promise.all([
   fetch('data/questions.json').then(function(r){ if(!r.ok) throw new Error('questions.json ' + r.status); return r.json(); }),
