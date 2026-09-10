@@ -38,7 +38,12 @@ if(!API_KEY){
 
 // Google renames/versions these periodically -- if this model 404s, check
 // https://ai.google.dev/gemini-api/docs/image-generation for the current name.
-const MODEL = process.env.GEMINI_IMAGE_MODEL || 'gemini-2.5-flash-image';
+// Switched from gemini-2.5-flash-image ("Nano Banana") to gemini-3-pro-image
+// ("Nano Banana Pro") -- meaningfully better at physically coherent bodies
+// and garments (the 2.5 model kept producing pant legs with no visible
+// connection to a waist, impossible fold geometry). Costs more per image
+// (~$0.13 vs a few cents) but 54 images total makes that a non-issue.
+const MODEL = process.env.GEMINI_IMAGE_MODEL || 'gemini-3-pro-image';
 
 const STYLES_PATH = path.join(__dirname, '..', 'data', 'styles.json');
 const OUT_ROOT = path.join(__dirname, '..', 'images', 'generated');
@@ -71,7 +76,14 @@ const HOUSE_STYLE = "Editorial photography for a high-end menswear style guide -
 // only -- the written essay/trademarks on the site are untouched.
 const IMAGE_SAFE_TRADEMARKS = {
   gearhead: [
-    "A bold, entirely fictional geometric or graphic repeat pattern used across a tracksuit and puffer jacket -- invented, not a real luxury house's monogram",
+    // Earlier wording ("bold geometric or graphic repeat pattern") reliably
+    // pulled the model toward an actual luxury house's monogram canvas
+    // (first a real Gucci/LV-style print, later an unmistakable Fendi FF
+    // tessellation) regardless of "fictional, not a real monogram" caveats
+    // attached to it. Swapped the whole concept for something with no
+    // small repeating tile at all, since that tile shape itself seems to
+    // be what triggers the association, not just the caveat's absence.
+    "A large-scale abstract print across a tracksuit and puffer jacket made of big irregular paint-splatter or brushstroke shapes in the palette's colors -- no small repeating tile, no checkerboard, no diamond grid, no interlocking-letter or interlocking-shape pattern of any kind, nothing that reads as a fashion house's monogram canvas",
     "A heavy, chunky metal chain and rings, worn as a visible display of value",
     "Sneakers in a bold two-tone or color-blocked design with completely PLAIN, BLANK side panels -- absolutely no side logo of any shape or size, no swoosh-like curved checkmark, no stripes, nothing printed or stitched on the side of the shoe at all",
     "Fur or shearling trim layered onto outerwear",
@@ -149,7 +161,7 @@ async function callGemini(prompt, aspectRatio){
     contents: [{ parts: [{ text: prompt }] }],
     generationConfig: {
       responseModalities: ['IMAGE'],
-      imageConfig: { aspectRatio: aspectRatio }
+      imageConfig: { aspectRatio: aspectRatio, imageSize: '2K' }
     }
   };
   const url = 'https://generativelanguage.googleapis.com/v1beta/models/' + MODEL +
@@ -243,13 +255,15 @@ async function generateFlatlay(style){
   const pieceList = IMAGE_SAFE_TRADEMARKS[style.key]
     ? IMAGE_SAFE_TRADEMARKS[style.key].join('; ')
     : style.capsule.map(function(item){ return item.category + ' (' + item.lookFor.split('.')[0] + ')'; }).join('; ');
-  const prompt = HOUSE_STYLE + ' ' + NO_FACE + ' ' + paletteNote(style) + ' A "shop the look" ' +
-    'flat-lay photograph for a menswear style guide, shot from directly above (or a slight angle) ' +
-    'on a plain, softly lit neutral surface -- cream, warm white, or light linen. Arrange these ' +
-    'garments and accessories neatly with generous, even spacing so every single piece is fully ' +
-    'visible and distinct, none overlapping: ' + pieceList + '. Soft, even lighting throughout, ' +
-    'minimal harsh shadow, so the flat-lay reads as clean and genuinely shoppable.' +
-    denimNote(pieceList) + sneakerNote(pieceList);
+  const prompt = HOUSE_STYLE + ' ' + paletteNote(style) + ' A "shop the look" flat-lay ' +
+    'photograph for a menswear style guide, shot from directly overhead looking straight down ' +
+    'at a table -- a bird\'s-eye product photograph of clothing laid flat on a surface, not a ' +
+    'photo of a person wearing or holding anything, and no person, body, or body part in frame ' +
+    'at all -- on a plain, softly lit neutral surface -- cream, warm white, or light linen. ' +
+    'Arrange these garments and accessories neatly with generous, even spacing so every single ' +
+    'piece is fully visible and distinct, none overlapping: ' + pieceList + '. Soft, even ' +
+    'lighting throughout, minimal harsh shadow, so the flat-lay reads as clean and genuinely ' +
+    'shoppable.' + denimNote(pieceList) + sneakerNote(pieceList);
   const inline = await callGemini(prompt, '4:3');
   const outPath = path.join(OUT_ROOT, style.key, 'flatlay.png');
   const saved = await saveInline(inline, outPath);
