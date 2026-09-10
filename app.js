@@ -544,6 +544,23 @@ function lifeHTML(style){
   }).join('');
 }
 
+var VARIANT_LABELS = {
+  hot: "In Hot Weather", cold: "In Cold Weather", rain: "In the Rain",
+  snow: "In the Snow", dressedUp: "Dressing It Up"
+};
+var VARIANT_ORDER = ['hot','cold','rain','snow','dressedUp'];
+
+function variantsHTML(style){
+  if(!style.variants) return '<p class="capsule-empty">Weather variants haven\'t been written for '+escapeHtml(style.name)+' yet.</p>';
+  return VARIANT_ORDER.map(function(k){
+    return '' +
+      '<div class="life-item">' +
+        '<div class="life-label">'+escapeHtml(VARIANT_LABELS[k])+'</div>' +
+        '<p>'+escapeHtml(style.variants[k])+'</p>' +
+      '</div>';
+  }).join('');
+}
+
 /* ---------------- results ---------------- */
 function rankStyles(user){
   return STYLES.map(function(s){
@@ -572,6 +589,7 @@ function renderResults(user){
   document.getElementById('rTrademarks').innerHTML = trademarksListItems(primary);
   document.getElementById('rBrands').innerHTML = brandsHTML(primary);
   document.getElementById('rCapsule').innerHTML = capsuleHTML(primary);
+  document.getElementById('rVariants').innerHTML = variantsHTML(primary);
   document.getElementById('rLife').innerHTML = lifeHTML(primary);
 
   var mEl = document.getElementById('rMeters');
@@ -618,6 +636,8 @@ function styleDetailHTML(style){
     '<div class="brandline">'+brandsHTML(style)+'</div>' +
     '<div class="mini-title">The Capsule Wardrobe</div>' +
     '<div class="capsule-list">'+capsuleHTML(style)+'</div>' +
+    '<div class="mini-title">Dressing For It</div>' +
+    '<div class="life-grid">'+variantsHTML(style)+'</div>' +
     '<div class="mini-title">Beyond the Closet</div>' +
     '<div class="life-grid">'+lifeHTML(style)+'</div>';
 }

@@ -171,6 +171,13 @@
     "flatlay": {
       "url": "images/generated/ivy/flatlay.jpg",
       "generated": true
+    },
+    "variants": {
+      "hot": "The odd jacket goes unstructured linen or seersucker, or gets skipped for an oxford and chinos alone. Loafers worn sockless, madras and popover shirts replace the button-down, tie stays home entirely.",
+      "cold": "The odd jacket layers over a shetland sweater vest, a camel or navy overcoat goes on top, and the chino gives way to grey flannel. A wool scarf, not a tie, becomes the neck's real job.",
+      "rain": "A trench or a simple rubberized field coat over the jacket, penny loafers swapped for a pair of duck boots kept by the door specifically for this. An umbrella, ideally a proper long one.",
+      "snow": "The overcoat gets serious -- a heavier wool duffel or polo coat -- with waterproof lace-up boots and a real knit hat rather than nothing at all. Layered wool underneath, not synthetic.",
+      "dressedUp": "The sack jacket becomes a full suit, the loafers become cap-toe oxfords, and the repp tie tightens into something more restrained -- a solid or a fine stripe. Cufflinks come out."
     }
   },
   {
@@ -342,6 +349,13 @@
       "music": "Classic Neapolitan song — 'O Sole Mio' unironically — alongside Pino Daniele's bluesy reinvention of the same tradition, and opera, attended live whenever the chance arises rather than streamed.",
       "home": "Sun-faded plaster walls, a table built for long lunches rather than efficient ones, mismatched but beautiful ceramics collected over years, and windows kept open regardless of season.",
       "pastimes": "Long lunches treated as the day's main event, a standing card game, and an interest in food that borders on the scholarly — knowing exactly which market stall has the best of anything."
+    },
+    "variants": {
+      "hot": "The whole point, honestly -- an unlined linen jacket, an open-collar linen shirt with no undershirt, unlined suede loafers with no socks. Nothing changes so much as relaxes further.",
+      "cold": "A heavier flannel or a cashmere-blend version of the same unstructured jacket, a scarf wrapped loosely rather than a tie, and a soft overcoat that keeps the same unstructured shoulder.",
+      "rain": "A raincoat is basically un-Neapolitan, but if pressed: a soft, unlined cotton mac, worn open, with the suede loafers reluctantly swapped for something less precious.",
+      "snow": "This wardrobe does not really believe in snow. A heavier wool overcoat gets added over everything else, and the suede loafers get put away in favor of a plain leather boot, unhappily.",
+      "dressedUp": "The jacket gets a little more structure and a matching trouser (a rare full suit), the shirt gets buttoned higher, and a silk tie appears -- still soft, never stiff."
     }
   },
   {
@@ -513,6 +527,13 @@
       "music": "Elgar and Vaughan Williams, an opera subscription taken as seriously as club membership, and exactly the right amount of enthusiasm for a military brass band at the right occasion.",
       "home": "A London townhouse with a proper library, leather-bound sets acquired rather than curated, family portraits nobody quite remembers commissioning, and a drinks trolley that has never been empty.",
       "pastimes": "Shooting, a standing tailor's appointment treated with the gravity of a doctor's visit, and chess played slowly, over weeks, by correspondence if necessary."
+    },
+    "variants": {
+      "hot": "Fresco or tropical wool instead of worsted, still fully canvassed, still structured -- this wardrobe does not do unstructured, even in July. A Panama hat is the one real concession.",
+      "cold": "A heavier flannel suit under a proper wool overcoat (a chesterfield, ideally), a waistcoat added back in, and a cashmere scarf knotted properly rather than just wrapped.",
+      "rain": "A fitted trench or a covert coat over the suit, an umbrella that matches the rest of the outfit's seriousness, and galoshes if truly necessary, removed the moment one is indoors.",
+      "snow": "The chesterfield gets swapped for something heavier still, real leather-soled boots get a rubber-soled country cousin, and gloves become non-negotiable rather than optional.",
+      "dressedUp": "There is nowhere further up to go -- this is already the ceiling. For black tie specifically: a proper dinner suit, grosgrain lapel, no exceptions."
     }
   },
   {
@@ -684,6 +705,13 @@
       "music": "Woody Guthrie and early Johnny Cash, Springsteen's blue-collar records specifically, and a genuine, unpretentious love of country radio on a long drive.",
       "home": "A workbench that gets more attention than the living room, tools organized with real reverence, furniture built rather than bought where possible, and nothing precious enough to worry about.",
       "pastimes": "Woodworking, fixing whatever's broken before replacing it, fishing that's more about the quiet than the catch, and a garage project that's been 'almost done' for a year."
+    },
+    "variants": {
+      "hot": "Chambray over denim, sleeves rolled instead of removed, a lighter-weight duck canvas if the chore coat comes at all. Boots stay on regardless of heat -- that's not negotiable.",
+      "cold": "A heavier flannel-lined chore coat or a shearling-collar version, thermal layers under the chambray, and a wool watch cap. Everything gets one weight heavier, nothing gets fancier.",
+      "rain": "Genuine waxed or oiled canvas, not a fashion raincoat -- this wardrobe already owns the right coat for this. Boots get treated with dubbin beforehand, not after.",
+      "snow": "Insulated versions of the same chore coat and boots, a wool-lined cap with ear flaps, and gloves built for actual work, not just warmth.",
+      "dressedUp": "The honest answer is this wardrobe doesn't dress up so much as clean up -- the same pieces, newer and less faded, with a collared shirt buttoned all the way and actual leather shoes instead of boots."
     }
   },
   {
@@ -855,6 +883,13 @@
       "music": "Nils Frahm, Olafur Arnalds, and ambient records meant to be background rather than foreground — music chosen the way everything else is, for what it doesn't do as much as what it does.",
       "home": "White walls, one exceptional chair rather than five good ones, no visible cords, and a level of tidiness that looks effortless because it's actually enforced daily.",
       "pastimes": "Running, a considered coffee ritual performed the same way every morning, and a habit of getting rid of one thing every time something new comes in."
+    },
+    "variants": {
+      "hot": "The palette stays exactly the same; the fabric gets lighter -- linen or a fine cotton instead of wool, still monochrome, still unbranded. Proportions loosen slightly rather than shrink.",
+      "cold": "Layering becomes the entire design exercise: a fine merino under the boxy overcoat, a scarf in the same neutral family, everything still edited down to one or two tones.",
+      "rain": "A single, excellent technical-minimalist raincoat -- Scandinavian brands do this well -- kept in black or stone, no logo, no exceptions to the palette.",
+      "snow": "The overcoat gets swapped for a longer, more technical down or wool-blend coat, still monochrome, with boots chosen for function but never visibly technical-looking.",
+      "dressedUp": "Formality here means precision, not decoration -- the same silhouette in a finer fabric, pressed rather than embellished. A tie only if genuinely required, and then a plain one."
     }
   },
   {
@@ -1025,6 +1060,13 @@
       "music": "Serge Gainsbourg, Francoise Hardy, and jazz — specifically the American expatriates who played Paris in the 1950s and '60s, treated as more authentically French than most French music.",
       "home": "A small apartment with excellent bones, a few genuinely good books rather than many mediocre ones, and a record player that's used, not displayed.",
       "pastimes": "Long, aimless walks with a destination pretended, a firm opinion about which cafe makes the best espresso, and cinema — the kind with subtitles, seen alone."
+    },
+    "variants": {
+      "hot": "The trench stays home; a lightweight linen-cotton blazer or just the navy sweater alone, raw denim in a lighter wash, espadrilles instead of anything leather.",
+      "cold": "The trench comes fully into its own, belted this time, over a heavier wool sweater. A scarf, wrapped once, is the only real addition -- this wardrobe resists over-layering.",
+      "rain": "The trench was built for exactly this -- cotton gabardine actually sheds water reasonably well. An umbrella only if truly necessary; getting slightly wet is preferable to looking overprepared.",
+      "snow": "A heavier wool coat replaces the trench temporarily, boots replace the usual loafer or sneaker, but the palette and the general austerity hold firm.",
+      "dressedUp": "The well-cut trouser gets a matching jacket (a rare full suit for this wardrobe), the sweater becomes a crisp white shirt, and the whole effect stays as understated as always -- just sharper."
     }
   },
   {
@@ -1195,6 +1237,13 @@
       "music": "Glam-adjacent, theatrical pop — Bowie, Roxy Music, Prince at his most maximal — and a fondness for cabaret that borders on the literal.",
       "home": "Wallpaper with real pattern, a velvet sofa nobody's allowed to be too casual on, and at least one genuinely strange object bought purely because it made a good story.",
       "pastimes": "Costume parties taken far more seriously than the invitation implied, collecting vintage accessories, and an audience, ideally, for most activities."
+    },
+    "variants": {
+      "hot": "Linen in a bold print instead of wool, a straw or Panama hat leaned into rather than avoided, sandals if the moment allows it. The volume stays turned up regardless of temperature.",
+      "cold": "A statement coat -- fur-trimmed, velvet, or simply enormous -- over everything else, with gloves and a scarf chosen for pattern as much as warmth.",
+      "rain": "An umbrella becomes an accessory in its own right -- patterned, unusual, worth carrying even when not raining. A rubberized coat gets the same bold-color treatment as everything else.",
+      "snow": "The statement coat gets heavier without getting quieter -- shearling, bold plaid, or a rich jewel tone -- and the boots get chosen for how they look as much as how they perform.",
+      "dressedUp": "Black tie is this wardrobe's actual home turf: velvet dinner jacket, an unconventional cummerbund or waistcoat, and jewelry that would read as too much anywhere else."
     }
   },
   {
@@ -1366,6 +1415,13 @@
       "music": "Folk that hasn't been electrified much — Nic Jones, early Fairport Convention — and brass band recordings played at Christmas without fail.",
       "home": "A boot room that sees more daily use than the front hall, a wood-burning stove, dogs allowed on the furniture, and mud treated as a fact of life rather than a problem.",
       "pastimes": "Shooting, fishing, long dog walks regardless of weather, and a genuine, hands-on relationship with a garden or a bit of land."
+    },
+    "variants": {
+      "hot": "Linen or lightweight cotton in the same earth tones, the tweed swapped for a simple sport shirt, but the boots and the general readiness-for-a-field stay exactly the same.",
+      "cold": "The full tweed-and-waxed-cotton system comes together -- a heavier tweed under the waxed jacket, a wool jumper underneath that, and a flat cap that's actually doing thermal work.",
+      "rain": "This is the wardrobe's whole reason for being -- the waxed jacket, freshly re-proofed, over the tweed, with wellingtons and no umbrella; umbrellas are for people who don't own proper coats.",
+      "snow": "A heavier shooting coat or a sheepskin-lined version of the usual jacket, insulated wellingtons or proper winter boots, and a wool hat under the flat cap if truly severe.",
+      "dressedUp": "Tweed gets swapped for a proper suit for church or a funeral, but the countryman's version keeps a slightly heavier cloth and a country shoe rather than a city one -- never fully convinced by town clothes."
     }
   },
   {
@@ -1536,6 +1592,13 @@
       "music": "Aphex Twin, industrial and noise records, and whatever's currently being played at the one club that still matters in whichever city he's in.",
       "home": "Concrete, exposed structure, furniture chosen for form over comfort, and a near-total absence of color, broken by one deliberately jarring object.",
       "pastimes": "Gallery openings, a genuine interest in architecture as a spectator sport, and a habit of rearranging the furniture just to see if a room can say something different."
+    },
+    "variants": {
+      "hot": "Technical fabrics in lighter weights, still monochrome, still architecturally cut -- the silhouette doesn't loosen just because it's warm, the materials just get more breathable.",
+      "cold": "Layering technical shells over the deconstructed jacket, still all black, with the hardware now serving an actual thermal purpose rather than a purely visual one.",
+      "rain": "The technical shell was already built for exactly this -- genuinely waterproof, seam-taped, no umbrella required or wanted. This is the one weather condition this wardrobe was always ready for.",
+      "snow": "A heavier technical parka replaces the usual jacket, boots get genuinely aggressive tread, and the whole silhouette gets more sculptural rather than simply puffier.",
+      "dressedUp": "Formality here means more conceptual, not more traditional -- an even more deconstructed jacket, asymmetry pushed further, still resolutely avoiding anything that reads as a normal suit."
     }
   },
   {
@@ -1706,6 +1769,13 @@
       "music": "Genre-agnostic by design — hip-hop, hyperpop, and whatever's algorithmically adjacent, played loud, switched constantly.",
       "home": "A sneaker wall treated with more curatorial care than the art on the other walls, a mix of vintage furniture and something clearly 3D-printed, and a setup built for content as much as comfort.",
       "pastimes": "Sneaker collecting as a genuine hobby rather than a purchase habit, basketball, and a running group chat dedicated entirely to what just dropped."
+    },
+    "variants": {
+      "hot": "The blazer gets shorter and lighter, worn over a tank or plain tee instead of a button-down, with the sneakers swapped for a slide or a low-top in a lighter material.",
+      "cold": "The hoodie layer gets heavier, a puffer goes over or under the blazer, and the sneaker gets a higher, warmer silhouette without losing the mixed-register logic.",
+      "rain": "A technical shell worn over tailoring, exactly the kind of collision this wardrobe already loves, with a water-resistant sneaker rather than anything that pretends to be a boot.",
+      "snow": "The puffer becomes the main event, oversized and worn over the blazer rather than instead of it, with a genuinely winter-rated sneaker-boot hybrid.",
+      "dressedUp": "The sneakers get swapped for a genuinely sharp leather shoe (the one traditional concession), but the graphic tee and the mixed proportions stay -- dressing up here means editing, not converting."
     }
   },
   {
@@ -1877,6 +1947,13 @@
       "music": "George Strait, Merle Haggard, and western swing — Bob Wills specifically — played loud enough to hear over a truck engine.",
       "home": "A big front porch built for sitting, mounted antlers with an actual story behind them, and furniture sturdy enough to survive boots and dogs both.",
       "pastimes": "Actual ranch work treated as recreation as much as labor, team roping, and a standing bet at the county fair."
+    },
+    "variants": {
+      "hot": "A lighter western shirt, sleeves rolled, straw cowboy hat instead of felt, and the same boots regardless -- ranch work doesn't pause for weather.",
+      "cold": "A shearling or wool-lined denim jacket over the western shirt, a heavier felt hat, and gloves built for actually handling rope and rail.",
+      "rain": "A long waxed or oilskin duster coat -- genuinely functional, genuinely part of the tradition, not a fashion afterthought -- over everything else.",
+      "snow": "The duster gets heavier insulation underneath, the boots get a shearling-lined winter version, and a wool-lined hat replaces the usual felt one entirely.",
+      "dressedUp": "For a wedding or a big rodeo dance: a pressed western shirt with pearl snaps, the good hat, and boots polished rather than dusty -- the bolo tie comes out of the drawer."
     }
   },
   {
@@ -2047,6 +2124,13 @@
       "music": "Elvis's early Sun Records output, rockabilly more broadly, and whatever's loudest on the jukebox in a bar that still has one.",
       "home": "A garage that's cleaner than the living room, band posters that predate the internet, and a record collection organized by memory rather than alphabet.",
       "pastimes": "Motorcycle maintenance as genuine meditation, pool played for money, and a standing Friday night ritual that hasn't changed in years."
+    },
+    "variants": {
+      "hot": "The leather jacket gets left on the bike, replaced by just the white tee and cuffed denim -- the boots stay on regardless of season.",
+      "cold": "A heavier shearling-lined version of the same leather jacket, thermal layers underneath the tee, and gloves built for actually gripping handlebars in the cold.",
+      "rain": "Leather handles light rain fine; for anything heavier, a waxed canvas layer goes over it, and the boots get treated beforehand rather than after.",
+      "snow": "The leather jacket generally stays parked along with the bike; a heavier flannel-lined denim jacket and insulated boots take over until the roads clear.",
+      "dressedUp": "The leather jacket gets swapped for a simple black blazer over the same white tee, and the boots get polished rather than replaced -- this wardrobe dresses up reluctantly and briefly."
     }
   },
   {
@@ -2217,6 +2301,13 @@
       "music": "Surf-rock revivalists, reggae, and whatever's playing at the beach bar — never chosen carefully, always fine.",
       "home": "A garage full of boards in various states of repair, sand permanently in the entryway, and furniture nobody worries about ruining.",
       "pastimes": "Surfing before anything else gets scheduled, skateboarding as a rainy-day backup, and a nap treated as a legitimate afternoon activity."
+    },
+    "variants": {
+      "hot": "This is the wardrobe's natural state -- boardshorts, bare feet, and nothing else required.",
+      "cold": "The wetsuit stays on longer than usual, and on land: the flannel gets fully buttoned for once, over a hoodie, with actual closed-toe shoes rather than sandals.",
+      "rain": "Nobody here owns a real raincoat; a hoodie gets pulled up and that's considered sufficient, since the ocean was going to get everything wet anyway.",
+      "snow": "Genuinely rare, and handled with visible confusion -- the warmest thing in the closet (probably still just a hoodie) plus borrowed gloves.",
+      "dressedUp": "A clean, unwrinkled version of the usual flannel, actual shoes instead of sandals, and hair that's seen a comb -- this wardrobe's idea of black tie."
     }
   },
   {
@@ -2387,6 +2478,13 @@
       "music": "Classic rock played loud in a car that costs more than most people's first home, and a season subscription to whatever's considered the serious orchestra in town.",
       "home": "A corner office's worth of ambition applied to a living room — a real wet bar, art bought partly as investment, and a view treated as a line item worth paying for.",
       "pastimes": "Golf as a genuine second job, squash before the market opens, and a fantasy football league taken with real competitive intensity."
+    },
+    "variants": {
+      "hot": "Tropical wool or fresco instead of worsted, still fully structured, still a real suit -- this wardrobe does not do business casual, regardless of the forecast.",
+      "cold": "A heavier flannel suit under a cashmere overcoat, real leather gloves, and a scarf that costs more than most people's coats.",
+      "rain": "A fitted trench or a covert coat over the suit, a large golf umbrella carried like a prop, and shoes that get immediately re-shined afterward.",
+      "snow": "The overcoat gets heavier, the town car gets called more often, and the boots (a rare concession) get swapped back for real shoes the moment he's indoors.",
+      "dressedUp": "Black tie for the annual dinner: a proper dinner suit, the same competitive attention to detail applied to a cummerbund as to a term sheet."
     }
   },
   {
@@ -2557,6 +2655,13 @@
       "music": "Whatever's currently at the top of the charts, played loud, plus a genuine, encyclopedic knowledge of hip-hop's back catalog.",
       "home": "A closet bigger than most people's bedroom, organized like a boutique, and a media setup that costs more than the car.",
       "pastimes": "Shopping treated as a competitive sport, a genuine passion for sneaker and streetwear history, and a car that gets more grooming than most pets."
+    },
+    "variants": {
+      "hot": "Lighter tracksuit fabrics in the same bold colorways, the puffer stays home, and the sneaker rotation shifts toward the more breathable pairs.",
+      "cold": "The puffer becomes the entire outfit's focus, worn open over the tracksuit, with a beanie in matching branding and boots instead of sneakers.",
+      "rain": "A logo-covered rain shell, still branded, still bold -- this wardrobe does not own a plain anything, weather included.",
+      "snow": "The heaviest puffer in rotation, insulated boots with as much branding as the rest of the outfit, and gloves chosen to match rather than just to warm.",
+      "dressedUp": "A tailored piece from the same houses that make the tracksuits -- the logomania gets subtler, not absent, and the sneakers get swapped for the one genuinely formal shoe in the closet."
     }
   },
   {
@@ -2727,6 +2832,13 @@
       "music": "Bossa nova, French ye-ye pop, and whatever the beach club's DJ is playing at golden hour.",
       "home": "A summer house that only gets used three months a year, furnished entirely in white and rattan, with sand tracked in as a feature, not a flaw.",
       "pastimes": "Long lunches that become long afternoons, a genuine tan maintained with real discipline, and tennis played more for the outfit than the score."
+    },
+    "variants": {
+      "hot": "Already dressed for it -- linen suit, bare ankles, espadrilles. If anything, more buttons get undone.",
+      "cold": "This wardrobe mostly doesn't own cold-weather clothes on principle; a cashmere sweater over the shoulders is about as far as it goes before retreating indoors.",
+      "rain": "An unwelcome interruption -- a simple linen or cotton overshirt gets thrown on, more out of protest than actual protection.",
+      "snow": "Effectively never happens in this wardrobe's world; if forced, borrowed clothes from someone more prepared.",
+      "dressedUp": "The linen suit gets swapped for a proper silk-blend one for dinner, the espadrilles become loafers, and cufflinks appear for the first time all week."
     }
   },
   {
@@ -2897,6 +3009,13 @@
       "music": "The Who, the Jam, and Northern Soul deep cuts, sought out specifically for their obscurity.",
       "home": "A small, immaculate flat, a scooter parked as close to the door as physically possible, and a record collection more impressive than the furniture.",
       "pastimes": "Scooter rallies, a genuine and ongoing hunt for the perfect vintage record, and dancing taken more seriously than most people take exercise."
+    },
+    "variants": {
+      "hot": "A lighter-weight mohair-blend suit, the parka stays folded, and the Fred Perry gets worn alone rather than under the jacket.",
+      "cold": "The fishtail parka finally does its actual job, a heavier suit underneath, and a scarf in a house-check pattern.",
+      "rain": "The parka again -- this coat exists specifically for exactly this scenario, protecting a suit not built to get wet.",
+      "snow": "A heavier coat replaces the parka temporarily, Chelsea boots get a rubber-soled winter equivalent, and the scooter stays in the garage.",
+      "dressedUp": "The two-button suit becomes a three-piece, the knitted tie becomes silk, and the whole look sharpens toward something a Savile Row client might almost recognize."
     }
   },
   {
@@ -3067,6 +3186,13 @@
       "music": "Bach played on a Sunday morning, choral recordings, and a genuine, decades-long loyalty to whatever radio station still plays classical.",
       "home": "Floor-to-ceiling bookshelves that ran out of room years ago, a good reading lamp, and a desk that's more organized than it looks.",
       "pastimes": "Crossword puzzles done in ink, gardening as a form of thinking, and office hours that run long because the conversation got interesting."
+    },
+    "variants": {
+      "hot": "The tweed stays home for once -- a linen or seersucker jacket, the corduroy swapped for cotton, but the cardigan somehow still makes an appearance in an over-air-conditioned lecture hall.",
+      "cold": "The full tweed-and-cardigan system, a heavier overcoat, and a scarf that's been in rotation since graduate school.",
+      "rain": "An old, slightly battered mac, carried more out of habit than actual need, with an umbrella left in an office somewhere more often than not.",
+      "snow": "A heavier wool coat, boots that see about six days of actual use a year, and a hat that's more about tradition than warmth.",
+      "dressedUp": "For a colleague's retirement dinner: the good tweed, an actual tie instead of a knit one, and shoes that have been resoled at least once."
     }
   },
   {
@@ -3237,6 +3363,13 @@
       "music": "Whatever's playing in the hotel bar in whatever city he's currently filing from — genuinely no strong preference, by design.",
       "home": "A home base that's more storage unit than showcase, a wall map with pins in it, and a go-bag that's always, genuinely, packed.",
       "pastimes": "Learning just enough of a language to order a drink and ask a real question, chess with strangers, and a running list of places he'll go back to properly, someday."
+    },
+    "variants": {
+      "hot": "Linen instead of cotton twill for the safari jacket, sleeves rolled permanently, and a lighter canvas bag -- everything gets one layer thinner for the climate, not the occasion.",
+      "cold": "The trench replaces the safari jacket as the outer layer, a wool sweater underneath, and a scarf that's been through more borders than most passports.",
+      "rain": "The trench again, doing exactly the job it was built for a century ago -- this wardrobe was basically designed around this weather condition.",
+      "snow": "A heavier field coat, boots rated for actual cold rather than just style, and gloves that still allow typing.",
+      "dressedUp": "For a rare embassy dinner: the one good jacket kept folded at the bottom of the bag specifically for this, worn with the same well-traveled boots because there was no room for dress shoes."
     }
   },
   {
@@ -3407,6 +3540,13 @@
       "music": "Bowie, T. Rex, Roxy Music — the whole glam canon — played loud enough that the neighbors have opinions.",
       "home": "Mirrors, more mirrors, a lighting setup better than most photo studios, and at least one piece of furniture that looks like it belongs on a stage.",
       "pastimes": "Karaoke treated as legitimate performance, a standing invitation to whatever's happening after midnight, and a genuine talent for making an entrance."
+    },
+    "variants": {
+      "hot": "The leather trousers get swapped for a lighter satin version, sleeves stay unbuttoned regardless of temperature, platform boots stay on no matter what.",
+      "cold": "A fur or shearling coat over everything, still theatrical, with the boots getting a warmer lining but never a lower heel.",
+      "rain": "A vinyl or patent coat -- shiny regardless of the weather's mood -- because this wardrobe would never wear something purely practical.",
+      "snow": "The fur coat gets heavier, sequins somehow survive the season, and the boots get a platform sole rated for actual traction for once.",
+      "dressedUp": "There isn't really a more formal setting than this wardrobe's default -- for genuine black tie, the satin shirt becomes a full tuxedo shirt, still unbuttoned further than convention allows."
     }
   },
   {
@@ -3577,6 +3717,13 @@
       "music": "Nick Drake, Joni Mitchell, and whatever's playing on vinyl at the one bar that still has a turntable.",
       "home": "Plants in every window, art made by people he actually knows, and furniture that arrived via a sidewalk more often than a store.",
       "pastimes": "Life drawing classes, long conversations that run past closing time, and a journal that's more full than any calendar."
+    },
+    "variants": {
+      "hot": "The linen shirt gets worn alone, sleeves rolled, with sandals instead of boots -- the wrapped scarf stays regardless, more habit than necessity.",
+      "cold": "Layers of linen and wool combine intuitively, a heavier coat gets added without much planning, and the scarf finally does actual thermal work.",
+      "rain": "An old coat that's seen better days, an umbrella borrowed and never returned, and a general acceptance of getting slightly wet.",
+      "snow": "A heavier, likely secondhand coat, boots that have seen a lot of use, and gloves with at least one finger worn through.",
+      "dressedUp": "For an opening or a reading: the good linen shirt (there's always one good linen shirt), the satchel swapped for something smaller, and shoes that have seen slightly less use than the boots."
     }
   },
   {
@@ -3746,6 +3893,13 @@
       "music": "Nirvana, Mudhoney, and whatever local band is playing the basement show nobody advertised.",
       "home": "A mattress on the floor, records in milk crates, and absolutely nothing anyone's worried about damaging.",
       "pastimes": "Thrifting as a genuine skill, a garage band that's more about the practice than the gigs, and skateboarding as a low-key daily ritual."
+    },
+    "variants": {
+      "hot": "The flannel gets tied around the waist instead of worn, the band tee stands alone, and the boots (never really weather-appropriate) stay on out of sheer habit.",
+      "cold": "More flannel, layered rather than replaced, with a thrifted coat thrown over the top -- nothing coordinated, everything warm enough.",
+      "rain": "Nothing changes, honestly -- the flannel gets wet, the jeans get wet, the boots were never really waterproof to begin with.",
+      "snow": "The same jeans, more flannel layers, and a beanie pulled lower -- this wardrobe does not believe in specialized outerwear.",
+      "dressedUp": "The cleanest flannel in the drawer, jeans without visible holes, and the Doc Martens actually laced all the way -- this wardrobe's full ceremonial effort."
     }
   },
   {
@@ -3916,6 +4070,13 @@
       "music": "Jimmy Buffett, sea shanties revived without irony, and whatever's playing at the club's Friday happy hour.",
       "home": "Navy and white everywhere, ship's models on the mantel, and a porch built specifically for watching the water.",
       "pastimes": "Sailing, obviously, plus a standing tennis game and a genuine, competitive interest in the club's annual regatta."
+    },
+    "variants": {
+      "hot": "The blazer stays on the hanger -- just the Breton stripe and white trousers, deck shoes, bare ankles, done.",
+      "cold": "A heavier reefer coat replaces the blazer, a wool version of the striped shirt, and the deck shoes give way (reluctantly) to a proper leather boot.",
+      "rain": "A yellow slicker, genuinely nautical and not remotely ashamed of it, over the usual layers -- this wardrobe owns real foul-weather gear and isn't afraid to use it.",
+      "snow": "Effectively a foreign concept; the heaviest coat in the closet gets pressed into service along with borrowed boots from someone more prepared for it.",
+      "dressedUp": "For the yacht club's summer ball: a proper white dinner jacket, the one true concession this wardrobe makes to genuine formality."
     }
   },
   {
@@ -4086,6 +4247,13 @@
       "music": "Techno, hyperpop, and whatever's dropping on a label nobody's heard of yet but everyone will in six months.",
       "home": "LED strip lighting, a setup built around a sound system rather than a sofa, and reflective surfaces everywhere.",
       "pastimes": "Raves that start after most people's bedtime, a genuine interest in emerging producers, and a wardrobe that gets more curatorial attention than the furniture."
+    },
+    "variants": {
+      "hot": "Mesh and lighter technical fabrics in the same metallic finishes, less layering, same reflective accents regardless of the actual need for visibility.",
+      "cold": "The reflective jacket gets a heavier technical liner, still catching every bit of available light, with insulated cargo pants underneath.",
+      "rain": "Already built for this -- the technical shell is genuinely waterproof, which was always half the point of choosing it in the first place.",
+      "snow": "A heavier technical parka, still reflective, with boots built for actual winter sport rather than just looking like they might be.",
+      "dressedUp": "Formality here means more metallic, not less -- the loudest jacket in rotation, worn somewhere that will actually have the lighting to do it justice."
     }
   },
   {
@@ -4256,6 +4424,13 @@
       "music": "Military band recordings, and otherwise not much — the radio stays off more often than it's on.",
       "home": "Everything has a place and stays in it, a display case for medals or memorabilia, and a level of order that borders on inspection-ready.",
       "pastimes": "A genuine, self-imposed fitness routine, model-building with real precision, and an annual reunion that's never missed."
+    },
+    "variants": {
+      "hot": "Lighter cotton ripstop in the same concealment colors, sleeves rolled per regulation, boots unchanged regardless of climate.",
+      "cold": "The M-65 liner goes in, a wool watch cap replaces nothing because it was probably already being worn, and gloves get genuinely tactical.",
+      "rain": "The field jacket was built for exactly this; a poncho goes over it if truly necessary, but the jacket alone usually suffices.",
+      "snow": "White or snow-camo overlays if authenticity matters, insulated boots, and a heavier field jacket -- this wardrobe has a documented answer for every weather condition.",
+      "dressedUp": "The dress uniform, on the rare occasions it's called for -- a different, sharper register entirely, with every detail regulation-correct."
     }
   },
   {
@@ -4426,6 +4601,13 @@
       "music": "Whatever's on the playlist for a long approach — often nothing at all, in favor of just the wind.",
       "home": "Gear drying everywhere, a wall of topographic maps, and furniture that's second to the equipment closet in both size and care.",
       "pastimes": "Actual mountaineering, trail running as cross-training, and a gear-maintenance ritual performed with real reverence."
+    },
+    "variants": {
+      "hot": "Lighter, more breathable technical layers in the same palette, sun protection taken as seriously as insulation ever is.",
+      "cold": "The full layering system comes together -- base layer, technical vest, waterproof shell -- exactly as designed, exactly as practiced.",
+      "rain": "The waterproof shell is the whole reason this wardrobe exists; genuinely, unglamorously, completely prepared for this.",
+      "snow": "The heaviest version of everything -- insulated boots, a proper down layer, gaiters -- this is the wardrobe's actual reason for being.",
+      "dressedUp": "The most technical, least worn piece in the closet, saved for an outdoor industry event rather than anything indoors -- formality here means newest, not fanciest."
     }
   },
   {
@@ -4596,6 +4778,13 @@
       "music": "Whatever's on the pregame playlist — hip-hop and hype tracks, chosen for energy over nuance.",
       "home": "A den built around a big screen and team memorabilia, trophies actually displayed rather than boxed, and a fridge stocked for game day specifically.",
       "pastimes": "Pickup games that never really stopped since high school, fantasy leagues taken seriously, and sneaker maintenance as a genuine ritual."
+    },
+    "variants": {
+      "hot": "Mesh jersey and shorts alone, the varsity jacket and sweatshirt both staying in the closet until the temperature actually requires them.",
+      "cold": "The varsity jacket layers over the sweatshirt, sweatpants replace shorts, and the sneaker rotation shifts toward a warmer, higher-top silhouette.",
+      "rain": "A team-branded rain shell, if one exists; if not, the hood goes up on the sweatshirt and the game continues regardless.",
+      "snow": "Full warm-up gear, insulated sneakers or actual boots for once, and the varsity jacket doing real structural work rather than just aesthetic.",
+      "dressedUp": "The cleanest, newest version of the sneakers, a collared shirt under the varsity jacket instead of a tee -- this wardrobe's idea of black tie is \"presentable.\""
     }
   }
 ]
