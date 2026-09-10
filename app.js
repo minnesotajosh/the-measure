@@ -373,6 +373,14 @@ function photoCreditHTML(photo){
   return '<div class="photo-credit">Photo by <a href="'+escapeHtml(photo.profile)+'" target="_blank" rel="noopener">'+escapeHtml(photo.credit)+'</a> on <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></div>';
 }
 
+function flatlayHTML(style){
+  if(!style.flatlay){
+    return '<p class="capsule-empty">A shop-the-look flat-lay for '+escapeHtml(style.name)+' hasn\'t been generated yet.</p>';
+  }
+  return '<img src="'+escapeHtml(style.flatlay.url)+'" alt="The '+escapeHtml(style.name)+' capsule wardrobe, flat-laid" loading="lazy">' +
+    photoCreditHTML(style.flatlay);
+}
+
 var CHEVRON = '<svg class="compare-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg>';
 
 function essayHTML(style){
@@ -502,12 +510,8 @@ function capsuleHTML(style){
     return '<p class="capsule-empty">A full capsule wardrobe for '+escapeHtml(style.name)+' hasn\'t been written yet.</p>';
   }
   return style.capsule.map(function(item){
-    var itemPhoto = item.image
-      ? '<div class="capsule-photo"><img src="'+escapeHtml(item.image.url)+'" alt="'+escapeHtml(item.category)+'" loading="lazy"><div class="photo-credit">AI-generated image</div></div>'
-      : '';
     return '' +
       '<div class="capsule-item">' +
-        itemPhoto +
         '<h4>'+escapeHtml(item.category)+'</h4>' +
         '<p class="cap-bg">'+escapeHtml(item.background)+'</p>' +
         '<div class="capsule-meta">' +
@@ -563,6 +567,7 @@ function renderResults(user){
   document.getElementById('rName').textContent = primary.name;
   document.getElementById('rDek').textContent = primary.dek;
   document.getElementById('rPlate').innerHTML = renderPlate(primary, 300, 'hero');
+  document.getElementById('rFlatlay').innerHTML = flatlayHTML(primary);
   document.getElementById('rEssay').innerHTML = essayHTML(primary);
   document.getElementById('rTrademarks').innerHTML = trademarksListItems(primary);
   document.getElementById('rBrands').innerHTML = brandsHTML(primary);
@@ -604,6 +609,8 @@ function styleDetailHTML(style){
   return '' +
     '<div class="dek">'+escapeHtml(style.dek)+'</div>' +
     renderPlate(style, 800, 'wide') +
+    '<div class="mini-title">Shop The Look</div>' +
+    flatlayHTML(style) +
     essayHTML(style) +
     '<div class="mini-title">Trademark Features</div>' +
     '<ul class="trademarks">'+trademarksListItems(style)+'</ul>' +

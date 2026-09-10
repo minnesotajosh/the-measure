@@ -263,6 +263,19 @@ h1,h2,h3,.display{
 /* ---------- results ---------- */
 #results .r-eyebrow{ text-align:center; margin-bottom:10px; margin-top:28px; }
 
+/* "Shop the Look" flat-lay -- a contained boxed panel sitting right under
+   the full-bleed hero, like a sidebar callout in a real magazine spread. */
+.shop-look{
+  margin:32px 0 8px; border:1px solid var(--rule); background:var(--paper-raised);
+  padding:22px; animation:fadeIn .6s ease .1s both;
+}
+.shop-look-label{
+  font-family:'Archivo', sans-serif; font-size:11px; font-weight:700; letter-spacing:0.14em;
+  text-transform:uppercase; color:var(--brass); text-align:center; margin-bottom:16px;
+}
+.shop-look img{ display:block; width:100%; height:auto; border:1px solid var(--rule); }
+.shop-look .photo-credit{ text-align:center; margin-top:10px; }
+
 /* magazine-scale hero photo opening the primary result — breaks out to the
    full viewport width, like a spread bleeding off the edge of a page, then
    the rest of the essay returns to the normal reading column. */
@@ -419,9 +432,6 @@ h1,h2,h3,.display{
 .capsule-list{ display:flex; flex-direction:column; }
 .capsule-item{ padding:28px 0; border-bottom:1px solid var(--rule); }
 .capsule-item:first-child{ padding-top:0; }
-.capsule-photo{ margin-bottom:18px; border:1px solid var(--rule); overflow:hidden; }
-.capsule-photo img{ display:block; width:100%; aspect-ratio:4/3; object-fit:cover; }
-.capsule-photo .photo-credit{ padding:7px 10px; background:var(--paper-raised); margin-top:0; }
 .capsule-item h4{
   font-size:23px; font-style:italic; margin-bottom:12px;
 }

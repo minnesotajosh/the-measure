@@ -62,10 +62,6 @@
             "price": "$1,200+",
             "note": "Full canvas, hand-finished, cut specifically to the sack silhouette rather than a European block softened after the fact."
           }
-        },
-        "image": {
-          "url": "images/generated/ivy/item-the-sack-jacket.jpg",
-          "generated": true
         }
       },
       {
@@ -89,10 +85,6 @@
             "price": "$180–230",
             "note": "Made to order in America by former Brooks Brothers shirtmakers; the benchmark the mid-tier options are measured against."
           }
-        },
-        "image": {
-          "url": "images/generated/ivy/item-the-button-down-oxford.jpg",
-          "generated": true
         }
       },
       {
@@ -116,10 +108,6 @@
             "price": "$700+",
             "note": "Cordovan instead of calfskin — it develops a deep, rolling shine with wear and will outlast the rest of the outfit twice over."
           }
-        },
-        "image": {
-          "url": "images/generated/ivy/item-the-penny-loafer.jpg",
-          "generated": true
         }
       },
       {
@@ -143,10 +131,6 @@
             "price": "$150–300",
             "note": "Old silk from mills that no longer exist has a hand and drape modern reproductions rarely match."
           }
-        },
-        "image": {
-          "url": "images/generated/ivy/item-the-repp-tie.jpg",
-          "generated": true
         }
       },
       {
@@ -170,10 +154,6 @@
             "price": "$180–250",
             "note": "American-made, heavier cloth, cut with a rise and break specific to this silhouette rather than adapted from a slimmer European block."
           }
-        },
-        "image": {
-          "url": "images/generated/ivy/item-the-chino.jpg",
-          "generated": true
         }
       }
     ],
@@ -187,6 +167,10 @@
       "music": "Dave Brubeck and the Modern Jazz Quartet on the record player, a soft spot for the Kingston Trio's collegiate folk, and whatever the a cappella group down the hall was rehearsing. Sinatra at a wedding, without apology.",
       "home": "A wood-paneled study with more books than shelf space, a worn leather club chair inherited rather than bought, a crew oar or two mounted on the wall, and exactly one loud piece of art someone brought back from a semester abroad.",
       "pastimes": "Sailing, squash, a standing golf game, and a genuine interest in college football rivalries that predate his own enrollment. Tends the same garden his parents did."
+    },
+    "flatlay": {
+      "url": "images/generated/ivy/flatlay.jpg",
+      "generated": true
     }
   },
   {
