@@ -317,6 +317,10 @@
             "price": "$450+",
             "note": "Cut and finished with the same hand-work as the jacket, rather than as an afterthought."
           }
+        },
+        "photo": {
+          "url": "images/generated/neapolitan/item-2.jpg",
+          "generated": true
         }
       },
       {
@@ -340,6 +344,10 @@
             "price": "$700+",
             "note": "Made-to-order in the exact soft construction the rest of the capsule is built around."
           }
+        },
+        "photo": {
+          "url": "images/generated/neapolitan/item-3.jpg",
+          "generated": true
         }
       },
       {
@@ -363,6 +371,10 @@
             "price": "$120+",
             "note": "House prints from the tailoring firms themselves, matched to their own jacket cloths."
           }
+        },
+        "photo": {
+          "url": "images/generated/neapolitan/item-4.jpg",
+          "generated": true
         }
       }
     ],
@@ -452,6 +464,10 @@
             "price": "$6,000+",
             "note": "A genuine bespoke commission, cut and fitted over several visits, built to be re-cut for decades."
           }
+        },
+        "photo": {
+          "url": "images/generated/row/item-0.jpg",
+          "generated": true
         }
       },
       {
@@ -475,6 +491,10 @@
             "price": "$3,000+",
             "note": "Bespoke-cut in a mill-specific tweed, often woven to a pattern unique to the client."
           }
+        },
+        "photo": {
+          "url": "images/generated/row/item-1.jpg",
+          "generated": true
         }
       },
       {
@@ -498,6 +518,10 @@
             "price": "$400+",
             "note": "Made to a personal pattern, with a collar cut for one specific neck and tie knot."
           }
+        },
+        "photo": {
+          "url": "images/generated/row/item-2.jpg",
+          "generated": true
         }
       },
       {
@@ -521,6 +545,10 @@
             "price": "$1,500+",
             "note": "Made on a last built for one foot, in calfskin that will outlive the suit it's worn with."
           }
+        },
+        "photo": {
+          "url": "images/generated/row/item-3.jpg",
+          "generated": true
         }
       },
       {
@@ -544,6 +572,10 @@
             "price": "$200+",
             "note": "Heavier, rarer silk with a hand no machine reproduction quite matches."
           }
+        },
+        "photo": {
+          "url": "images/generated/row/item-4.jpg",
+          "generated": true
         }
       }
     ],
@@ -633,6 +665,10 @@
             "price": "$400+",
             "note": "Obsessively reproduced vintage canvas and hardware, made to fade and wear exactly like the 1930s originals."
           }
+        },
+        "photo": {
+          "url": "images/generated/journeyman/item-0.jpg",
+          "generated": true
         }
       },
       {
@@ -683,6 +719,10 @@
             "price": "$150+",
             "note": "Selvedge chambray woven on vintage looms, cut to the same block as their denim."
           }
+        },
+        "photo": {
+          "url": "images/generated/journeyman/item-2.jpg",
+          "generated": true
         }
       },
       {
@@ -706,6 +746,10 @@
             "price": "$500+",
             "note": "Built to order in the Pacific Northwest, on lasts and constructions barely changed since the mid-century logging camps."
           }
+        },
+        "photo": {
+          "url": "images/generated/journeyman/item-3.jpg",
+          "generated": true
         }
       },
       {
@@ -729,6 +773,10 @@
             "price": "$400+",
             "note": "Hand-cut and stitched in small runs, often repairable indefinitely by the maker itself."
           }
+        },
+        "photo": {
+          "url": "images/generated/journeyman/item-4.jpg",
+          "generated": true
         }
       }
     ],
@@ -818,6 +866,10 @@
             "price": "$1,800+",
             "note": "The two houses most responsible for popularizing this exact silhouette at a luxury level."
           }
+        },
+        "photo": {
+          "url": "images/generated/minimalist/item-0.jpg",
+          "generated": true
         }
       },
       {
@@ -841,6 +893,10 @@
             "price": "$300+",
             "note": "The fit and hand-feel the rest of the tier is measured against."
           }
+        },
+        "photo": {
+          "url": "images/generated/minimalist/item-1.jpg",
+          "generated": true
         }
       },
       {
@@ -864,6 +920,10 @@
             "price": "$400+",
             "note": "Japanese or French mill fabric with a drape the lower tiers can't quite match."
           }
+        },
+        "photo": {
+          "url": "images/generated/minimalist/item-2.jpg",
+          "generated": true
         }
       },
       {
@@ -887,6 +947,10 @@
             "price": "$400+",
             "note": "The reference the entire category is named after."
           }
+        },
+        "photo": {
+          "url": "images/generated/minimalist/item-3.jpg",
+          "generated": true
         }
       },
       {
@@ -910,6 +974,10 @@
             "price": "$250+",
             "note": "Hand-loomed or mill-direct wool with a texture no mass factory quite replicates."
           }
+        },
+        "photo": {
+          "url": "images/generated/minimalist/item-4.jpg",
+          "generated": true
         }
       }
     ],
@@ -998,6 +1066,10 @@
             "price": "$1,800+",
             "note": "The original patent-holder's construction, or Mackintosh's bonded, seam-sealed cloth."
           }
+        },
+        "photo": {
+          "url": "images/generated/rivegauche/item-0.jpg",
+          "generated": true
         }
       },
       {
@@ -1021,6 +1093,10 @@
             "price": "$280+",
             "note": "Heavier selvedge cloth from the same maker, cut identically."
           }
+        },
+        "photo": {
+          "url": "images/generated/rivegauche/item-1.jpg",
+          "generated": true
         }
       },
       {
@@ -1044,6 +1120,10 @@
             "price": "$500+",
             "note": "The finest merino or cashmere the tier reasonably reaches."
           }
+        },
+        "photo": {
+          "url": "images/generated/rivegauche/item-2.jpg",
+          "generated": true
         }
       },
       {
@@ -1067,6 +1147,10 @@
             "price": "$450+",
             "note": "Cut and finished with real tailoring hand-work, still worn without a jacket."
           }
+        },
+        "photo": {
+          "url": "images/generated/rivegauche/item-3.jpg",
+          "generated": true
         }
       },
       {
@@ -1090,6 +1174,10 @@
             "price": "$400+",
             "note": "The house most responsible for the idea of a silk scarf as a menswear staple at all."
           }
+        },
+        "photo": {
+          "url": "images/generated/rivegauche/item-4.jpg",
+          "generated": true
         }
       }
     ],
@@ -1178,6 +1266,10 @@
             "price": "$2,500+",
             "note": "The two houses most associated with maximalist tailoring at the highest level."
           }
+        },
+        "photo": {
+          "url": "images/generated/dandy/item-0.jpg",
+          "generated": true
         }
       },
       {
@@ -1201,6 +1293,10 @@
             "price": "$180+",
             "note": "Rare or custom prints unavailable at lower tiers."
           }
+        },
+        "photo": {
+          "url": "images/generated/dandy/item-1.jpg",
+          "generated": true
         }
       },
       {
@@ -1224,6 +1320,10 @@
             "price": "$500+",
             "note": "Rare jacquards and velvets cut to measure."
           }
+        },
+        "photo": {
+          "url": "images/generated/dandy/item-2.jpg",
+          "generated": true
         }
       },
       {
@@ -1247,6 +1347,10 @@
             "price": "$500+",
             "note": "The finest fiber the tier reaches, in colors most cashmere houses play safe on."
           }
+        },
+        "photo": {
+          "url": "images/generated/dandy/item-3.jpg",
+          "generated": true
         }
       },
       {
@@ -1270,6 +1374,10 @@
             "price": "$1,200+",
             "note": "Solid gold, often with a family crest or monogram engraved to order."
           }
+        },
+        "photo": {
+          "url": "images/generated/dandy/item-4.jpg",
+          "generated": true
         }
       }
     ],
@@ -1359,6 +1467,10 @@
             "price": "$700+",
             "note": "English-made in small runs, often with upgraded hardware and linings."
           }
+        },
+        "photo": {
+          "url": "images/generated/countryman/item-0.jpg",
+          "generated": true
         }
       },
       {
@@ -1382,6 +1494,10 @@
             "price": "$2,500+",
             "note": "Cut to measure in a tweed woven specifically for one estate or client."
           }
+        },
+        "photo": {
+          "url": "images/generated/countryman/item-1.jpg",
+          "generated": true
         }
       },
       {
@@ -1405,6 +1521,10 @@
             "price": "$350+",
             "note": "Cut to measure with reinforcement built in exactly where the wearer needs it."
           }
+        },
+        "photo": {
+          "url": "images/generated/countryman/item-2.jpg",
+          "generated": true
         }
       },
       {
@@ -1428,6 +1548,10 @@
             "price": "$300+",
             "note": "Hand-finished French rubber boots, still the choice of most actual British estates."
           }
+        },
+        "photo": {
+          "url": "images/generated/countryman/item-3.jpg",
+          "generated": true
         }
       },
       {
@@ -1451,6 +1575,10 @@
             "price": "$150+",
             "note": "London's oldest hatter, fitting the cap to an actual head measurement."
           }
+        },
+        "photo": {
+          "url": "images/generated/countryman/item-4.jpg",
+          "generated": true
         }
       }
     ],
@@ -1539,6 +1667,10 @@
             "price": "$1,800+",
             "note": "The two houses that originated the vocabulary this entire wardrobe speaks."
           }
+        },
+        "photo": {
+          "url": "images/generated/iconoclast/item-0.jpg",
+          "generated": true
         }
       },
       {
@@ -1562,6 +1694,10 @@
             "price": "$1,500+",
             "note": "The house that effectively defined this entire category."
           }
+        },
+        "photo": {
+          "url": "images/generated/iconoclast/item-1.jpg",
+          "generated": true
         }
       },
       {
@@ -1585,6 +1721,10 @@
             "price": "$900+",
             "note": "The designer most associated with this exact silhouette."
           }
+        },
+        "photo": {
+          "url": "images/generated/iconoclast/item-2.jpg",
+          "generated": true
         }
       },
       {
@@ -1608,6 +1748,10 @@
             "price": "$1,000+",
             "note": "The exaggerated-sole silhouette most associated with the whole aesthetic."
           }
+        },
+        "photo": {
+          "url": "images/generated/iconoclast/item-3.jpg",
+          "generated": true
         }
       },
       {
@@ -1631,6 +1775,10 @@
             "price": "$600+",
             "note": "The reference point for hardware-as-design in this entire wardrobe."
           }
+        },
+        "photo": {
+          "url": "images/generated/iconoclast/item-4.jpg",
+          "generated": true
         }
       }
     ],
@@ -1719,6 +1867,10 @@
             "price": "$1,500+",
             "note": "The two names most associated with tailoring-streetwear hybridization."
           }
+        },
+        "photo": {
+          "url": "images/generated/remix/item-0.jpg",
+          "generated": true
         }
       },
       {
@@ -1742,6 +1894,10 @@
             "price": "$150+",
             "note": "Scarcity-driven pricing on pieces that function partly as cultural signifiers."
           }
+        },
+        "photo": {
+          "url": "images/generated/remix/item-1.jpg",
+          "generated": true
         }
       },
       {
@@ -1765,6 +1921,10 @@
             "price": "$400+",
             "note": "Scarcity-priced pieces that function as much as objects as footwear."
           }
+        },
+        "photo": {
+          "url": "images/generated/remix/item-2.jpg",
+          "generated": true
         }
       },
       {
@@ -1788,6 +1948,10 @@
             "price": "$300+",
             "note": "Premium fleece and a cut designed specifically to layer under structured pieces."
           }
+        },
+        "photo": {
+          "url": "images/generated/remix/item-3.jpg",
+          "generated": true
         }
       },
       {
@@ -1811,6 +1975,10 @@
             "price": "$8,000+",
             "note": "The pieces this entire aesthetic ultimately gestures toward."
           }
+        },
+        "photo": {
+          "url": "images/generated/remix/item-4.jpg",
+          "generated": true
         }
       }
     ],
@@ -1900,6 +2068,10 @@
             "price": "$250+",
             "note": "Heritage-grade cotton and vintage-inspired detailing at a luxury finish."
           }
+        },
+        "photo": {
+          "url": "images/generated/rancher/item-0.jpg",
+          "generated": true
         }
       },
       {
@@ -1923,6 +2095,10 @@
             "price": "$800+",
             "note": "Hand-lasted, often made to the customer's own foot measurements."
           }
+        },
+        "photo": {
+          "url": "images/generated/rancher/item-1.jpg",
+          "generated": true
         }
       },
       {
@@ -1946,6 +2122,10 @@
             "price": "$400+",
             "note": "Hand-engraved sterling silver buckles, often personalized."
           }
+        },
+        "photo": {
+          "url": "images/generated/rancher/item-2.jpg",
+          "generated": true
         }
       },
       {
@@ -1969,6 +2149,10 @@
             "price": "$250+",
             "note": "American-woven denim cut to a specific rise and boot-break."
           }
+        },
+        "photo": {
+          "url": "images/generated/rancher/item-3.jpg",
+          "generated": true
         }
       },
       {
@@ -1992,6 +2176,10 @@
             "price": "$500+",
             "note": "Collectible pieces from named silversmiths, bought through reputable galleries."
           }
+        },
+        "photo": {
+          "url": "images/generated/rancher/item-4.jpg",
+          "generated": true
         }
       }
     ],
@@ -2080,6 +2268,10 @@
             "price": "$1,200+",
             "note": "Heavier horsehide, built to the wearer's own measurements."
           }
+        },
+        "photo": {
+          "url": "images/generated/rebel/item-0.jpg",
+          "generated": true
         }
       },
       {
@@ -2103,6 +2295,10 @@
             "price": "$90+",
             "note": "Reproduction 1950s construction on vintage loopwheel machines."
           }
+        },
+        "photo": {
+          "url": "images/generated/rebel/item-1.jpg",
+          "generated": true
         }
       },
       {
@@ -2126,6 +2322,10 @@
             "price": "$300+",
             "note": "Heavyweight Japanese selvedge, some of the most obsessively made denim available."
           }
+        },
+        "photo": {
+          "url": "images/generated/rebel/item-2.jpg",
+          "generated": true
         }
       },
       {
@@ -2149,6 +2349,10 @@
             "price": "$700+",
             "note": "Fully custom leather, last, and hardware."
           }
+        },
+        "photo": {
+          "url": "images/generated/rebel/item-3.jpg",
+          "generated": true
         }
       },
       {
@@ -2172,6 +2376,10 @@
             "price": "$300+",
             "note": "Original glass-lens pairs from before the brand's production moved overseas."
           }
+        },
+        "photo": {
+          "url": "images/generated/rebel/item-4.jpg",
+          "generated": true
         }
       }
     ],
@@ -2260,6 +2468,10 @@
             "price": "$100–140",
             "note": "Original heavyweight nylon construction, some styles unchanged since the 1960s and made in the USA."
           }
+        },
+        "photo": {
+          "url": "images/generated/waverider/item-0.jpg",
+          "generated": true
         }
       },
       {
@@ -2283,6 +2495,10 @@
             "price": "$150+",
             "note": "Better wool-cotton blends or genuine vintage pieces with real patina."
           }
+        },
+        "photo": {
+          "url": "images/generated/waverider/item-1.jpg",
+          "generated": true
         }
       },
       {
@@ -2306,6 +2522,10 @@
             "price": "$300+",
             "note": "Hand-finished uppers and rare materials on a familiar silhouette."
           }
+        },
+        "photo": {
+          "url": "images/generated/waverider/item-2.jpg",
+          "generated": true
         }
       },
       {
@@ -2329,6 +2549,10 @@
             "price": "$80+",
             "note": "Original prints from defunct or early-era surf labels, bought through vintage dealers."
           }
+        },
+        "photo": {
+          "url": "images/generated/waverider/item-3.jpg",
+          "generated": true
         }
       },
       {
@@ -2352,6 +2576,10 @@
             "price": "$60+",
             "note": "Already-faded original pieces bought through vintage or surf-specific resellers."
           }
+        },
+        "photo": {
+          "url": "images/generated/waverider/item-4.jpg",
+          "generated": true
         }
       }
     ],
@@ -2440,6 +2668,10 @@
             "price": "$8,000+",
             "note": "Hand-tailored construction from the houses most associated with executive power dressing."
           }
+        },
+        "photo": {
+          "url": "images/generated/financier/item-0.jpg",
+          "generated": true
         }
       },
       {
@@ -2463,6 +2695,10 @@
             "price": "$500+",
             "note": "The Place Vendôme shirtmaker most associated with this exact wardrobe."
           }
+        },
+        "photo": {
+          "url": "images/generated/financier/item-1.jpg",
+          "generated": true
         }
       },
       {
@@ -2486,6 +2722,10 @@
             "price": "$300+",
             "note": "Custom or discontinued patterns sourced through specialist dealers."
           }
+        },
+        "photo": {
+          "url": "images/generated/financier/item-2.jpg",
+          "generated": true
         }
       },
       {
@@ -2509,6 +2749,10 @@
             "price": "$200+",
             "note": "Custom colors and hardware to match a specific wardrobe."
           }
+        },
+        "photo": {
+          "url": "images/generated/financier/item-3.jpg",
+          "generated": true
         }
       },
       {
@@ -3252,6 +3496,10 @@
             "price": "$1,000+",
             "note": "Hand-finished acetate or precious-metal detailing at the top of the category."
           }
+        },
+        "photo": {
+          "url": "images/generated/professor/item-4.jpg",
+          "generated": true
         }
       }
     ],
@@ -3746,6 +3994,10 @@
             "price": "$600+",
             "note": "Made to order, often by a single craftsperson, in leather chosen specifically to age well."
           }
+        },
+        "photo": {
+          "url": "images/generated/bohemian/item-2.jpg",
+          "generated": true
         }
       },
       {
@@ -4239,6 +4491,10 @@
             "price": "$1,200+",
             "note": "The designers most associated with rave-derived technical fashion at a runway level."
           }
+        },
+        "photo": {
+          "url": "images/generated/voltage/item-0.jpg",
+          "generated": true
         }
       },
       {
