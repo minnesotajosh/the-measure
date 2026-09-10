@@ -339,9 +339,8 @@
       }
     ],
     "photo": {
-      "url": "https://images.unsplash.com/photo-1662311893663-274ed75741f2",
-      "credit": "Mathias Reding",
-      "profile": "https://unsplash.com/@matreding"
+      "url": "images/generated/neapolitan/outfit.jpg",
+      "generated": true
     },
     "lifestyle": {
       "travel": "Naples itself, but also Capri for a long lunch, the Amalfi coast off-season, and Puglia for the olive oil and the quiet. Trips get planned around a specific trattoria as often as a view.",
@@ -356,6 +355,10 @@
       "rain": "A raincoat is basically un-Neapolitan, but if pressed: a soft, unlined cotton mac, worn open, with the suede loafers reluctantly swapped for something less precious.",
       "snow": "This wardrobe does not really believe in snow. A heavier wool overcoat gets added over everything else, and the suede loafers get put away in favor of a plain leather boot, unhappily.",
       "dressedUp": "The jacket gets a little more structure and a matching trouser (a rare full suit), the shirt gets buttoned higher, and a silk tie appears -- still soft, never stiff."
+    },
+    "flatlay": {
+      "url": "images/generated/neapolitan/flatlay.jpg",
+      "generated": true
     }
   },
   {
@@ -517,9 +520,8 @@
       }
     ],
     "photo": {
-      "url": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7",
-      "credit": "Ali Morshedlou",
-      "profile": "https://unsplash.com/@alimorshedlou"
+      "url": "images/generated/row/outfit.jpg",
+      "generated": true
     },
     "lifestyle": {
       "travel": "The Scottish Highlands for the shooting season, a London club for everything else, and Venice once, taken seriously rather than as a honeymoon cliche. Prefers a place with a proper concierge to one with a view.",
@@ -534,6 +536,10 @@
       "rain": "A fitted trench or a covert coat over the suit, an umbrella that matches the rest of the outfit's seriousness, and galoshes if truly necessary, removed the moment one is indoors.",
       "snow": "The chesterfield gets swapped for something heavier still, real leather-soled boots get a rubber-soled country cousin, and gloves become non-negotiable rather than optional.",
       "dressedUp": "There is nowhere further up to go -- this is already the ceiling. For black tie specifically: a proper dinner suit, grosgrain lapel, no exceptions."
+    },
+    "flatlay": {
+      "url": "images/generated/row/flatlay.jpg",
+      "generated": true
     }
   },
   {
@@ -695,9 +701,8 @@
       }
     ],
     "photo": {
-      "url": "https://images.unsplash.com/photo-1631112230741-446762ee05ac",
-      "credit": "Dylann Hendricks",
-      "profile": "https://unsplash.com/@dylanhendricks"
+      "url": "images/generated/journeyman/outfit.jpg",
+      "generated": true
     },
     "lifestyle": {
       "travel": "A cross-country drive over a coastal flight every time, national parks over resorts, and small industrial towns visited specifically to see how something is still made there — a mill, a tannery, a foundry.",
@@ -712,6 +717,10 @@
       "rain": "Genuine waxed or oiled canvas, not a fashion raincoat -- this wardrobe already owns the right coat for this. Boots get treated with dubbin beforehand, not after.",
       "snow": "Insulated versions of the same chore coat and boots, a wool-lined cap with ear flaps, and gloves built for actual work, not just warmth.",
       "dressedUp": "The honest answer is this wardrobe doesn't dress up so much as clean up -- the same pieces, newer and less faded, with a collared shirt buttoned all the way and actual leather shoes instead of boots."
+    },
+    "flatlay": {
+      "url": "images/generated/journeyman/flatlay.jpg",
+      "generated": true
     }
   },
   {
@@ -873,9 +882,8 @@
       }
     ],
     "photo": {
-      "url": "https://images.unsplash.com/photo-1611261302709-ff944e64ba9e",
-      "credit": "Maxim Mushnikov",
-      "profile": "https://unsplash.com/@maxim_mushnikov"
+      "url": "images/generated/minimalist/outfit.jpg",
+      "generated": true
     },
     "lifestyle": {
       "travel": "Copenhagen, Kyoto, and a week off-grid at a design-forward cabin with no cell service — the common thread is architecture that respects negative space. Packs one bag, always.",
@@ -890,6 +898,10 @@
       "rain": "A single, excellent technical-minimalist raincoat -- Scandinavian brands do this well -- kept in black or stone, no logo, no exceptions to the palette.",
       "snow": "The overcoat gets swapped for a longer, more technical down or wool-blend coat, still monochrome, with boots chosen for function but never visibly technical-looking.",
       "dressedUp": "Formality here means precision, not decoration -- the same silhouette in a finer fabric, pressed rather than embellished. A tie only if genuinely required, and then a plain one."
+    },
+    "flatlay": {
+      "url": "images/generated/minimalist/flatlay.jpg",
+      "generated": true
     }
   },
   {
@@ -1050,9 +1062,8 @@
       }
     ],
     "photo": {
-      "url": "https://images.unsplash.com/photo-1619603364937-8d7af41ef206",
-      "credit": "Taras Chernus",
-      "profile": "https://unsplash.com/@chernus_tr"
+      "url": "images/generated/rivegauche/outfit.jpg",
+      "generated": true
     },
     "lifestyle": {
       "travel": "Paris, obviously, but specifically the same six blocks of it, revisited rather than explored. Otherwise, a small French coastal town in the off-season, empty of other tourists.",
@@ -1067,6 +1078,10 @@
       "rain": "The trench was built for exactly this -- cotton gabardine actually sheds water reasonably well. An umbrella only if truly necessary; getting slightly wet is preferable to looking overprepared.",
       "snow": "A heavier wool coat replaces the trench temporarily, boots replace the usual loafer or sneaker, but the palette and the general austerity hold firm.",
       "dressedUp": "The well-cut trouser gets a matching jacket (a rare full suit for this wardrobe), the sweater becomes a crisp white shirt, and the whole effect stays as understated as always -- just sharper."
+    },
+    "flatlay": {
+      "url": "images/generated/rivegauche/flatlay.jpg",
+      "generated": true
     }
   },
   {
@@ -1227,9 +1242,8 @@
       }
     ],
     "photo": {
-      "url": "https://images.unsplash.com/photo-1552710307-537199cd41c0",
-      "credit": "Eva Blue",
-      "profile": "https://unsplash.com/@evablue"
+      "url": "images/generated/dandy/outfit.jpg",
+      "generated": true
     },
     "lifestyle": {
       "travel": "Venice during Carnevale, Marrakech for the color, and a costume party thrown by someone else, attended as though it were the whole point of the trip.",
@@ -1244,6 +1258,10 @@
       "rain": "An umbrella becomes an accessory in its own right -- patterned, unusual, worth carrying even when not raining. A rubberized coat gets the same bold-color treatment as everything else.",
       "snow": "The statement coat gets heavier without getting quieter -- shearling, bold plaid, or a rich jewel tone -- and the boots get chosen for how they look as much as how they perform.",
       "dressedUp": "Black tie is this wardrobe's actual home turf: velvet dinner jacket, an unconventional cummerbund or waistcoat, and jewelry that would read as too much anywhere else."
+    },
+    "flatlay": {
+      "url": "images/generated/dandy/flatlay.jpg",
+      "generated": true
     }
   },
   {
@@ -1405,9 +1423,8 @@
       }
     ],
     "photo": {
-      "url": "https://images.unsplash.com/photo-1579293465947-81bbeafa486a",
-      "credit": "Philipp Lansing",
-      "profile": "https://unsplash.com/@philipp_lansing"
+      "url": "images/generated/countryman/outfit.jpg",
+      "generated": true
     },
     "lifestyle": {
       "travel": "The Scottish Highlands, the Lake District, and any coastline with real weather. Prefers a walking holiday to a beach one, and packs for rain regardless of forecast.",
@@ -1422,6 +1439,10 @@
       "rain": "This is the wardrobe's whole reason for being -- the waxed jacket, freshly re-proofed, over the tweed, with wellingtons and no umbrella; umbrellas are for people who don't own proper coats.",
       "snow": "A heavier shooting coat or a sheepskin-lined version of the usual jacket, insulated wellingtons or proper winter boots, and a wool hat under the flat cap if truly severe.",
       "dressedUp": "Tweed gets swapped for a proper suit for church or a funeral, but the countryman's version keeps a slightly heavier cloth and a country shoe rather than a city one -- never fully convinced by town clothes."
+    },
+    "flatlay": {
+      "url": "images/generated/countryman/flatlay.jpg",
+      "generated": true
     }
   },
   {
@@ -1582,9 +1603,8 @@
       }
     ],
     "photo": {
-      "url": "https://images.unsplash.com/photo-1788362773893-d401bc303e8c",
-      "credit": "Elias Orlik",
-      "profile": "https://unsplash.com/@rhimes"
+      "url": "images/generated/iconoclast/outfit.jpg",
+      "generated": true
     },
     "lifestyle": {
       "travel": "Tokyo and Antwerp for the design, Berlin for the nightlife, and post-industrial cities more generally — the more derelict the architecture, the better.",
@@ -1599,6 +1619,10 @@
       "rain": "The technical shell was already built for exactly this -- genuinely waterproof, seam-taped, no umbrella required or wanted. This is the one weather condition this wardrobe was always ready for.",
       "snow": "A heavier technical parka replaces the usual jacket, boots get genuinely aggressive tread, and the whole silhouette gets more sculptural rather than simply puffier.",
       "dressedUp": "Formality here means more conceptual, not more traditional -- an even more deconstructed jacket, asymmetry pushed further, still resolutely avoiding anything that reads as a normal suit."
+    },
+    "flatlay": {
+      "url": "images/generated/iconoclast/flatlay.jpg",
+      "generated": true
     }
   },
   {
@@ -1759,9 +1783,8 @@
       }
     ],
     "photo": {
-      "url": "https://images.unsplash.com/photo-1619466122087-e1ff06cf234b",
-      "credit": "Malvestida",
-      "profile": "https://unsplash.com/@malvestida"
+      "url": "images/generated/remix/outfit.jpg",
+      "generated": true
     },
     "lifestyle": {
       "travel": "Tokyo, Seoul, and wherever the next sneaker collaboration is dropping — travel planned around culture and release calendars in equal measure.",
@@ -1776,6 +1799,10 @@
       "rain": "A technical shell worn over tailoring, exactly the kind of collision this wardrobe already loves, with a water-resistant sneaker rather than anything that pretends to be a boot.",
       "snow": "The puffer becomes the main event, oversized and worn over the blazer rather than instead of it, with a genuinely winter-rated sneaker-boot hybrid.",
       "dressedUp": "The sneakers get swapped for a genuinely sharp leather shoe (the one traditional concession), but the graphic tee and the mixed proportions stay -- dressing up here means editing, not converting."
+    },
+    "flatlay": {
+      "url": "images/generated/remix/flatlay.jpg",
+      "generated": true
     }
   },
   {
@@ -1937,9 +1964,8 @@
       }
     ],
     "photo": {
-      "url": "https://images.unsplash.com/photo-1649639763329-dccbd16fbf4d",
-      "credit": "Brice Cooper",
-      "profile": "https://unsplash.com/@brice_cooper18"
+      "url": "images/generated/rancher/outfit.jpg",
+      "generated": true
     },
     "lifestyle": {
       "travel": "Wyoming, Montana, and the actual working ranches of West Texas rather than the dude-ranch version. A rodeo circuit followed the way other people follow a sports league.",
@@ -1954,6 +1980,10 @@
       "rain": "A long waxed or oilskin duster coat -- genuinely functional, genuinely part of the tradition, not a fashion afterthought -- over everything else.",
       "snow": "The duster gets heavier insulation underneath, the boots get a shearling-lined winter version, and a wool-lined hat replaces the usual felt one entirely.",
       "dressedUp": "For a wedding or a big rodeo dance: a pressed western shirt with pearl snaps, the good hat, and boots polished rather than dusty -- the bolo tie comes out of the drawer."
+    },
+    "flatlay": {
+      "url": "images/generated/rancher/flatlay.jpg",
+      "generated": true
     }
   },
   {
@@ -2114,9 +2144,8 @@
       }
     ],
     "photo": {
-      "url": "https://images.unsplash.com/photo-1628035514544-ebd32b766089",
-      "credit": "Kristian Angelo",
-      "profile": "https://unsplash.com/@kgadia87"
+      "url": "images/generated/rebel/outfit.jpg",
+      "generated": true
     },
     "lifestyle": {
       "travel": "Route 66 taken seriously, not ironically, Sturgis for the rally, and small-town diners chosen over any chain, anywhere.",
@@ -2131,6 +2160,10 @@
       "rain": "Leather handles light rain fine; for anything heavier, a waxed canvas layer goes over it, and the boots get treated beforehand rather than after.",
       "snow": "The leather jacket generally stays parked along with the bike; a heavier flannel-lined denim jacket and insulated boots take over until the roads clear.",
       "dressedUp": "The leather jacket gets swapped for a simple black blazer over the same white tee, and the boots get polished rather than replaced -- this wardrobe dresses up reluctantly and briefly."
+    },
+    "flatlay": {
+      "url": "images/generated/rebel/flatlay.jpg",
+      "generated": true
     }
   },
   {
@@ -2291,9 +2324,8 @@
       }
     ],
     "photo": {
-      "url": "https://images.unsplash.com/photo-1645499683497-22662a9b1704",
-      "credit": "DARKROOMLABS",
-      "profile": "https://unsplash.com/@darkroomlabs"
+      "url": "images/generated/waverider/outfit.jpg",
+      "generated": true
     },
     "lifestyle": {
       "travel": "Bali, the North Shore of Oahu, and any coastline with a reliable swell — the itinerary is basically a surf forecast.",
@@ -2308,6 +2340,10 @@
       "rain": "Nobody here owns a real raincoat; a hoodie gets pulled up and that's considered sufficient, since the ocean was going to get everything wet anyway.",
       "snow": "Genuinely rare, and handled with visible confusion -- the warmest thing in the closet (probably still just a hoodie) plus borrowed gloves.",
       "dressedUp": "A clean, unwrinkled version of the usual flannel, actual shoes instead of sandals, and hair that's seen a comb -- this wardrobe's idea of black tie."
+    },
+    "flatlay": {
+      "url": "images/generated/waverider/flatlay.jpg",
+      "generated": true
     }
   },
   {
@@ -2468,9 +2504,8 @@
       }
     ],
     "photo": {
-      "url": "https://images.unsplash.com/photo-1786467469637-f8d0bd74eb96",
-      "credit": "Ghavam Cheraghali",
-      "profile": "https://unsplash.com/@ghavix"
+      "url": "images/generated/financier/outfit.jpg",
+      "generated": true
     },
     "lifestyle": {
       "travel": "The Hamptons in summer, Aspen in winter, and a business trip to London extended by exactly one extra day for personal reasons.",
@@ -2485,6 +2520,10 @@
       "rain": "A fitted trench or a covert coat over the suit, a large golf umbrella carried like a prop, and shoes that get immediately re-shined afterward.",
       "snow": "The overcoat gets heavier, the town car gets called more often, and the boots (a rare concession) get swapped back for real shoes the moment he's indoors.",
       "dressedUp": "Black tie for the annual dinner: a proper dinner suit, the same competitive attention to detail applied to a cummerbund as to a term sheet."
+    },
+    "flatlay": {
+      "url": "images/generated/financier/flatlay.jpg",
+      "generated": true
     }
   },
   {
@@ -2645,9 +2684,8 @@
       }
     ],
     "photo": {
-      "url": "https://images.unsplash.com/photo-1611107683227-e9060eccd846",
-      "credit": "Syed F Hashemi",
-      "profile": "https://unsplash.com/@sfhashemi"
+      "url": "images/generated/gearhead/outfit.jpg",
+      "generated": true
     },
     "lifestyle": {
       "travel": "Dubai, Miami, and wherever the next major sneaker or fashion drop is happening in person rather than online.",
@@ -2662,6 +2700,10 @@
       "rain": "A logo-covered rain shell, still branded, still bold -- this wardrobe does not own a plain anything, weather included.",
       "snow": "The heaviest puffer in rotation, insulated boots with as much branding as the rest of the outfit, and gloves chosen to match rather than just to warm.",
       "dressedUp": "A tailored piece from the same houses that make the tracksuits -- the logomania gets subtler, not absent, and the sneakers get swapped for the one genuinely formal shoe in the closet."
+    },
+    "flatlay": {
+      "url": "images/generated/gearhead/flatlay.jpg",
+      "generated": true
     }
   },
   {
@@ -2822,9 +2864,8 @@
       }
     ],
     "photo": {
-      "url": "https://images.unsplash.com/photo-1620064913221-c137b534f9da",
-      "credit": "Dieter Blom",
-      "profile": "https://unsplash.com/@versysmedia"
+      "url": "images/generated/riviera/outfit.jpg",
+      "generated": true
     },
     "lifestyle": {
       "travel": "The Amalfi Coast, the French Riviera, and a boat, chartered rather than owned, for the month of August specifically.",
@@ -2839,6 +2880,10 @@
       "rain": "An unwelcome interruption -- a simple linen or cotton overshirt gets thrown on, more out of protest than actual protection.",
       "snow": "Effectively never happens in this wardrobe's world; if forced, borrowed clothes from someone more prepared.",
       "dressedUp": "The linen suit gets swapped for a proper silk-blend one for dinner, the espadrilles become loafers, and cufflinks appear for the first time all week."
+    },
+    "flatlay": {
+      "url": "images/generated/riviera/flatlay.jpg",
+      "generated": true
     }
   },
   {
@@ -2999,9 +3044,8 @@
       }
     ],
     "photo": {
-      "url": "https://images.unsplash.com/photo-1625910513399-c9fcba54338c",
-      "credit": "Clément Vatte",
-      "profile": "https://unsplash.com/@clement_vatte"
+      "url": "images/generated/mod/outfit.jpg",
+      "generated": true
     },
     "lifestyle": {
       "travel": "London, obviously, plus any city with a genuine scooter club and a decent record shop within walking distance.",
@@ -3016,6 +3060,10 @@
       "rain": "The parka again -- this coat exists specifically for exactly this scenario, protecting a suit not built to get wet.",
       "snow": "A heavier coat replaces the parka temporarily, Chelsea boots get a rubber-soled winter equivalent, and the scooter stays in the garage.",
       "dressedUp": "The two-button suit becomes a three-piece, the knitted tie becomes silk, and the whole look sharpens toward something a Savile Row client might almost recognize."
+    },
+    "flatlay": {
+      "url": "images/generated/mod/flatlay.jpg",
+      "generated": true
     }
   },
   {
@@ -3176,9 +3224,8 @@
       }
     ],
     "photo": {
-      "url": "https://images.unsplash.com/photo-1779870668916-f26bf1dd26cb",
-      "credit": "Bien'arts",
-      "profile": "https://unsplash.com/@bienarts14"
+      "url": "images/generated/professor/outfit.jpg",
+      "generated": true
     },
     "lifestyle": {
       "travel": "Oxford, a New England college town in autumn, and a research trip to an archive somewhere that doubles as a vacation.",
@@ -3193,6 +3240,10 @@
       "rain": "An old, slightly battered mac, carried more out of habit than actual need, with an umbrella left in an office somewhere more often than not.",
       "snow": "A heavier wool coat, boots that see about six days of actual use a year, and a hat that's more about tradition than warmth.",
       "dressedUp": "For a colleague's retirement dinner: the good tweed, an actual tie instead of a knit one, and shoes that have been resoled at least once."
+    },
+    "flatlay": {
+      "url": "images/generated/professor/flatlay.jpg",
+      "generated": true
     }
   },
   {
@@ -3353,9 +3404,8 @@
       }
     ],
     "photo": {
-      "url": "https://images.unsplash.com/photo-1667498235575-ba110d39d27f",
-      "credit": "Michael Starkie",
-      "profile": "https://unsplash.com/@starkie_pics"
+      "url": "images/generated/correspondent/outfit.jpg",
+      "generated": true
     },
     "lifestyle": {
       "travel": "Wherever the story is — historically a warzone or a revolution, currently anywhere with a good airport and an uncertain outcome.",
@@ -3370,6 +3420,10 @@
       "rain": "The trench again, doing exactly the job it was built for a century ago -- this wardrobe was basically designed around this weather condition.",
       "snow": "A heavier field coat, boots rated for actual cold rather than just style, and gloves that still allow typing.",
       "dressedUp": "For a rare embassy dinner: the one good jacket kept folded at the bottom of the bag specifically for this, worn with the same well-traveled boots because there was no room for dress shoes."
+    },
+    "flatlay": {
+      "url": "images/generated/correspondent/flatlay.jpg",
+      "generated": true
     }
   },
   {
@@ -3530,9 +3584,8 @@
       }
     ],
     "photo": {
-      "url": "https://images.unsplash.com/photo-1764592746235-837525d72227",
-      "credit": "Dwayne joe",
-      "profile": "https://unsplash.com/@spliff_dj_joe"
+      "url": "images/generated/nightcrawler/outfit.jpg",
+      "generated": true
     },
     "lifestyle": {
       "travel": "Berlin, London in the 1970s if time travel were an option, and wherever the after-party actually is.",
@@ -3547,6 +3600,10 @@
       "rain": "A vinyl or patent coat -- shiny regardless of the weather's mood -- because this wardrobe would never wear something purely practical.",
       "snow": "The fur coat gets heavier, sequins somehow survive the season, and the boots get a platform sole rated for actual traction for once.",
       "dressedUp": "There isn't really a more formal setting than this wardrobe's default -- for genuine black tie, the satin shirt becomes a full tuxedo shirt, still unbuttoned further than convention allows."
+    },
+    "flatlay": {
+      "url": "images/generated/nightcrawler/flatlay.jpg",
+      "generated": true
     }
   },
   {
@@ -3707,9 +3764,8 @@
       }
     ],
     "photo": {
-      "url": "https://images.unsplash.com/photo-1627686011747-74adda3d2343",
-      "credit": "Ricardo Morales",
-      "profile": "https://unsplash.com/@ricardoaaron"
+      "url": "images/generated/bohemian/outfit.jpg",
+      "generated": true
     },
     "lifestyle": {
       "travel": "Montmartre, a Greek island in the off-season, and anywhere with cheap rent and good light.",
@@ -3724,6 +3780,10 @@
       "rain": "An old coat that's seen better days, an umbrella borrowed and never returned, and a general acceptance of getting slightly wet.",
       "snow": "A heavier, likely secondhand coat, boots that have seen a lot of use, and gloves with at least one finger worn through.",
       "dressedUp": "For an opening or a reading: the good linen shirt (there's always one good linen shirt), the satchel swapped for something smaller, and shoes that have seen slightly less use than the boots."
+    },
+    "flatlay": {
+      "url": "images/generated/bohemian/flatlay.jpg",
+      "generated": true
     }
   },
   {
@@ -3883,9 +3943,8 @@
       }
     ],
     "photo": {
-      "url": "https://images.unsplash.com/photo-1527016021513-b09758b777bd",
-      "credit": "James Balensiefen",
-      "profile": "https://unsplash.com/@balensiefenphoto"
+      "url": "images/generated/undone/outfit.jpg",
+      "generated": true
     },
     "lifestyle": {
       "travel": "Seattle, Portland, and wherever the next show is, van travel preferred to flying.",
@@ -3900,6 +3959,10 @@
       "rain": "Nothing changes, honestly -- the flannel gets wet, the jeans get wet, the boots were never really waterproof to begin with.",
       "snow": "The same jeans, more flannel layers, and a beanie pulled lower -- this wardrobe does not believe in specialized outerwear.",
       "dressedUp": "The cleanest flannel in the drawer, jeans without visible holes, and the Doc Martens actually laced all the way -- this wardrobe's full ceremonial effort."
+    },
+    "flatlay": {
+      "url": "images/generated/undone/flatlay.jpg",
+      "generated": true
     }
   },
   {
@@ -4060,9 +4123,8 @@
       }
     ],
     "photo": {
-      "url": "https://images.unsplash.com/photo-1772155055378-e55748970e9e",
-      "credit": "Gowtham AGM",
-      "profile": "https://unsplash.com/@gowthamagm"
+      "url": "images/generated/yachtsman/outfit.jpg",
+      "generated": true
     },
     "lifestyle": {
       "travel": "Newport, Nantucket, and the coast of Maine — always somewhere a boat can actually go.",
@@ -4077,6 +4139,10 @@
       "rain": "A yellow slicker, genuinely nautical and not remotely ashamed of it, over the usual layers -- this wardrobe owns real foul-weather gear and isn't afraid to use it.",
       "snow": "Effectively a foreign concept; the heaviest coat in the closet gets pressed into service along with borrowed boots from someone more prepared for it.",
       "dressedUp": "For the yacht club's summer ball: a proper white dinner jacket, the one true concession this wardrobe makes to genuine formality."
+    },
+    "flatlay": {
+      "url": "images/generated/yachtsman/flatlay.jpg",
+      "generated": true
     }
   },
   {
@@ -4237,9 +4303,8 @@
       }
     ],
     "photo": {
-      "url": "https://images.unsplash.com/photo-1695742434688-4f5942b98e2e",
-      "credit": "Jas Rolyn",
-      "profile": "https://unsplash.com/@jasrolyn"
+      "url": "images/generated/voltage/outfit.jpg",
+      "generated": true
     },
     "lifestyle": {
       "travel": "Berlin, Tokyo's Shibuya district at night, and wherever the next warehouse party is being whispered about.",
@@ -4254,6 +4319,10 @@
       "rain": "Already built for this -- the technical shell is genuinely waterproof, which was always half the point of choosing it in the first place.",
       "snow": "A heavier technical parka, still reflective, with boots built for actual winter sport rather than just looking like they might be.",
       "dressedUp": "Formality here means more metallic, not less -- the loudest jacket in rotation, worn somewhere that will actually have the lighting to do it justice."
+    },
+    "flatlay": {
+      "url": "images/generated/voltage/flatlay.jpg",
+      "generated": true
     }
   },
   {
@@ -4414,9 +4483,8 @@
       }
     ],
     "photo": {
-      "url": "https://images.unsplash.com/photo-1629353689974-af4d5c70440f",
-      "credit": "iam_os",
-      "profile": "https://unsplash.com/@iam_os"
+      "url": "images/generated/officer/outfit.jpg",
+      "generated": true
     },
     "lifestyle": {
       "travel": "Wherever he was stationed, revisited; otherwise, historical battlefields and military museums, toured with real attention.",
@@ -4431,6 +4499,10 @@
       "rain": "The field jacket was built for exactly this; a poncho goes over it if truly necessary, but the jacket alone usually suffices.",
       "snow": "White or snow-camo overlays if authenticity matters, insulated boots, and a heavier field jacket -- this wardrobe has a documented answer for every weather condition.",
       "dressedUp": "The dress uniform, on the rare occasions it's called for -- a different, sharper register entirely, with every detail regulation-correct."
+    },
+    "flatlay": {
+      "url": "images/generated/officer/flatlay.jpg",
+      "generated": true
     }
   },
   {
@@ -4591,9 +4663,8 @@
       }
     ],
     "photo": {
-      "url": "https://images.unsplash.com/photo-1602471615287-d733c59b79c4",
-      "credit": "Ben den Engelsen",
-      "profile": "https://unsplash.com/@bendenengelsen"
+      "url": "images/generated/alpinist/outfit.jpg",
+      "generated": true
     },
     "lifestyle": {
       "travel": "Patagonia, the Dolomites, and any range with a peak still on the list. Vacation and expedition are the same word.",
@@ -4608,6 +4679,10 @@
       "rain": "The waterproof shell is the whole reason this wardrobe exists; genuinely, unglamorously, completely prepared for this.",
       "snow": "The heaviest version of everything -- insulated boots, a proper down layer, gaiters -- this is the wardrobe's actual reason for being.",
       "dressedUp": "The most technical, least worn piece in the closet, saved for an outdoor industry event rather than anything indoors -- formality here means newest, not fanciest."
+    },
+    "flatlay": {
+      "url": "images/generated/alpinist/flatlay.jpg",
+      "generated": true
     }
   },
   {
@@ -4768,9 +4843,8 @@
       }
     ],
     "photo": {
-      "url": "https://images.unsplash.com/photo-1760458955495-9712cc8f79c0",
-      "credit": "Omar Fernández",
-      "profile": "https://unsplash.com/@oferr_gr"
+      "url": "images/generated/athlete/outfit.jpg",
+      "generated": true
     },
     "lifestyle": {
       "travel": "Wherever the tournament or the team's away game is, plus a genuine pilgrimage to at least one hall of fame.",
@@ -4785,6 +4859,10 @@
       "rain": "A team-branded rain shell, if one exists; if not, the hood goes up on the sweatshirt and the game continues regardless.",
       "snow": "Full warm-up gear, insulated sneakers or actual boots for once, and the varsity jacket doing real structural work rather than just aesthetic.",
       "dressedUp": "The cleanest, newest version of the sneakers, a collared shirt under the varsity jacket instead of a tee -- this wardrobe's idea of black tie is \"presentable.\""
+    },
+    "flatlay": {
+      "url": "images/generated/athlete/flatlay.jpg",
+      "generated": true
     }
   }
 ]

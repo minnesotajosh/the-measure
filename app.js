@@ -582,6 +582,7 @@ function renderResults(user){
   var secondary = ranked[1].style;
 
   document.getElementById('rName').textContent = primary.name;
+  document.getElementById('rSharePage').href = 'styles/' + primary.key + '/';
   document.getElementById('rDek').textContent = primary.dek;
   document.getElementById('rPlate').innerHTML = renderPlate(primary, 300, 'hero');
   document.getElementById('rFlatlay').innerHTML = flatlayHTML(primary);

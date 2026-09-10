@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://minnesotajosh.github.io/the-measure/sitemap.xml

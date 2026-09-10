@@ -503,3 +503,22 @@ h1,h2,h3,.display{
   font-family:'Archivo', sans-serif; font-size:11px; letter-spacing:0.06em;
   color:var(--ink-faint); text-transform:none;
 }
+.colophon a{ color:var(--ink-faint); }
+.colophon a:hover{ color:var(--oxblood); }
+
+/* ---------- static style pages (styles/<key>/) ---------- */
+.other-styles{ display:flex; flex-wrap:wrap; gap:10px 18px; }
+.other-style{
+  font-family:'Fraunces', serif; font-style:italic; font-size:15px; color:var(--ink-soft);
+  text-decoration:none; border-bottom:1px solid transparent;
+}
+.other-style:hover{ color:var(--oxblood); border-color:var(--oxblood); }
+
+.style-index-list{ display:flex; flex-direction:column; border-top:1px solid var(--rule); }
+.style-index-row{
+  display:flex; flex-direction:column; gap:4px; padding:18px 0; border-bottom:1px solid var(--rule);
+  text-decoration:none; color:inherit;
+}
+.style-index-name{ font-family:'Fraunces', serif; font-style:italic; font-size:19px; transition:color .15s ease; }
+.style-index-row:hover .style-index-name{ color:var(--oxblood); }
+.style-index-dek{ font-size:14px; color:var(--ink-soft); }
