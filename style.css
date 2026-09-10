@@ -419,6 +419,9 @@ h1,h2,h3,.display{
 .capsule-list{ display:flex; flex-direction:column; }
 .capsule-item{ padding:28px 0; border-bottom:1px solid var(--rule); }
 .capsule-item:first-child{ padding-top:0; }
+.capsule-photo{ margin-bottom:18px; border:1px solid var(--rule); overflow:hidden; }
+.capsule-photo img{ display:block; width:100%; aspect-ratio:4/3; object-fit:cover; }
+.capsule-photo .photo-credit{ padding:7px 10px; background:var(--paper-raised); margin-top:0; }
 .capsule-item h4{
   font-size:23px; font-style:italic; margin-bottom:12px;
 }

@@ -321,12 +321,20 @@ function pctMatch(d){
    plus a 3-color "palette" + monogram as a fallback if a photo is ever
    missing. Every photo is a free Unsplash image, credited inline per
    Unsplash's guidelines — see photoCreditHTML(). */
+// Unsplash photos are served through their resize API (?w=&h=&fit=crop);
+// our own generated JPEGs are already sized and cropped at generation time,
+// so they're just used as-is.
+function photoSrc(photo, w, h){
+  if(photo.generated) return escapeHtml(photo.url);
+  return escapeHtml(photo.url) + '?w=' + w + '&h=' + h + '&q=80&auto=format&fit=crop';
+}
+
 function renderPlate(style, size, mode){
   size = size || 260;
   if(style.photo && mode === 'hero'){
     return '' +
       '<div class="hero-photo">' +
-        '<img src="'+escapeHtml(style.photo.url)+'?w=2000&h=1000&q=80&auto=format&fit=crop" ' +
+        '<img src="'+photoSrc(style.photo, 2000, 1000)+'" ' +
              'alt="'+escapeHtml(style.name)+'" loading="eager">' +
         '<div class="hero-scrim"></div>' +
         photoCreditHTML(style.photo) +
@@ -335,7 +343,7 @@ function renderPlate(style, size, mode){
   if(style.photo && mode === 'wide'){
     var ww = Math.round(size * 1.6), wh = Math.round(ww * 9/16);
     return '' +
-      '<img class="plate" src="'+escapeHtml(style.photo.url)+'?w='+ww+'&h='+wh+'&q=80&auto=format&fit=crop" ' +
+      '<img class="plate" src="'+photoSrc(style.photo, ww, wh)+'" ' +
            'alt="Mood photograph for '+escapeHtml(style.name)+'" loading="lazy">' +
       photoCreditHTML(style.photo);
   }
@@ -343,7 +351,7 @@ function renderPlate(style, size, mode){
     var w = Math.round(size * 2.4);
     var h = Math.round(w * 380/300); // matches the fallback plate's portrait ratio
     return '' +
-      '<img class="plate" src="'+escapeHtml(style.photo.url)+'?w='+w+'&h='+h+'&q=80&auto=format&fit=crop" ' +
+      '<img class="plate" src="'+photoSrc(style.photo, w, h)+'" ' +
            'alt="Mood photograph for '+escapeHtml(style.name)+'" width="'+size+'" loading="lazy">' +
       photoCreditHTML(style.photo);
   }
@@ -359,6 +367,9 @@ function renderPlate(style, size, mode){
 }
 
 function photoCreditHTML(photo){
+  if(photo.generated){
+    return '<div class="photo-credit">AI-generated image</div>';
+  }
   return '<div class="photo-credit">Photo by <a href="'+escapeHtml(photo.profile)+'" target="_blank" rel="noopener">'+escapeHtml(photo.credit)+'</a> on <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></div>';
 }
 
@@ -491,8 +502,12 @@ function capsuleHTML(style){
     return '<p class="capsule-empty">A full capsule wardrobe for '+escapeHtml(style.name)+' hasn\'t been written yet.</p>';
   }
   return style.capsule.map(function(item){
+    var itemPhoto = item.image
+      ? '<div class="capsule-photo"><img src="'+escapeHtml(item.image.url)+'" alt="'+escapeHtml(item.category)+'" loading="lazy"><div class="photo-credit">AI-generated image</div></div>'
+      : '';
     return '' +
       '<div class="capsule-item">' +
+        itemPhoto +
         '<h4>'+escapeHtml(item.category)+'</h4>' +
         '<p class="cap-bg">'+escapeHtml(item.background)+'</p>' +
         '<div class="capsule-meta">' +
