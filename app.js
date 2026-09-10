@@ -326,9 +326,17 @@ function renderPlate(style, size, mode){
   if(style.photo && mode === 'hero'){
     return '' +
       '<div class="hero-photo">' +
-        '<img src="'+escapeHtml(style.photo.url)+'?w=1400&h=800&q=80&auto=format&fit=crop" ' +
+        '<img src="'+escapeHtml(style.photo.url)+'?w=2000&h=1000&q=80&auto=format&fit=crop" ' +
              'alt="'+escapeHtml(style.name)+'" loading="eager">' +
-      '</div>' +
+        '<div class="hero-scrim"></div>' +
+        photoCreditHTML(style.photo) +
+      '</div>';
+  }
+  if(style.photo && mode === 'wide'){
+    var ww = Math.round(size * 1.6), wh = Math.round(ww * 9/16);
+    return '' +
+      '<img class="plate" src="'+escapeHtml(style.photo.url)+'?w='+ww+'&h='+wh+'&q=80&auto=format&fit=crop" ' +
+           'alt="Mood photograph for '+escapeHtml(style.name)+'" loading="lazy">' +
       photoCreditHTML(style.photo);
   }
   if(style.photo){
@@ -580,7 +588,7 @@ function renderResults(user){
 function styleDetailHTML(style){
   return '' +
     '<div class="dek">'+escapeHtml(style.dek)+'</div>' +
-    renderPlate(style, 160) +
+    renderPlate(style, 800, 'wide') +
     essayHTML(style) +
     '<div class="mini-title">Trademark Features</div>' +
     '<ul class="trademarks">'+trademarksListItems(style)+'</ul>' +
