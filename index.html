@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Measure — A Style Diagnostic</title>
+<link rel="canonical" href="https://minnesotajosh.github.io/the-measure/">
 <script>
 // Set before first paint so the page never flashes the system's dark theme —
 // this app defaults to light regardless of OS setting, remembering only an
@@ -14,6 +15,14 @@
     document.documentElement.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
   }catch(e){
     document.documentElement.setAttribute('data-theme', 'light');
+  }
+})();
+// A visitor landing on the literal .../index.html filename (an old link, a
+// bookmark, a manual type-in) gets bounced to the clean directory URL --
+// same page, tidier address bar, one canonical form for search engines.
+(function(){
+  if(/\/index\.html$/.test(location.pathname)){
+    history.replaceState(null, '', location.pathname.replace(/index\.html$/, '') + location.search + location.hash);
   }
 })();
 </script>

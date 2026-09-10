@@ -207,7 +207,8 @@ function pageHTML(style, all){
 '<meta property="og:image" content="' + ogImage + '">\n' +
 '<meta property="og:url" content="' + canonical + '">\n' +
 '<meta name="twitter:card" content="summary_large_image">\n' +
-'<script>(function(){try{var t=localStorage.getItem("measure:theme");document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){document.documentElement.setAttribute("data-theme","light");}})();</script>\n' +
+'<script>(function(){try{var t=localStorage.getItem("measure:theme");document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){document.documentElement.setAttribute("data-theme","light");}})();' +
+'if(/\\/index\\.html$/.test(location.pathname)){history.replaceState(null,"",location.pathname.replace(/index\\.html$/,"")+location.search+location.hash);}</script>\n' +
 '<link rel="stylesheet" href="../../style.css">\n' +
 '</head>\n<body>\n' +
 '<div class="page">\n' +
@@ -258,7 +259,8 @@ function indexPageHTML(all){
 '<title>Every Style Profile | The Measure</title>\n' +
 '<meta name="description" content="All 27 menswear style archetypes from The Measure, each with a full profile: history, capsule wardrobe, and more.">\n' +
 '<link rel="canonical" href="' + SITE_URL + '/styles/">\n' +
-'<script>(function(){try{var t=localStorage.getItem("measure:theme");document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){document.documentElement.setAttribute("data-theme","light");}})();</script>\n' +
+'<script>(function(){try{var t=localStorage.getItem("measure:theme");document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){document.documentElement.setAttribute("data-theme","light");}})();' +
+'if(/\\/index\\.html$/.test(location.pathname)){history.replaceState(null,"",location.pathname.replace(/index\\.html$/,"")+location.search+location.hash);}</script>\n' +
 '<link rel="stylesheet" href="../style.css">\n' +
 '</head>\n<body>\n' +
 '<div class="page">\n' +
