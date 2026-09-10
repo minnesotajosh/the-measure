@@ -85,15 +85,17 @@ var idx = 0;
 
 var rail = document.getElementById('rail');
 
-/* ---------------- screens ---------------- */
+/* ---------------- screens ----------------
+   Just the three in-app states now -- browsing every style lives on its
+   own real page (styles/index.html) rather than a fourth in-app screen,
+   since that page already exists for SEO and there's no reason to
+   maintain the same listing twice. */
 var SCREENS = {
   cover: document.getElementById('cover'),
   quiz: document.getElementById('quiz'),
-  results: document.getElementById('results'),
-  styleIndex: document.getElementById('styleIndex')
+  results: document.getElementById('results')
 };
 var currentScreen = 'cover';
-var priorScreen = 'cover'; // where "← Back" from the browse-all screen returns to
 
 function showScreen(name){
   Object.keys(SCREENS).forEach(function(k){ SCREENS[k].hidden = (k !== name); });
@@ -102,33 +104,8 @@ function showScreen(name){
   void el.offsetWidth;
   el.classList.add('screen-in');
   currentScreen = name;
-  updateFooter();
   window.scrollTo({top:0, behavior:'instant'});
 }
-
-function updateFooter(){
-  var browseBtn = document.getElementById('footerBrowseBtn');
-  var backBtn = document.getElementById('footerHomeBtn');
-  if(currentScreen === 'styleIndex'){
-    browseBtn.hidden = true;
-    backBtn.hidden = false;
-  } else {
-    browseBtn.hidden = false;
-    backBtn.hidden = true;
-  }
-}
-
-document.getElementById('footerBrowseBtn').addEventListener('click', function(){
-  priorScreen = currentScreen;
-  renderStyleIndex();
-  showScreen('styleIndex');
-});
-document.getElementById('footerHomeBtn').addEventListener('click', function(){
-  showScreen(priorScreen);
-});
-document.getElementById('idxTakeQuizBtn').addEventListener('click', function(){
-  showScreen('cover');
-});
 
 /* ---------------- local persistence ----------------
    Everything below lives only in this browser's localStorage — nothing is
@@ -381,8 +358,6 @@ function flatlayHTML(style){
     photoCreditHTML(style.flatlay);
 }
 
-var CHEVRON = '<svg class="compare-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg>';
-
 function essayHTML(style){
   return style.essay.map(function(p,i){
     return '<p'+(i===0?' class="dropcap"':'')+'>'+escapeHtml(p)+'</p>';
@@ -622,89 +597,26 @@ function renderResults(user){
   renderCompareList(ranked);
 }
 
-/* Shared full write-up markup, used both in the results-page "How You
-   Compare" accordion and the no-quiz-required "Browse Every Style" index. */
-function styleDetailHTML(style){
-  return '' +
-    '<div class="dek">'+escapeHtml(style.dek)+'</div>' +
-    renderPlate(style, 800, 'wide') +
-    '<div class="mini-title">Shop The Look</div>' +
-    flatlayHTML(style) +
-    essayHTML(style) +
-    '<div class="mini-title">Trademark Features</div>' +
-    '<ul class="trademarks">'+trademarksListItems(style)+'</ul>' +
-    '<div class="mini-title">The Wardrobe</div>' +
-    '<div class="brandline">'+brandsHTML(style)+'</div>' +
-    '<div class="mini-title">The Capsule Wardrobe</div>' +
-    '<div class="capsule-list">'+capsuleHTML(style)+'</div>' +
-    '<div class="mini-title">Dressing For It</div>' +
-    '<div class="life-grid">'+variantsHTML(style)+'</div>' +
-    '<div class="mini-title">Beyond the Closet</div>' +
-    '<div class="life-grid">'+lifeHTML(style)+'</div>';
-}
-
-function buildAccordion(containerEl, items){
-  containerEl.innerHTML = '';
-  items.forEach(function(row){
-    var item = document.createElement('div');
-    item.className = 'compare-item';
-    item.dataset.open = 'false';
-
-    var head = document.createElement('button');
-    head.className = 'compare-head';
-    head.setAttribute('aria-expanded','false');
-    head.innerHTML = row.headHTML;
-
-    var body = document.createElement('div');
-    body.className = 'compare-body';
-    body.innerHTML = '<div class="compare-body-inner">' + row.bodyHTML + '</div>';
-
-    head.addEventListener('click', function(){
-      var open = item.dataset.open === 'true';
-      item.dataset.open = open ? 'false' : 'true';
-      head.setAttribute('aria-expanded', open ? 'false' : 'true');
-    });
-
-    item.appendChild(head);
-    item.appendChild(body);
-    containerEl.appendChild(item);
-  });
-}
-
+// Each row links straight to that style's real page (styles/<key>/) rather
+// than duplicating the full essay/capsule/etc. inline -- that content now
+// lives in exactly one place, which is also the page search engines index.
 function renderCompareList(ranked){
-  var rows = ranked.map(function(entry, i){
+  var el = document.getElementById('compareList');
+  el.innerHTML = ranked.map(function(entry, i){
     var style = entry.style;
     var pct = pctMatch(entry.d);
     var tag = i===0 ? '<span class="compare-tag">Primary</span>' : (i===1 ? '<span class="compare-tag">Secondary</span>' : '');
-    return {
-      headHTML:
+    return '' +
+      '<a class="compare-row" href="styles/'+style.key+'/">' +
         '<span class="compare-rank">'+pad(i+1)+'</span>' +
         '<span class="compare-main">' +
           '<span class="compare-name">'+escapeHtml(style.name)+'</span>' + tag +
           '<span class="compare-bar-track"><span class="compare-bar-fill" style="width:'+pct+'%"></span></span>' +
         '</span>' +
         '<span class="compare-pct">'+pct+'%</span>' +
-        CHEVRON,
-      bodyHTML: styleDetailHTML(style)
-    };
-  });
-  buildAccordion(document.getElementById('compareList'), rows);
-}
-
-function renderStyleIndex(){
-  document.getElementById('idxCount').textContent = STYLES.length;
-  var rows = STYLES.map(function(style){
-    return {
-      headHTML:
-        '<span class="compare-main">' +
-          '<span class="compare-name">'+escapeHtml(style.name)+'</span>' +
-          '<span class="section-note" style="margin:6px 0 0;">'+escapeHtml(style.dek)+'</span>' +
-        '</span>' +
-        CHEVRON,
-      bodyHTML: styleDetailHTML(style)
-    };
-  });
-  buildAccordion(document.getElementById('styleIndexList'), rows);
+        '<span class="compare-arrow" aria-hidden="true">→</span>' +
+      '</a>';
+  }).join('');
 }
 
 }

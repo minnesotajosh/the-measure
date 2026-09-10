@@ -43,9 +43,93 @@ const MODEL = process.env.GEMINI_IMAGE_MODEL || 'gemini-2.5-flash-image';
 const STYLES_PATH = path.join(__dirname, '..', 'data', 'styles.json');
 const OUT_ROOT = path.join(__dirname, '..', 'images', 'generated');
 
-const HOUSE_STYLE = "Editorial photography for a high-end menswear style guide. Warm " +
-  "oxblood-and-cream color grade, the restrained sophisticated look of a 1970s New Yorker " +
-  "style feature. No text, no logos, no watermark, no visible brand names.";
+// Deliberately NOT a color mandate -- this describes the *photographic*
+// treatment only (light quality, grain, restraint). An earlier version of
+// this prompt said "warm oxblood-and-cream color grade" here, which the
+// model took as license to tint every garment burgundy regardless of the
+// style -- Minimalist's grey/black/navy came out looking like Ivy. Garment
+// color now comes exclusively from paletteNote() below, per style.
+const HOUSE_STYLE = "Editorial photography for a high-end menswear style guide -- the " +
+  "restrained, sophisticated look of a 1970s New Yorker style feature: dramatic directional " +
+  "natural light, shallow depth of field, shot on film with visible grain. Absolutely no visible " +
+  "text, words, letters, or writing anywhere in the image. Do not depict or reference any real " +
+  "brand's actual logo, monogram, or trademarked pattern (no interlocking letters, no repeating " +
+  "monogram canvas, no real designer hardware) -- if a garment would realistically carry a maker's " +
+  "mark, invent a plain, generic one, or leave it unmarked entirely. This applies even to styles " +
+  "that are culturally associated with visible luxury branding: convey that through silhouette, " +
+  "fabric, and styling, never by reproducing an actual trademark. If any denim/jeans appear, the " +
+  "back pockets must be either bare or stitched with a simple straight or single-line pattern only " +
+  "-- never the double-arc \"seagull wing\" stitch of a well-known jeans brand -- and the waistband " +
+  "must carry no leather or fabric patch and no colored tab of any kind on the side seam.";
+
+// A few styles are explicitly *about* logomania (Gearhead is the clear
+// case) -- their own trademarks text literally says "monogram" and names
+// real houses (Gucci, Nike, etc.), which pushed the model to reproduce
+// actual trademarks (a real GG pattern, an actual Nike swoosh) rather than
+// just capturing the *idea* of visible luxury branding. This override
+// replaces the trademark text fed to the image prompt for those styles
+// only -- the written essay/trademarks on the site are untouched.
+const IMAGE_SAFE_TRADEMARKS = {
+  gearhead: [
+    "A bold, entirely fictional geometric or graphic repeat pattern used across a tracksuit and puffer jacket -- invented, not a real luxury house's monogram",
+    "A heavy, chunky metal chain and rings, worn as a visible display of value",
+    "Sneakers in a bold two-tone or color-blocked design with completely PLAIN, BLANK side panels -- absolutely no side logo of any shape or size, no swoosh-like curved checkmark, no stripes, nothing printed or stitched on the side of the shoe at all",
+    "Fur or shearling trim layered onto outerwear",
+    "Head-to-toe branding conveyed through boldness of color and pattern alone, never by depicting an actual trademark"
+  ],
+  athlete: [
+    "A varsity jacket, wool body and leather sleeves, with a plain fictional initial or number -- not a real school or team name",
+    "A team jersey and mesh shorts in bold color-blocked team colors, with an invented team name/wordmark and a generic athletic crest -- not any real league's actual name, logo, or wordmark (no NBA/NFL/MLB branding)",
+    "Sneakers with a bold retro color-blocked design and NO real brand markings of any kind -- no swoosh, no three stripes, no other real logo",
+    "Sweatshirts and warm-up gear in solid team colors",
+    "A structured cap in team colors with a plain fictional initial, not a real team's logo"
+  ],
+  // Mod's own trademarks name "Fred Perry" outright, which pushed the model
+  // to reproduce that brand's actual laurel-wreath logo on the polo.
+  mod: [
+    "A slim two- or three-button suit, cut close through the body, in black or deep navy",
+    "A fishtail parka worn over the suit, purely for the ride over, in olive drab",
+    "Button-down shirts and knitted ties, borrowed from Ivy style",
+    "A plain crew-neck knit shirt with a short button placket at the collar, in a bold solid color, entirely unbranded -- no embroidered emblem, no rider-on-horseback or animal silhouette, no wreath shape, no logo of any kind anywhere on it",
+    "Chelsea boots or bowling shoes, kept sharp and low-profile, in black or oxblood"
+  ]
+};
+// Named reference colors for turning a style's palette hex codes into words
+// a text prompt can act on. Without this, the model defaults to a generic
+// warm oxblood/burgundy for almost anything -- it did so even for styles
+// whose actual palette is teal, true red, or navy-and-gold, silently
+// overwriting them. Distance is plain Euclidean in RGB space, which is
+// crude but plenty to pick the right family (navy vs. teal vs. burgundy).
+const NAMED_COLORS = [
+  ['black', 0x10,0x10,0x10], ['charcoal', 0x36,0x36,0x38], ['grey', 0x8c,0x8c,0x86],
+  ['silver', 0xb8,0xb8,0xb0], ['white', 0xf2,0xf0,0xea], ['cream', 0xed,0xe3,0xc8],
+  ['navy', 0x1b,0x2a,0x4a], ['steel blue', 0x3b,0x5a,0x78], ['dusty blue', 0x5b,0x8f,0xa8],
+  ['teal', 0x2c,0x78,0x73], ['cyan', 0x19,0xd3,0xe0], ['forest green', 0x2f,0x4f,0x2f],
+  ['olive', 0x55,0x6b,0x2f], ['sage green', 0x5b,0x6b,0x4a], ['burgundy/oxblood', 0x6e,0x1f,0x24],
+  ['true red', 0xc4,0x1e,0x3a], ['brick red/terracotta', 0xb5,0x65,0x1d], ['coral', 0xe0,0x8e,0x6d],
+  ['magenta/pink', 0xe0,0x19,0xa0], ['purple', 0x5b,0x2a,0x86], ['brown', 0x8c,0x5a,0x3c],
+  ['tan/camel', 0xc9,0xa0,0x63], ['brass/gold', 0xc9,0xa2,0x27], ['orange', 0xe0,0x69,0x2e]
+];
+function nearestColorName(hex){
+  const n = parseInt(hex.replace('#',''), 16);
+  const r = (n>>16)&255, g = (n>>8)&255, b = n&255;
+  let best = null, bestDist = Infinity;
+  for(const [name, nr, ng, nb] of NAMED_COLORS){
+    const d = (r-nr)**2 + (g-ng)**2 + (b-nb)**2;
+    if(d < bestDist){ bestDist = d; best = name; }
+  }
+  return best;
+}
+function paletteNote(style){
+  const trademarks = IMAGE_SAFE_TRADEMARKS[style.key] || style.trademarks;
+  const colorWords = style.palette.map(nearestColorName).join(', ');
+  return "The garments' own colors must faithfully match this style's actual described palette " +
+    "and character: " + trademarks.join('; ') + ". The dominant colors visible across the outfit " +
+    "MUST be drawn from this style's real palette -- " + colorWords + " -- and nothing else; do " +
+    "not substitute a generic warm burgundy/oxblood/sepia palette unless one of those named colors " +
+    "is itself burgundy, oxblood, or brown. Warm color grading, if any, belongs only to the ambient " +
+    "light and the environment, never to the garments themselves.";
+}
 
 const NO_FACE = "Do not depict any human face -- no portraits, no models posed for the camera, " +
   "no head visible at all. If a person appears, show only the body from the shoulders or neck " +
@@ -102,14 +186,52 @@ async function saveInline(inline, outPath){
   return finalPath;
 }
 
+// A handful of style deks name an actual product (mod's references riding
+// off on "a Vespa") -- fine as written copy, but fed straight into an image
+// prompt it reliably drew Piaggio's real Vespa wordmark and shield badge.
+// Swapped for a generic equivalent for image-generation purposes only; the
+// site's own text is untouched.
+const IMAGE_SAFE_SCENE_WORDS = [
+  [/\bVespa\b/gi, 'vintage Italian scooter']
+];
+function sanitizeForImage(text){
+  return IMAGE_SAFE_SCENE_WORDS.reduce((t, [re, repl]) => t.replace(re, repl), text);
+}
+
+// The generic anti-logo clause in HOUSE_STYLE wasn't enough on its own to
+// stop the model reaching for an actual Levi's back pocket (the tan patch,
+// the orange side tab, the double-arc "arcuate" stitch) any time "jeans" is
+// in the piece list -- it took a second, blunt, close-to-the-word repeat to
+// actually break the association (same lesson as the sneaker swoosh below).
+function denimNote(pieceText){
+  if(!/\bjean|\bdenim/i.test(pieceText)) return '';
+  return ' If jeans/denim trousers appear, fold or position them front-side up, waistband-and-fly ' +
+    'facing the camera, so the back pockets are simply not in frame at all -- this matters because ' +
+    'a real jeans brand\'s back-pocket stitching pattern and side-seam tab must never be drawn, and ' +
+    'showing the front avoids the question entirely. Do not show the back of the jeans.';
+}
+
+// Same lesson, different garment: the word "sneakers" alone reliably pulled
+// in an actual Nike swoosh (or similar) even for styles with no connection
+// to Nike in their own text.
+function sneakerNote(pieceText){
+  if(!/sneaker|trainer/i.test(pieceText)) return '';
+  return ' If sneakers/trainers appear, this is critical: their side panels must be completely ' +
+    'plain and blank -- no swoosh-like curved checkmark, no stripes, no jumpman silhouette, no ' +
+    'other logo of any shape, size, or color anywhere on the shoe, no matter how standard that ' +
+    'looks on real sneakers.';
+}
+
 async function generateOutfitShot(style){
-  const pieces = style.capsule.map(i => i.category).join(', ');
-  const prompt = HOUSE_STYLE + ' ' + NO_FACE + ' A wide editorial lifestyle photograph of a man ' +
-    'wearing a complete outfit built from these pieces: ' + pieces + '. Full outfit visible from ' +
-    'the shoulders or neck down to the shoes, positioned to one side of the frame with the ' +
-    'setting filling the rest -- ' + style.dek + ' The setting and mood should reflect that. ' +
-    'Real, lived-in styling, not a studio backdrop. Dramatic directional natural light, shallow ' +
-    'depth of field, shot on film with visible grain.';
+  const pieces = (IMAGE_SAFE_TRADEMARKS[style.key] || style.capsule.map(i => i.category)).join(', ');
+  const scene = sanitizeForImage(style.dek);
+  const prompt = HOUSE_STYLE + ' ' + NO_FACE + ' ' + paletteNote(style) + ' A wide editorial ' +
+    'lifestyle photograph of a man wearing a complete outfit built from these pieces: ' + pieces +
+    '. Full outfit visible from the shoulders or neck down to the shoes, positioned to one side ' +
+    'of the frame with the setting filling the rest -- ' + scene + ' The setting and mood ' +
+    'should reflect that. Real, lived-in styling, not a studio backdrop. If any vehicle appears, ' +
+    'it must carry no real manufacturer badge, wordmark, or emblem of any kind.' +
+    denimNote(pieces) + sneakerNote(pieces);
   const inline = await callGemini(prompt, '16:9');
   const outPath = path.join(OUT_ROOT, style.key, 'outfit.png');
   const saved = await saveInline(inline, outPath);
@@ -118,17 +240,16 @@ async function generateOutfitShot(style){
 }
 
 async function generateFlatlay(style){
-  const pieceList = style.capsule.map(function(item){
-    return item.category + ' (' + item.lookFor.split('.')[0] + ')';
-  }).join('; ');
-  const prompt = HOUSE_STYLE + ' ' + NO_FACE + ' A "shop the look" flat-lay photograph for a ' +
-    'menswear style guide, shot from directly above (or a slight angle) on a plain, softly lit ' +
-    'neutral surface -- cream, warm white, or light linen. Arrange these garments and accessories ' +
-    'neatly with generous, even spacing so every single piece is fully visible and distinct, none ' +
-    'overlapping: ' + pieceList + '. Keep each garment in its own true, traditional color (a dress ' +
-    'shirt in white or blue, chinos in khaki or tan, denim in indigo, etc.) -- the warm color grade ' +
-    'belongs to the surface and the light, never as a tint over the garments themselves. Soft, even ' +
-    'lighting throughout, minimal harsh shadow, so the flat-lay reads as clean and genuinely shoppable.';
+  const pieceList = IMAGE_SAFE_TRADEMARKS[style.key]
+    ? IMAGE_SAFE_TRADEMARKS[style.key].join('; ')
+    : style.capsule.map(function(item){ return item.category + ' (' + item.lookFor.split('.')[0] + ')'; }).join('; ');
+  const prompt = HOUSE_STYLE + ' ' + NO_FACE + ' ' + paletteNote(style) + ' A "shop the look" ' +
+    'flat-lay photograph for a menswear style guide, shot from directly above (or a slight angle) ' +
+    'on a plain, softly lit neutral surface -- cream, warm white, or light linen. Arrange these ' +
+    'garments and accessories neatly with generous, even spacing so every single piece is fully ' +
+    'visible and distinct, none overlapping: ' + pieceList + '. Soft, even lighting throughout, ' +
+    'minimal harsh shadow, so the flat-lay reads as clean and genuinely shoppable.' +
+    denimNote(pieceList) + sneakerNote(pieceList);
   const inline = await callGemini(prompt, '4:3');
   const outPath = path.join(OUT_ROOT, style.key, 'flatlay.png');
   const saved = await saveInline(inline, outPath);

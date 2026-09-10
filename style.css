@@ -41,6 +41,9 @@
 
 *{box-sizing:border-box;}
 html{-webkit-text-size-adjust:100%;}
+/* safety net: any image without its own sizing rule shrinks to fit its
+   container instead of overflowing or silently ignoring its parent's width */
+img{ max-width:100%; height:auto; }
 body{
   margin:0;
   background:var(--paper);
@@ -249,12 +252,9 @@ h1,h2,h3,.display{
 .trademarks li:nth-child(3){ animation-delay:.10s; } .trademarks li:nth-child(4){ animation-delay:.14s; }
 .trademarks li:nth-child(5){ animation-delay:.18s; }
 
-/* compare accordion: fade the revealed content in, not just height */
-.compare-body-inner{ opacity:0; transition:opacity .35s ease .05s; }
-.compare-item[data-open="true"] .compare-body-inner{ opacity:1; }
 .compare-bar-fill{ transition:width .8s cubic-bezier(.22,.61,.36,1); }
-.compare-head{ transition:transform .15s ease; }
-.compare-head:hover{ transform:translateX(2px); }
+.compare-row{ transition:transform .15s ease; }
+.compare-row:hover{ transform:translateX(2px); }
 
 .btn{ transition:background .2s ease, transform .12s ease, box-shadow .2s ease; }
 .btn:hover{ transform:translateY(-1px); box-shadow:0 4px 12px var(--shadow); }
@@ -285,7 +285,7 @@ h1,h2,h3,.display{
   overflow:hidden; animation:fadeIn .7s ease both;
 }
 .hero-photo img{
-  display:block; width:100%; aspect-ratio:21/9; max-height:620px;
+  display:block; width:100%; aspect-ratio:16/9; max-height:620px;
   object-fit:cover; object-position:center 30%;
 }
 .hero-photo .hero-scrim{
@@ -299,7 +299,7 @@ h1,h2,h3,.display{
 .hero-photo .photo-credit a{ color:rgba(255,255,255,0.92); }
 .hero-photo .photo-credit a:hover{ color:#fff; }
 @media (max-width:640px){
-  .hero-photo img{ aspect-ratio:4/5; max-height:70vh; }
+  .hero-photo img{ max-height:70vh; }
 }
 #results .r-name{
   text-align:center; font-size:clamp(38px,7vw,58px); font-style:italic; line-height:1.05;
@@ -380,15 +380,15 @@ h1,h2,h3,.display{
 .sidebar .plate-wrap{ margin-bottom:20px; }
 .sidebar .plate{ width:min(100%,240px); }
 
-/* ---------- how you compare (full ranked list, every style expandable) ---------- */
+/* ---------- how you compare (full ranked list, each linking out to its style page) ---------- */
 .compare-list{ display:flex; flex-direction:column; border-top:1px solid var(--rule); }
-.compare-item{ border-bottom:1px solid var(--rule); }
-.compare-head{
+.compare-row{
   width:100%; display:flex; align-items:center; gap:16px; background:none; border:none;
-  padding:16px 0; cursor:pointer; text-align:left; font-family:inherit; color:var(--ink);
+  border-bottom:1px solid var(--rule); padding:16px 0; text-align:left; font-family:inherit;
+  color:var(--ink); text-decoration:none;
 }
-.compare-head:hover .compare-name{ color:var(--oxblood); }
-.compare-head:focus-visible{ outline:2px solid var(--brass); outline-offset:2px; }
+.compare-row:hover .compare-name{ color:var(--oxblood); }
+.compare-row:focus-visible{ outline:2px solid var(--brass); outline-offset:2px; }
 .compare-rank{
   font-family:'Archivo', sans-serif; font-size:12px; color:var(--ink-faint);
   width:20px; flex:none; font-variant-numeric:tabular-nums;
@@ -407,26 +407,10 @@ h1,h2,h3,.display{
   font-family:'Archivo', sans-serif; font-size:13px; color:var(--ink-soft); flex:none;
   font-variant-numeric:tabular-nums; width:48px; text-align:right;
 }
-.compare-chevron{
-  flex:none; width:14px; height:14px; color:var(--ink-faint); transition:transform .2s ease;
+.compare-arrow{
+  flex:none; font-size:15px; color:var(--ink-faint); transition:transform .15s ease;
 }
-.compare-item[data-open="true"] .compare-chevron{ transform:rotate(90deg); }
-.compare-body{
-  overflow:hidden; max-height:0; transition:max-height .3s ease;
-}
-.compare-item[data-open="true"] .compare-body{ max-height:4000px; }
-.compare-body-inner{ padding:6px 0 30px 36px; }
-.compare-body-inner .dek{
-  font-style:italic; color:var(--ink-soft); font-size:15px; margin:0 0 16px;
-}
-.compare-body-inner p{ font-size:15.5px; margin:0 0 14px; }
-.compare-body-inner .brandline{ font-size:14.5px; }
-.compare-body-inner .trademarks li{ font-size:14px; }
-.compare-body-inner .plate{ display:block; width:100%; max-width:none; height:auto; aspect-ratio:16/9; object-fit:cover; }
-.compare-body-inner .mini-title{
-  font-family:'Archivo', sans-serif; font-size:10.5px; font-weight:700; letter-spacing:0.12em;
-  text-transform:uppercase; color:var(--brass); margin:20px 0 10px;
-}
+.compare-row:hover .compare-arrow{ transform:translateX(3px); color:var(--brass); }
 
 /* ---------- capsule wardrobe ---------- */
 .capsule-list{ display:flex; flex-direction:column; }
