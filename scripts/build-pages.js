@@ -183,7 +183,12 @@ function otherStylesHTML(current, all){
 }
 
 function pageHTML(style, all){
-  var heroSrc = style.photo.generated ? style.photo.url : style.photo.url + '?w=2000&h=1000&q=80&auto=format&fit=crop';
+  // style.photo.url / style.flatlay.url are stored root-relative (used as-is
+  // by the SPA at the site root) -- this page lives two levels deeper, at
+  // styles/<key>/index.html, so image src attributes need "../../" prepended.
+  // og:image stays a full absolute URL, which needed no such adjustment.
+  var photoPath = '../../' + style.photo.url;
+  var heroSrc = style.photo.generated ? photoPath : photoPath + '?w=2000&h=1000&q=80&auto=format&fit=crop';
   var ogImage = SITE_URL + '/' + style.photo.url;
   var canonical = SITE_URL + '/styles/' + style.key + '/';
   var title = style.name + ' — Full Style Profile | The Measure';
@@ -210,7 +215,7 @@ function pageHTML(style, all){
 '    <span class="meta"><a href="../index.html" style="color:inherit;">All Styles</a></span>\n' +
 '  </div>\n' +
 '  <div id="rPlate"><div class="hero-photo"><img src="' + escapeHtml(heroSrc) + '" alt="' + escapeHtml(style.name) + '" loading="eager"><div class="hero-scrim"></div>' + photoCreditHTML(style.photo) + '</div></div>\n' +
-(style.flatlay ? '  <div class="shop-look"><div class="shop-look-label">Shop The Look</div><img src="' + escapeHtml(style.flatlay.url) + '" alt="The ' + escapeHtml(style.name) + ' capsule wardrobe, flat-laid">' + photoCreditHTML(style.flatlay) + '</div>\n' : '') +
+(style.flatlay ? '  <div class="shop-look"><div class="shop-look-label">Shop The Look</div><img src="' + escapeHtml('../../' + style.flatlay.url) + '" alt="The ' + escapeHtml(style.name) + ' capsule wardrobe, flat-laid">' + photoCreditHTML(style.flatlay) + '</div>\n' : '') +
 '  <div class="r-eyebrow eyebrow">A Style Profile</div>\n' +
 '  <h1 class="r-name">' + escapeHtml(style.name) + '</h1>\n' +
 '  <div class="r-dek">' + escapeHtml(style.dek) + '</div>\n' +
