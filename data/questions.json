@@ -1,0 +1,734 @@
+{
+  "axes": {
+    "A": {
+      "label": "Formality",
+      "poles": [
+        "Casual",
+        "Formal"
+      ],
+      "image": {
+        "url": "https://images.unsplash.com/photo-1768508950243-16fd93e88d7f",
+        "credit": "Filip Rankovic Grobgaard",
+        "profile": "https://unsplash.com/@filipgrobgaard"
+      }
+    },
+    "B": {
+      "label": "Structure",
+      "poles": [
+        "Relaxed",
+        "Structured"
+      ],
+      "image": {
+        "url": "https://images.unsplash.com/photo-1564668314350-6b3653af7dfa",
+        "credit": "kimi lee",
+        "profile": "https://unsplash.com/@kimileee"
+      }
+    },
+    "C": {
+      "label": "Boldness",
+      "poles": [
+        "Muted",
+        "Bold"
+      ],
+      "image": {
+        "url": "https://images.unsplash.com/photo-1586032788085-d75f745f26e0",
+        "credit": "Robert Keane",
+        "profile": "https://unsplash.com/@keano16"
+      }
+    },
+    "D": {
+      "label": "Heritage",
+      "poles": [
+        "Avant-Garde",
+        "Heritage"
+      ],
+      "image": {
+        "url": "https://images.unsplash.com/photo-1509048191080-d2984bad6ae5",
+        "credit": "Andrik Langfield",
+        "profile": "https://unsplash.com/@andriklangfield"
+      }
+    },
+    "E": {
+      "label": "Utility",
+      "poles": [
+        "Refined",
+        "Utilitarian"
+      ],
+      "image": {
+        "url": "https://images.unsplash.com/photo-1554825959-e9a6670d4f18",
+        "credit": "Haupes",
+        "profile": "https://unsplash.com/@haupes"
+      }
+    },
+    "F": {
+      "label": "Provenance",
+      "poles": [
+        "American",
+        "Continental"
+      ],
+      "image": {
+        "url": "https://images.unsplash.com/photo-1683665991882-b732a6c2a1c0",
+        "credit": "Rebecca McKenna",
+        "profile": "https://unsplash.com/@reebs16"
+      }
+    },
+    "G": {
+      "label": "Locale",
+      "poles": [
+        "Urban",
+        "Rural"
+      ],
+      "image": {
+        "url": "https://images.unsplash.com/photo-1727359224881-78609cc43eb2",
+        "credit": "Leopold Maitre",
+        "profile": "https://unsplash.com/@lm"
+      }
+    }
+  },
+  "bank": {
+    "A": [
+      {
+        "a": "You still put on a jacket, even with nothing on the calendar.",
+        "b": "You do not own a jacket that isn't for weather.",
+        "type": "clothing"
+      },
+      {
+        "a": "Your ideal shoe collection tilts toward oxfords and derbies.",
+        "b": "Your ideal shoe collection tilts toward sneakers and boots.",
+        "type": "clothing"
+      },
+      {
+        "a": "At a backyard barbecue, you're the one in a linen sport coat.",
+        "b": "At a backyard barbecue, you're the one in a well-worn t-shirt.",
+        "type": "clothing"
+      },
+      {
+        "a": "Weddings are a chance to break out the good suit.",
+        "b": "Weddings are an occasion to buy nothing you don't already own.",
+        "type": "clothing"
+      },
+      {
+        "a": "The necktie is a small daily ritual for you.",
+        "b": "The necktie is a funeral-and-court-date-only proposition.",
+        "type": "clothing"
+      },
+      {
+        "a": "A free Saturday means a proper haircut and looking presentable running errands.",
+        "b": "A free Saturday means not being seen by anyone who matters.",
+        "type": "clothing"
+      },
+      {
+        "a": "The phrase “dress code” is reassuring — someone else made the decision.",
+        "b": "The phrase “dress code” makes you faintly claustrophobic.",
+        "type": "clothing"
+      },
+      {
+        "a": "Your imagined commute happens in trousers with a crease.",
+        "b": "Your imagined commute happens in something you could also sleep in.",
+        "type": "clothing"
+      },
+      {
+        "a": "You'd rather be slightly overdressed than ever underdressed.",
+        "b": "You'd rather be comfortable than risk overdressing for even a minute.",
+        "type": "clothing"
+      },
+      {
+        "a": "Your suitcase always contains at least one blazer, just in case.",
+        "b": "Your suitcase contains nothing that needs hanging up.",
+        "type": "clothing"
+      },
+      {
+        "a": "Your ideal dinner reservation is the kind of place that assumes a jacket.",
+        "b": "Your ideal dinner reservation has a line and no host stand.",
+        "type": "clothing"
+      },
+      {
+        "a": "Picture “getting dressed” and you see a shirt with a real collar.",
+        "b": "Picture “getting dressed” and you see a hoodie.",
+        "type": "clothing"
+      },
+      {
+        "a": "Cufflinks and pocket squares are small pleasures you look for excuses to use.",
+        "b": "Cufflinks and pocket squares are props from a costume department.",
+        "type": "clothing"
+      },
+      {
+        "a": "If your job vanished tomorrow, your wardrobe would barely need to change.",
+        "b": "If your job vanished tomorrow, your wardrobe would become almost entirely different.",
+        "type": "clothing"
+      },
+      {
+        "a": "At a party full of strangers, you'd rather wait for the host to introduce you properly.",
+        "b": "At a party full of strangers, you'd rather find your own way in within five minutes.",
+        "type": "personality"
+      },
+      {
+        "a": "You'd rather arrive at a gathering exactly on time, maybe a touch early.",
+        "b": "You'd rather arrive whenever, fashionably or otherwise late.",
+        "type": "personality"
+      },
+      {
+        "a": "In an unfamiliar social setting, your instinct is to observe the room's norms and match them.",
+        "b": "In an unfamiliar social setting, your instinct is to do your own thing and let the room adjust.",
+        "type": "personality"
+      },
+      {
+        "a": "You think most occasions deserve a bit more ceremony than people give them.",
+        "b": "You think most occasions would be better with a little less ceremony.",
+        "type": "personality"
+      }
+    ],
+    "B": [
+      {
+        "a": "A jacket should hold its shape without you in it.",
+        "b": "A jacket should move like it forgot it was a jacket.",
+        "type": "clothing"
+      },
+      {
+        "a": "You like a shoulder built up, a little like armor.",
+        "b": "You like a shoulder barely there — natural, soft, unpadded.",
+        "type": "clothing"
+      },
+      {
+        "a": "You iron on principle.",
+        "b": "You iron under duress, if at all.",
+        "type": "clothing"
+      },
+      {
+        "a": "Your favorite fabric behavior is crisp — you can hear it move.",
+        "b": "Your favorite fabric behavior is soft — it's already broken in.",
+        "type": "clothing"
+      },
+      {
+        "a": "A trouser should break cleanly and hold a line.",
+        "b": "A trouser should puddle a little at the ankle.",
+        "type": "clothing"
+      },
+      {
+        "a": "Starch is an old and useful friend.",
+        "b": "Starch is a war crime.",
+        "type": "clothing"
+      },
+      {
+        "a": "You prefer a shirt collar that stands up on its own.",
+        "b": "You prefer a shirt collar that rolls and folds with some life in it.",
+        "type": "clothing"
+      },
+      {
+        "a": "Given a choice of suiting, you'd take a sharp, fused, city suit.",
+        "b": "Given a choice of suiting, you'd take an unlined jacket you could fold into a bag.",
+        "type": "clothing"
+      },
+      {
+        "a": "Your ideal knit is fully fashioned and precise.",
+        "b": "Your ideal knit is slouchy, oversized, cocoon-like.",
+        "type": "clothing"
+      },
+      {
+        "a": "A crease down the front of a trouser leg is non-negotiable.",
+        "b": "A crease down the front of a trouser leg never occurred to you.",
+        "type": "clothing"
+      },
+      {
+        "a": "A garment should look best on the hanger, before anyone's worn it.",
+        "b": "A garment should look best on the body, after a full day of living in it.",
+        "type": "clothing"
+      },
+      {
+        "a": "“Well-made” means precision — every seam accounted for.",
+        "b": "“Well-made” means character — every flaw earned.",
+        "type": "clothing"
+      },
+      {
+        "a": "When packing, you fold everything into crisp rectangles.",
+        "b": "When packing, you roll it all and hope for the best.",
+        "type": "clothing"
+      },
+      {
+        "a": "A blazer with no lining strikes you as unfinished.",
+        "b": "A blazer with no lining is the only kind worth owning in summer.",
+        "type": "clothing"
+      },
+      {
+        "a": "Your ideal workday runs on a set schedule you rarely deviate from.",
+        "b": "Your ideal workday has open blocks you fill as the day suggests.",
+        "type": "personality"
+      },
+      {
+        "a": "Your to-do list is ordered, and you work it in sequence.",
+        "b": "Your to-do list is a loose pile you get to eventually.",
+        "type": "personality"
+      },
+      {
+        "a": "Assembling something new, you read the instructions start to finish first.",
+        "b": "Assembling something new, you start building and check the manual only when stuck.",
+        "type": "personality"
+      },
+      {
+        "a": "Under pressure, you become more procedural and by-the-book.",
+        "b": "Under pressure, you become more improvisational.",
+        "type": "personality"
+      }
+    ],
+    "C": [
+      {
+        "a": "Your closet, viewed from across the room, reads as a small riot of color.",
+        "b": "Your closet, viewed from across the room, reads as a study in one or two tones.",
+        "type": "clothing"
+      },
+      {
+        "a": "Shown a bolt of loud plaid, you ask how much.",
+        "b": "Shown a bolt of loud plaid, you ask them to put it away.",
+        "type": "clothing"
+      },
+      {
+        "a": "Socks, for you, are an opportunity.",
+        "b": "Socks, for you, are a place to be quiet.",
+        "type": "clothing"
+      },
+      {
+        "a": "Your ideal shirt has a story — checks, stripes, or better.",
+        "b": "Your ideal shirt is solid, or as close to it as possible.",
+        "type": "clothing"
+      },
+      {
+        "a": "You've been fondly described as “a lot.”",
+        "b": "You've been fondly described as “understated.”",
+        "type": "clothing"
+      },
+      {
+        "a": "A pink or lavender jacket sounds like a Tuesday.",
+        "b": "A pink or lavender jacket sounds like a costume.",
+        "type": "clothing"
+      },
+      {
+        "a": "Your favorite color to wear is whichever one no one else is wearing that day.",
+        "b": "Your favorite color to wear is navy, grey, or something you already own six of.",
+        "type": "clothing"
+      },
+      {
+        "a": "You'd rather your outfit be noticed for its color.",
+        "b": "You'd rather your outfit be noticed for its cut.",
+        "type": "clothing"
+      },
+      {
+        "a": "Mixing stripes with checks feels like a fun problem to solve.",
+        "b": "Mixing stripes with checks feels like tempting fate.",
+        "type": "clothing"
+      },
+      {
+        "a": "Your ideal pocket square clashes on purpose.",
+        "b": "Your ideal pocket square matches so quietly no one clocks it.",
+        "type": "clothing"
+      },
+      {
+        "a": "If your wardrobe were punctuation, it would be an exclamation point.",
+        "b": "If your wardrobe were punctuation, it would be a period.",
+        "type": "clothing"
+      },
+      {
+        "a": "You'd sooner wear a bold check no one else would try.",
+        "b": "You'd sooner wear a plain grey you could take anywhere.",
+        "type": "clothing"
+      },
+      {
+        "a": "Your jewelry and watches lean toward statement.",
+        "b": "Your jewelry and watches lean toward barely there.",
+        "type": "clothing"
+      },
+      {
+        "a": "Given an identical coat in camel or cobalt, you take the cobalt.",
+        "b": "Given an identical coat in camel or cobalt, you take the camel.",
+        "type": "clothing"
+      },
+      {
+        "a": "In a group photo, you're the one doing something memorable in it.",
+        "b": "In a group photo, you're the one making sure everyone else looks good.",
+        "type": "personality"
+      },
+      {
+        "a": "Given the chance to speak in front of a room, you'd take it even if you weren't asked.",
+        "b": "Given the chance to speak in front of a room, you'd rather avoid it, even if you're capable.",
+        "type": "personality"
+      },
+      {
+        "a": "At karaoke, you pick the song that gets the whole room's attention.",
+        "b": "At karaoke, you sing something safe and hand off the mic.",
+        "type": "personality"
+      },
+      {
+        "a": "You'd rather be the friend who tells the story everyone repeats later.",
+        "b": "You'd rather be the friend who quietly holds the group together.",
+        "type": "personality"
+      }
+    ],
+    "D": [
+      {
+        "a": "“No brown in town” strikes you as worth keeping.",
+        "b": "“No brown in town” strikes you as adorable, in a museum-piece sort of way.",
+        "type": "clothing"
+      },
+      {
+        "a": "You'd rather your clothes look like they could've been worn, unaltered, sixty years ago.",
+        "b": "You'd rather your clothes look like they couldn't have existed until this year.",
+        "type": "clothing"
+      },
+      {
+        "a": "Your favorite menswear reference is an old photograph of someone's grandfather.",
+        "b": "Your favorite menswear reference is a runway show that confused half the room.",
+        "type": "clothing"
+      },
+      {
+        "a": "When a brand “reinterprets a classic,” your instinct is suspicion — leave it alone.",
+        "b": "When a brand “reinterprets a classic,” your instinct is interest — show me.",
+        "type": "clothing"
+      },
+      {
+        "a": "A suit with no clear lapel strikes you as a solved problem, unsolved again.",
+        "b": "A suit with no clear lapel strikes you as the only interesting question left.",
+        "type": "clothing"
+      },
+      {
+        "a": "You buy clothes expecting to wear them for decades, ideally passed down.",
+        "b": "You buy clothes expecting to wear them until the idea they're chasing moves on.",
+        "type": "clothing"
+      },
+      {
+        "a": "Asymmetry in a garment feels like a mistake at the factory.",
+        "b": "Asymmetry in a garment feels like the whole point.",
+        "type": "clothing"
+      },
+      {
+        "a": "Your ideal designer reveres the archive.",
+        "b": "Your ideal designer wants to burn it down.",
+        "type": "clothing"
+      },
+      {
+        "a": "“Timeless” is a compliment that makes you feel understood.",
+        "b": "“Timeless” is a compliment that makes you feel a little bored.",
+        "type": "clothing"
+      },
+      {
+        "a": "You're drawn to a garment's provenance — who made this, and how long ago.",
+        "b": "You're drawn to a garment's concept — what is this trying to say.",
+        "type": "clothing"
+      },
+      {
+        "a": "Called “conservative,” you'd feel correctly read.",
+        "b": "Called “conservative,” you'd feel mildly insulted.",
+        "type": "clothing"
+      },
+      {
+        "a": "A worn family heirloom watch beats a conceptual new release, every time.",
+        "b": "It's close, but the conceptual new release usually wins.",
+        "type": "clothing"
+      },
+      {
+        "a": "You think fashion mostly moves in slow, respectful circles back to itself.",
+        "b": "You think fashion mostly moves forward, whether anyone's ready or not.",
+        "type": "clothing"
+      },
+      {
+        "a": "Your ideal tailor has made the same three things beautifully for forty years.",
+        "b": "Your ideal tailor is still figuring out what a jacket could be.",
+        "type": "clothing"
+      },
+      {
+        "a": "Family traditions and rituals are things you protect and keep exactly as they were.",
+        "b": "Family traditions and rituals are things you feel free to update or drop.",
+        "type": "personality"
+      },
+      {
+        "a": "Inheriting an old method, your instinct is to preserve how it's always been done.",
+        "b": "Inheriting an old method, your instinct is to look for what needs to change.",
+        "type": "personality"
+      },
+      {
+        "a": "You trust an idea more once it's survived a long time.",
+        "b": "You trust an idea more when it hasn't been tried yet.",
+        "type": "personality"
+      },
+      {
+        "a": "Nostalgia is a comfort you return to often.",
+        "b": "Nostalgia is a trap you try to avoid.",
+        "type": "personality"
+      }
+    ],
+    "E": [
+      {
+        "a": "A garment's first job is to survive whatever you're about to do in it.",
+        "b": "A garment's first job is to look right doing very little.",
+        "type": "clothing"
+      },
+      {
+        "a": "You'd rather a jacket have four real pockets you actually use.",
+        "b": "You'd rather a jacket have one good pocket and a beautiful line.",
+        "type": "clothing"
+      },
+      {
+        "a": "Given a choice of boots, you pick the ones built for a job site.",
+        "b": "Given a choice of boots, you pick the ones built for a room with good lighting.",
+        "type": "clothing"
+      },
+      {
+        "a": "Waterproofing and abrasion resistance genuinely interest you.",
+        "b": "Waterproofing and abrasion resistance are someone else's problem.",
+        "type": "clothing"
+      },
+      {
+        "a": "Your ideal outerwear has survived actual weather.",
+        "b": "Your ideal outerwear has survived only the dry cleaner.",
+        "type": "clothing"
+      },
+      {
+        "a": "A tag that says “Cordura” or “ripstop” makes you lean in.",
+        "b": "A tag that says “Cordura” or “ripstop” makes you glaze over.",
+        "type": "clothing"
+      },
+      {
+        "a": "You'd rather spend on a coat that outlasts a decade of winters.",
+        "b": "You'd rather spend on a coat that photographs beautifully once.",
+        "type": "clothing"
+      },
+      {
+        "a": "Your pockets, right now, could hold a multitool.",
+        "b": "Your pockets, right now, could hold a folded pocket square, at most.",
+        "type": "clothing"
+      },
+      {
+        "a": "A garment's beauty mostly comes from how well it does its job.",
+        "b": "A garment's beauty mostly comes from how little it needs to do.",
+        "type": "clothing"
+      },
+      {
+        "a": "Given the choice, your fabric has real abrasion resistance.",
+        "b": "Given the choice, your fabric drapes beautifully.",
+        "type": "clothing"
+      },
+      {
+        "a": "You think about your clothes in terms of what they're for.",
+        "b": "You think about your clothes in terms of what they say.",
+        "type": "clothing"
+      },
+      {
+        "a": "A missing button matters only if it stops the garment working.",
+        "b": "A missing button matters immediately, aesthetically, before anything else.",
+        "type": "clothing"
+      },
+      {
+        "a": "The best compliment for a jacket is “that thing's been everywhere with you.”",
+        "b": "The best compliment for a jacket is “where did you find that.”",
+        "type": "clothing"
+      },
+      {
+        "a": "You'd rather your wardrobe be reviewed by a gear tester.",
+        "b": "You'd rather your wardrobe be reviewed by a critic.",
+        "type": "clothing"
+      },
+      {
+        "a": "Given a problem, you first ask what actually needs to happen.",
+        "b": "Given a problem, you first ask what the ideal version of this would look like.",
+        "type": "personality"
+      },
+      {
+        "a": "You're more likely to keep something because it still works.",
+        "b": "You're more likely to keep something because it still means something.",
+        "type": "personality"
+      },
+      {
+        "a": "A gift that thrills you is something useful you needed anyway.",
+        "b": "A gift that thrills you is something beautiful you'd never have bought yourself.",
+        "type": "personality"
+      },
+      {
+        "a": "When something breaks, you fix it yourself if at all possible.",
+        "b": "When something breaks, you find someone who can restore it properly.",
+        "type": "personality"
+      }
+    ],
+    "F": [
+      {
+        "a": "Given unlimited money for one garment, you'd fly to a small atelier in Naples.",
+        "b": "Given unlimited money for one garment, you'd fly to a denim mill in North Carolina.",
+        "type": "clothing"
+      },
+      {
+        "a": "Your ideal Sunday reading is about the history of Savile Row.",
+        "b": "Your ideal Sunday reading is about the history of Levi's or Filson.",
+        "type": "clothing"
+      },
+      {
+        "a": "A jacket that fits “like a shirt” — soft, close, unstructured — sounds correct.",
+        "b": "A jacket that fits “like a shirt” — soft, close, unstructured — sounds unfinished.",
+        "type": "clothing"
+      },
+      {
+        "a": "You're more drawn to the word “sprezzatura.”",
+        "b": "You're more drawn to the word “rugged.”",
+        "type": "clothing"
+      },
+      {
+        "a": "Shopping for clothes, you'd want an espresso standing at the counter.",
+        "b": "Shopping for clothes, you'd want a coffee to go, on the way somewhere.",
+        "type": "clothing"
+      },
+      {
+        "a": "Your mental image of “well-dressed” is set in a piazza.",
+        "b": "Your mental image of “well-dressed” is set in a hardware store, somehow.",
+        "type": "clothing"
+      },
+      {
+        "a": "You'd rather your trousers were cut in Rome.",
+        "b": "You'd rather your trousers were cut in a Midwest factory, the same way since 1960.",
+        "type": "clothing"
+      },
+      {
+        "a": "A brand's founding story appeals more when it involves generations of a tailoring family.",
+        "b": "A brand's founding story appeals more when it involves a guy who needed pants that wouldn't rip.",
+        "type": "clothing"
+      },
+      {
+        "a": "A frayed buttonhole suggests an old-world hand actually sewed this.",
+        "b": "A frayed buttonhole suggests you should've bought the tougher version.",
+        "type": "clothing"
+      },
+      {
+        "a": "Your ideal shoe was hand-lasted in a small workshop abroad.",
+        "b": "Your ideal shoe was built to be resoled forever by the original American maker.",
+        "type": "clothing"
+      },
+      {
+        "a": "You imagine the perfect tailor speaking with an accent you can't quite place.",
+        "b": "You imagine the perfect tailor speaking the same plainspoken way you do.",
+        "type": "clothing"
+      },
+      {
+        "a": "An appealing garment description reads “cut with an unstructured shoulder, Neapolitan tradition.”",
+        "b": "An appealing garment description reads “built tough, made to be worked in, guaranteed for life.”",
+        "type": "clothing"
+      },
+      {
+        "a": "Your style influences trace back to European film — a well-dressed man in a Fellini frame.",
+        "b": "Your style influences trace back to American work — a rancher, a machinist, a ballplayer between games.",
+        "type": "clothing"
+      },
+      {
+        "a": "Given an heirloom to inherit, you'd take a grandfather's bespoke overcoat from Rome.",
+        "b": "Given an heirloom to inherit, you'd take a grandfather's toolbox and the jacket he wore to use it.",
+        "type": "clothing"
+      },
+      {
+        "a": "Free in a new city, you'd find the oldest café in town and sit for two hours.",
+        "b": "Free in a new city, you'd find whoever's doing something interesting and join in.",
+        "type": "personality"
+      },
+      {
+        "a": "Talking about your work, you're more likely to describe the philosophy behind it.",
+        "b": "Talking about your work, you're more likely to describe what you actually built.",
+        "type": "personality"
+      },
+      {
+        "a": "You're more drawn to stories about old-world craftsmen who've done one thing for fifty years.",
+        "b": "You're more drawn to stories about self-made people who figured it out themselves.",
+        "type": "personality"
+      },
+      {
+        "a": "Given a choice of mentor, you'd pick someone steeped in tradition and formal training.",
+        "b": "Given a choice of mentor, you'd pick someone who learned everything the hard way, on the job.",
+        "type": "personality"
+      }
+    ],
+    "G": [
+      {
+        "a": "Cowboy boots and a big belt buckle feel like Tuesday.",
+        "b": "Cowboy boots and a big belt buckle feel like a costume outside a rodeo.",
+        "type": "clothing"
+      },
+      {
+        "a": "You'd rather your view out the window be a mountain range.",
+        "b": "You'd rather your view out the window be a skyline.",
+        "type": "personality"
+      },
+      {
+        "a": "A pickup truck makes more sense to you than a subway map.",
+        "b": "A subway map makes more sense to you than a pickup truck.",
+        "type": "personality"
+      },
+      {
+        "a": "Your ideal Saturday involves a horse, a boat, or at least a very large dog.",
+        "b": "Your ideal Saturday involves a gallery opening and a dinner reservation.",
+        "type": "personality"
+      },
+      {
+        "a": "You feel more like yourself standing in an empty field than a crowded sidewalk.",
+        "b": "You feel more like yourself standing on a crowded sidewalk than an empty field.",
+        "type": "personality"
+      },
+      {
+        "a": "You know how to fix a fence, start a fire, or back up a trailer.",
+        "b": "You know how to hail a cab in the rain and navigate a subway transfer without looking at your phone.",
+        "type": "personality"
+      },
+      {
+        "a": "Silence and distance sound like luxury to you.",
+        "b": "Noise and proximity sound like luxury to you.",
+        "type": "personality"
+      },
+      {
+        "a": "You'd rather your nearest neighbor be a mile away.",
+        "b": "You'd rather your nearest neighbor be on the other side of a shared wall.",
+        "type": "personality"
+      },
+      {
+        "a": "A big truck or a work vehicle appeals to you more than public transit ever will.",
+        "b": "Not owning a car sounds like freedom, not inconvenience.",
+        "type": "personality"
+      },
+      {
+        "a": "You dress with the expectation that you might need to get your boots muddy.",
+        "b": "You dress with the expectation that the ground beneath you is pavement.",
+        "type": "clothing"
+      },
+      {
+        "a": "Your ideal hometown has one traffic light, maybe two.",
+        "b": "Your ideal hometown has too many people to ever fully know.",
+        "type": "personality"
+      },
+      {
+        "a": "A big sky and open land make you feel calm.",
+        "b": "A packed calendar and a full street make you feel alive.",
+        "type": "personality"
+      },
+      {
+        "a": "You'd rather learn to ride, hunt, or fish than learn to navigate a subway system in a new city.",
+        "b": "You'd rather learn to navigate a subway system in a new city than learn to ride, hunt, or fish.",
+        "type": "personality"
+      },
+      {
+        "a": "You measure distance in hours driven, without much complaint.",
+        "b": "You measure distance in blocks, and complain if it's more than ten.",
+        "type": "personality"
+      },
+      {
+        "a": "A flannel shirt, to you, is just a shirt.",
+        "b": "A flannel shirt, to you, is a look you'd put on for a specific mood.",
+        "type": "clothing"
+      },
+      {
+        "a": "You'd rather your Friday night end around a fire outside.",
+        "b": "You'd rather your Friday night end at a bar with a line outside.",
+        "type": "personality"
+      },
+      {
+        "a": "You trust a place more once you've seen its weather do something extreme.",
+        "b": "You trust a place more once you've found the best coffee within walking distance.",
+        "type": "personality"
+      },
+      {
+        "a": "Given the choice, your closet should survive a barn.",
+        "b": "Given the choice, your closet should survive a crowded elevator at rush hour.",
+        "type": "clothing"
+      }
+    ]
+  }
+}

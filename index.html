@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Measure — A Style Diagnostic</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="railWrap"><div id="rail"></div></div>
+
+<div id="loadState">Loading the questionnaire&hellip;</div>
+
+<div class="page" id="app" hidden>
+
+  <header id="cover">
+    <div class="kicker eyebrow">A Style Diagnostic, in <span id="coverQCount">—</span> Questions</div>
+    <h1>The Measure</h1>
+    <div class="dek">On the theory that a man's closet is a confession he keeps making, one garment at a time.</div>
+    <div class="rule-thin"></div>
+    <p class="lead">This is not a quiz about what you own. It is a quiz about what you'd choose, given the chance, before habit or budget or the weather intervened — your instincts about formality, structure, color, history, use, origin, and place, gathered one small forced decision at a time. Some questions are about clothes outright. Most are not — they're about how you arrive at a party, keep a to-do list, or feel about the nearest mountain range, on the theory that a man's taste in jackets is just his temperament and his geography, filed under a different heading.</p>
+    <p class="lead">Answer honestly and quickly; the second thought is rarely the truer one. At the end you'll see your primary style argued at length, a secondary influence, your reading across every axis measured, and — since one style is never the whole story — a full ranked comparison against every style on file, so you can look in on the ones that didn't win.</p>
+    <div class="stat-row">
+      <div class="stat"><b id="statQ">—</b><span>Questions</span></div>
+      <div class="stat"><b id="statS">—</b><span>Styles on file</span></div>
+      <div class="stat"><b id="statA">—</b><span>Axes measured</span></div>
+    </div>
+
+    <div class="resume-banner" id="resumeBanner" hidden>
+      <p id="resumeText"></p>
+      <div class="resume-actions">
+        <button class="btn" id="resumeBtn">Resume</button>
+        <button class="btn btn-ghost" id="dismissResumeBtn">Start Over Instead</button>
+      </div>
+    </div>
+
+    <div class="btn-row"><button class="btn" id="beginBtn">Begin the Interview</button></div>
+  </header>
+
+  <main id="quiz" hidden>
+    <div class="masthead">
+      <span class="brand">The Measure</span>
+      <span class="meta" id="qCounter"></span>
+    </div>
+    <div class="qphoto" id="qPhoto" hidden></div>
+    <div class="qhead">
+      <div class="qnum" id="qKicker"></div>
+      <div class="qtext fade-in" id="qText">Which is closer to true?</div>
+    </div>
+    <div class="choices" id="choices"></div>
+    <div class="qfoot">
+      <button id="backBtn">← Previous</button>
+      <span class="dots" id="qProgressText"></span>
+    </div>
+  </main>
+
+  <main id="results" hidden>
+    <div class="masthead">
+      <span class="brand">The Measure</span>
+      <span class="meta">The Reading</span>
+    </div>
+    <div id="rPlate"></div>
+
+    <div class="r-eyebrow eyebrow">Your Primary Style</div>
+    <h2 class="r-name" id="rName"></h2>
+    <div class="r-dek" id="rDek"></div>
+
+    <div class="essay" id="rEssay"></div>
+
+    <div class="section-title">Trademark Features</div>
+    <ul class="trademarks" id="rTrademarks"></ul>
+
+    <div class="section-title">The Wardrobe</div>
+    <div class="brandline" id="rBrands"></div>
+
+    <div class="section-title">The Capsule Wardrobe</div>
+    <div class="section-note">Five pieces that define the style, each with a low, mid, and high budget entry point — what to look for regardless of price, and how to wear it with the rest.</div>
+    <div class="capsule-list" id="rCapsule"></div>
+
+    <div class="section-title">The Reading, By the Numbers</div>
+    <div class="section-note">Where you fell on every axis measured — not just the two that decided your result.</div>
+    <div class="meters" id="rMeters"></div>
+
+    <div class="sidebar" id="rSidebar">
+      <div class="plate-wrap"><div id="sPlate"></div></div>
+      <div class="section-title">Your Secondary Influence</div>
+      <h3 id="sName"></h3>
+      <p id="sBrief"></p>
+      <div class="brandline" id="sBrands"></div>
+    </div>
+
+    <div class="section-title">How You Compare</div>
+    <div class="section-note">Every style on file, ranked by fit. Open any of them — including the ones you didn't get — to read the full profile and judge for yourself.</div>
+    <div class="compare-list" id="compareList"></div>
+
+    <div class="btn-row" style="margin-top:48px;">
+      <button class="btn btn-ghost" id="retakeBtn">Retake the Interview</button>
+    </div>
+
+  </main>
+
+  <main id="styleIndex" hidden>
+    <div class="masthead">
+      <span class="brand">The Measure</span>
+      <span class="meta">The Full Roster</span>
+    </div>
+    <div class="r-eyebrow eyebrow">All Styles On File</div>
+    <h2 class="r-name" style="font-size:clamp(32px,6vw,46px);">Browse Every Style</h2>
+    <div class="r-dek">No quiz required — the complete write-up for all <span id="idxCount">—</span> styles, open to whichever one you're curious about.</div>
+    <div class="section-note" style="margin-top:32px;">Listed as they're filed, not ranked — nobody's taken the interview yet.</div>
+    <div class="compare-list" id="styleIndexList"></div>
+    <div class="btn-row" style="margin-top:48px;">
+      <button class="btn" id="idxTakeQuizBtn">Take the Interview</button>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="siteFooter">
+    <div class="footer-nav">
+      <button class="footer-link" id="footerBrowseBtn">Browse All Styles →</button>
+      <span class="footer-sep" id="footerSep">·</span>
+      <button class="footer-link" id="footerHomeBtn" hidden>← Back</button>
+    </div>
+    <div class="colophon">The Measure — a style diagnostic, drafted for one reader at a time.<br>Your answers and result are saved to this browser only, never sent anywhere. Photography is free-licensed via Unsplash, credited beneath each photo.</div>
+  </footer>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

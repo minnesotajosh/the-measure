@@ -1,0 +1,613 @@
+(function(){
+'use strict';
+
+var loadState = document.getElementById('loadState');
+var appEl = document.getElementById('app');
+
+/* ---------------- boot: fetch data, then wire up the app ---------------- */
+Promise.all([
+  fetch('data/questions.json').then(function(r){ if(!r.ok) throw new Error('questions.json ' + r.status); return r.json(); }),
+  fetch('data/styles.json').then(function(r){ if(!r.ok) throw new Error('styles.json ' + r.status); return r.json(); })
+]).then(function(results){
+  boot(results[0], results[1]);
+}).catch(function(err){
+  loadState.classList.add('is-error');
+  loadState.textContent =
+    "Couldn't load the questionnaire (" + err.message + ").\n\n" +
+    "If you opened index.html directly from disk, the browser blocks a local page from fetching " +
+    "its own JSON files (a file:// security rule, not a bug). Serve the folder instead, e.g.:\n\n" +
+    "npx serve .\n\n" +
+    "or\n\n" +
+    "python -m http.server 8000\n\n" +
+    "then open the localhost address it prints.";
+});
+
+function boot(questionData, styleData){
+
+var AXES = Object.keys(questionData.axes);
+var AXIS_META = questionData.axes; // { A: {label, poles:[low,high]}, ... }
+var BANK = questionData.bank;
+var STYLES = styleData;
+
+/* interleave axes round-robin so the topic changes every question */
+var QPA = Math.min.apply(null, AXES.map(function(ax){ return BANK[ax].length; }));
+var questions = [];
+for (var i=0;i<QPA;i++){
+  AXES.forEach(function(ax){
+    var item = BANK[ax][i];
+    questions.push({axis:ax, a:item.a, b:item.b});
+  });
+}
+var TOTAL = questions.length;
+var MAX_DIST = Math.sqrt(AXES.length * 100); // worst-case distance across all axes (0-10 each)
+
+/* ---------------- one-time page fill ---------------- */
+document.getElementById('coverQCount').textContent = TOTAL;
+document.getElementById('statQ').textContent = TOTAL;
+document.getElementById('statS').textContent = STYLES.length;
+document.getElementById('statA').textContent = AXES.length;
+
+loadState.hidden = true;
+appEl.hidden = false;
+
+/* ---------------- state ---------------- */
+var scores = {};
+AXES.forEach(function(ax){ scores[ax] = 0; });
+var history = []; // {axis, dir}
+var idx = 0;
+
+var rail = document.getElementById('rail');
+
+/* ---------------- screens ---------------- */
+var SCREENS = {
+  cover: document.getElementById('cover'),
+  quiz: document.getElementById('quiz'),
+  results: document.getElementById('results'),
+  styleIndex: document.getElementById('styleIndex')
+};
+var currentScreen = 'cover';
+var priorScreen = 'cover'; // where "← Back" from the browse-all screen returns to
+
+function showScreen(name){
+  Object.keys(SCREENS).forEach(function(k){ SCREENS[k].hidden = (k !== name); });
+  var el = SCREENS[name];
+  el.classList.remove('screen-in');
+  void el.offsetWidth;
+  el.classList.add('screen-in');
+  currentScreen = name;
+  updateFooter();
+  window.scrollTo({top:0, behavior:'instant'});
+}
+
+function updateFooter(){
+  var browseBtn = document.getElementById('footerBrowseBtn');
+  var backBtn = document.getElementById('footerHomeBtn');
+  if(currentScreen === 'styleIndex'){
+    browseBtn.hidden = true;
+    backBtn.hidden = false;
+  } else {
+    browseBtn.hidden = false;
+    backBtn.hidden = true;
+  }
+}
+
+document.getElementById('footerBrowseBtn').addEventListener('click', function(){
+  priorScreen = currentScreen;
+  renderStyleIndex();
+  showScreen('styleIndex');
+});
+document.getElementById('footerHomeBtn').addEventListener('click', function(){
+  showScreen(priorScreen);
+});
+document.getElementById('idxTakeQuizBtn').addEventListener('click', function(){
+  showScreen('cover');
+});
+
+/* ---------------- local persistence ----------------
+   Everything below lives only in this browser's localStorage — nothing is
+   ever sent anywhere. A schema tag is stored alongside the data so a saved
+   run from a previous version of the question bank is never misread. */
+var LS_PROGRESS = 'measure:progress';
+var LS_RESULT = 'measure:result';
+var SCHEMA = TOTAL + '|' + AXES.join('');
+
+function lsGet(key){
+  try{ var v = localStorage.getItem(key); return v ? JSON.parse(v) : null; }
+  catch(e){ return null; }
+}
+function lsSet(key, val){
+  try{ localStorage.setItem(key, JSON.stringify(val)); } catch(e){ /* private mode, quota, etc. */ }
+}
+function lsRemove(key){
+  try{ localStorage.removeItem(key); } catch(e){}
+}
+function saveProgress(){
+  lsSet(LS_PROGRESS, { schema: SCHEMA, idx: idx, scores: scores, history: history });
+}
+function saveResult(user){
+  lsSet(LS_RESULT, { schema: SCHEMA, user: user });
+}
+function clearSaved(){
+  lsRemove(LS_PROGRESS);
+  lsRemove(LS_RESULT);
+}
+
+document.getElementById('beginBtn').addEventListener('click', function(){
+  showScreen('quiz');
+  renderQuestion();
+});
+
+document.getElementById('backBtn').addEventListener('click', function(){
+  if(history.length === 0) return;
+  var last = history.pop();
+  scores[last.axis] -= last.dir;
+  idx--;
+  renderQuestion();
+});
+
+document.getElementById('retakeBtn').addEventListener('click', function(){
+  AXES.forEach(function(ax){ scores[ax] = 0; });
+  history = [];
+  idx = 0;
+  clearSaved();
+  rail.style.width = '0%';
+  hideResumeBanner();
+  showScreen('cover');
+});
+
+function pad(n){ return n<10 ? '0'+n : ''+n; }
+function escapeHtml(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+/* ---------------- resume banner ---------------- */
+function hideResumeBanner(){
+  document.getElementById('resumeBanner').hidden = true;
+}
+(function initResumeBanner(){
+  var savedResult = lsGet(LS_RESULT);
+  var savedProgress = lsGet(LS_PROGRESS);
+  var banner = document.getElementById('resumeBanner');
+  var text = document.getElementById('resumeText');
+  var resumeBtn = document.getElementById('resumeBtn');
+  var dismissBtn = document.getElementById('dismissResumeBtn');
+
+  if(savedResult && savedResult.schema === SCHEMA){
+    var ranked = rankStyles(savedResult.user);
+    text.textContent = 'Last time, you came out as ' + ranked[0].style.name + '.';
+    resumeBtn.textContent = 'View That Result Again';
+    resumeBtn.onclick = function(){
+      renderResults(savedResult.user);
+      showScreen('results');
+    };
+    banner.hidden = false;
+  } else if(savedProgress && savedProgress.schema === SCHEMA && savedProgress.idx > 0 && savedProgress.idx < TOTAL){
+    text.textContent = 'You left off at question ' + (savedProgress.idx+1) + ' of ' + TOTAL + '.';
+    resumeBtn.textContent = 'Resume';
+    resumeBtn.onclick = function(){
+      idx = savedProgress.idx;
+      scores = savedProgress.scores;
+      history = savedProgress.history || [];
+      showScreen('quiz');
+      renderQuestion();
+    };
+    banner.hidden = false;
+  } else {
+    if((savedResult && savedResult.schema !== SCHEMA) || (savedProgress && savedProgress.schema !== SCHEMA)) clearSaved();
+    banner.hidden = true;
+  }
+
+  dismissBtn.addEventListener('click', function(){
+    clearSaved();
+    hideResumeBanner();
+  });
+})();
+
+/* ---------------- quiz flow ---------------- */
+function renderQuestion(){
+  var q = questions[idx];
+  rail.style.width = (idx/TOTAL*100) + '%';
+  document.getElementById('qCounter').textContent = 'No. ' + pad(idx+1) + ' — of ' + TOTAL;
+  document.getElementById('qKicker').textContent = 'Question ' + pad(idx+1);
+
+  var qt = document.getElementById('qText');
+  qt.classList.remove('q-swap');
+  void qt.offsetWidth;
+  qt.classList.add('q-swap');
+
+  var photoEl = document.getElementById('qPhoto');
+  if(q.type === 'personality'){
+    var img = AXIS_META[q.axis].image;
+    photoEl.innerHTML = '<img src="'+escapeHtml(img.url)+'?w=800&h=400&q=75&auto=format&fit=crop" alt="" loading="lazy">' + photoCreditHTML(img);
+    photoEl.hidden = false;
+    photoEl.classList.remove('fade-in'); void photoEl.offsetWidth; photoEl.classList.add('fade-in');
+  } else {
+    photoEl.hidden = true;
+    photoEl.innerHTML = '';
+  }
+
+  var choicesEl = document.getElementById('choices');
+  choicesEl.innerHTML = '';
+  choicesEl.appendChild(makeChoice('A', q.a, function(){ answer(q.axis, 1); }));
+  choicesEl.appendChild(makeChoice('B', q.b, function(){ answer(q.axis, -1); }));
+
+  document.getElementById('backBtn').disabled = (idx===0);
+  document.getElementById('qProgressText').textContent = Math.round(idx/TOTAL*100) + '% through';
+}
+
+function makeChoice(letter, text, onClick){
+  var div = document.createElement('div');
+  div.className = 'choice';
+  div.setAttribute('tabindex','0');
+  div.setAttribute('role','button');
+  var lab = document.createElement('span');
+  lab.className = 'lab';
+  lab.textContent = letter + '.';
+  var body = document.createElement('span');
+  body.textContent = text;
+  div.appendChild(lab);
+  div.appendChild(body);
+  div.addEventListener('click', onClick);
+  div.addEventListener('keydown', function(e){
+    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); onClick(); }
+  });
+  return div;
+}
+
+function answer(axis, dir){
+  scores[axis] += dir;
+  history.push({axis:axis, dir:dir});
+  idx++;
+  if(idx >= TOTAL){
+    finishQuiz();
+  } else {
+    saveProgress();
+    renderQuestion();
+  }
+}
+
+/* ---------------- scoring ---------------- */
+function normalized(){
+  var out = {};
+  AXES.forEach(function(ax){
+    var v = 5 + 5*(scores[ax]/BANK[ax].length);
+    out[ax] = Math.max(0, Math.min(10, v));
+  });
+  return out;
+}
+
+function distance(user, vec){
+  var sum = 0;
+  AXES.forEach(function(ax){
+    var d = user[ax] - vec[ax];
+    sum += d*d;
+  });
+  return Math.sqrt(sum);
+}
+
+function pctMatch(d){
+  return Math.max(0, Math.min(100, Math.round(100 * (1 - d/MAX_DIST))));
+}
+
+/* ---------------- style visual ----------------
+   Each style has a real, sourced photo (style.photo: {url, credit, profile})
+   plus a 3-color "palette" + monogram as a fallback if a photo is ever
+   missing. Every photo is a free Unsplash image, credited inline per
+   Unsplash's guidelines — see photoCreditHTML(). */
+function renderPlate(style, size, mode){
+  size = size || 260;
+  if(style.photo && mode === 'hero'){
+    return '' +
+      '<div class="hero-photo">' +
+        '<img src="'+escapeHtml(style.photo.url)+'?w=1400&h=800&q=80&auto=format&fit=crop" ' +
+             'alt="'+escapeHtml(style.name)+'" loading="eager">' +
+      '</div>' +
+      photoCreditHTML(style.photo);
+  }
+  if(style.photo){
+    var w = Math.round(size * 2.4);
+    var h = Math.round(w * 380/300); // matches the fallback plate's portrait ratio
+    return '' +
+      '<img class="plate" src="'+escapeHtml(style.photo.url)+'?w='+w+'&h='+h+'&q=80&auto=format&fit=crop" ' +
+           'alt="Mood photograph for '+escapeHtml(style.name)+'" width="'+size+'" loading="lazy">' +
+      photoCreditHTML(style.photo);
+  }
+  var pal = style.palette;
+  return '' +
+    '<svg class="plate" viewBox="0 0 300 380" width="'+size+'" role="img" aria-label="Mood plate for '+escapeHtml(style.name)+'">' +
+      '<rect width="300" height="380" fill="'+pal[2]+'"/>' +
+      '<polygon points="0,380 0,170 300,0 300,380" fill="'+pal[0]+'"/>' +
+      '<polygon points="300,0 170,0 300,140" fill="'+pal[1]+'"/>' +
+      '<rect x="10" y="10" width="280" height="360" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="1"/>' +
+      '<text x="150" y="318" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-weight="600" font-size="86" fill="'+pal[2]+'">'+escapeHtml(style.monogram)+'</text>' +
+    '</svg>';
+}
+
+function photoCreditHTML(photo){
+  return '<div class="photo-credit">Photo by <a href="'+escapeHtml(photo.profile)+'" target="_blank" rel="noopener">'+escapeHtml(photo.credit)+'</a> on <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></div>';
+}
+
+var CHEVRON = '<svg class="compare-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg>';
+
+function essayHTML(style){
+  return style.essay.map(function(p,i){
+    return '<p'+(i===0?' class="dropcap"':'')+'>'+escapeHtml(p)+'</p>';
+  }).join('');
+}
+function trademarksListItems(style){
+  return style.trademarks.map(function(t){
+    return '<li>'+escapeHtml(t)+'</li>';
+  }).join('');
+}
+/* ---------------- shopping links ----------------
+   "The Wardrobe" names ~160 distinct brands across all styles — where a
+   brand's real homepage is confidently known, its name links there. This
+   is a plain text hyperlink, which needs no image license (unlike embedding
+   a retailer's product photography, which does — see the note to the user
+   about why this app doesn't do that).
+   Capsule-wardrobe tier picks are messier free text ("Alden Leisure
+   Handsewn or Rancourt"), so rather than guess at a specific brand's
+   homepage from parsed fragments, each tier gets a plain web-search link
+   for that exact pick — always correct, never a fragile guess. */
+var BRAND_URLS = {
+  "Brooks Brothers":"https://www.brooksbrothers.com","J. Press":"https://jpressonline.com",
+  "Ralph Lauren":"https://www.ralphlauren.com","O'Connell's":"https://www.oconnellsclothing.com",
+  "Alden":"https://www.aldenshoe.com","G.H. Bass Weejuns":"https://www.ghbass.com",
+  "Rowing Blazers":"https://rowingblazers.com","Rubinacci":"https://www.rubinacci.it",
+  "Kiton":"https://www.kiton.it","Cesare Attolini":"https://www.cesareattolini.com",
+  "Isaia":"https://www.isaia.it","Boglioli":"https://www.boglioli.it",
+  "Anglo-Italian":"https://anglo-italian.com","Anderson & Sheppard":"https://www.anderson-sheppard.co.uk",
+  "Henry Poole & Co.":"https://www.henrypoole.com","Huntsman":"https://www.huntsmansavilerow.com",
+  "Gieves & Hawkes":"https://www.gievesandhawkes.com","Turnbull & Asser":"https://www.turnbullandasser.com",
+  "Drake's":"https://www.drakes.com","Crockett & Jones":"https://www.crockettandjones.com",
+  "Carhartt":"https://www.carhartt.com","Filson":"https://www.filson.com",
+  "Levi's":"https://www.levi.com","Levi's Vintage Clothing":"https://www.levi.com",
+  "Red Wing":"https://www.redwingshoes.com","Red Wing Shoes":"https://www.redwingshoes.com",
+  "Iron Heart":"https://ironheart.co.uk","Pointer Brand":"https://pointerbrand.com",
+  "Freenote Cloth":"https://freenotecloth.com","COS":"https://www.cos.com",
+  "Norse Projects":"https://www.norseprojects.com","Our Legacy":"https://www.ourlegacy.com",
+  "A Kind of Guise":"https://www.akindofguise.com","Acne Studios":"https://www.acnestudios.com",
+  "Sunspel":"https://www.sunspel.com","Arket":"https://www.arket.com",
+  "A.P.C.":"https://www.apc-us.com","Officine Générale":"https://officinegenerale.com",
+  "Arpenteur":"https://www.arpenteur.fr","Husbands Paris":"https://husbandsparis.com",
+  "Margaret Howell":"https://www.margarethowell.co.uk","Le Mont Saint Michel":"https://www.lemontsaintmichel.fr",
+  "Gucci":"https://www.gucci.com","Etro":"https://www.etro.com",
+  "Duncan Quinn":"https://duncanquinn.com","Ozwald Boateng":"https://ozwaldboateng.co.uk",
+  "Paul Smith":"https://www.paulsmith.com","Barbour":"https://www.barbour.com",
+  "Barbour International":"https://www.barbour.com","Cordings":"https://www.cordings.co.uk",
+  "Purdey":"https://www.purdey.com","Alan Paine":"https://www.alanpaine.co.uk",
+  "L.L. Bean":"https://www.llbean.com","Orvis":"https://www.orvis.com",
+  "Private White V.C.":"https://www.privatewhitevc.com","Yohji Yamamoto":"https://www.yohjiyamamoto.co.jp",
+  "Comme des Garçons":"https://www.comme-des-garcons.com","Rick Owens":"https://rickowens.eu",
+  "Acronym":"https://acrnm.com","Arc'teryx Veilance":"https://www.arcteryx.com/veilance",
+  "Arc'teryx":"https://www.arcteryx.com","Boris Bidjan Saberi":"https://www.borisbidjansaberi.com",
+  "Sacai":"https://www.sacai.jp","Kith":"https://kith.com","Aimé Leon Dore":"https://aimeleondore.com",
+  "Fear of God":"https://fearofgod.com","Noah":"https://noahny.com","Kapital":"https://kapital.jp",
+  "Rockmount Ranch Wear":"https://www.rockmount.com","Wrangler":"https://www.wrangler.com",
+  "Tecovas":"https://tecovas.com","Stetson":"https://www.stetson.com",
+  "Pendleton":"https://pendleton-usa.com","Ariat":"https://www.ariat.com",
+  "Kemo Sabe":"https://kemosabe.com","Schott NYC":"https://schottnyc.com",
+  "Lewis Leathers":"https://lewisleathers.com","Vans":"https://www.vans.com",
+  "Stüssy":"https://www.stussy.com","Katin":"https://www.katin.com",
+  "Rhythm":"https://rhythmlivin.com","Patagonia":"https://www.patagonia.com",
+  "Vissla":"https://www.vissla.com","Brioni":"https://www.brioni.com",
+  "Ermenegildo Zegna":"https://www.zegna.com","Charvet":"https://www.charvet.com",
+  "Versace":"https://www.versace.com","Fendi":"https://www.fendi.com",
+  "Dolce & Gabbana":"https://www.dolcegabbana.com","Amiri":"https://amiri.com",
+  "Balenciaga":"https://www.balenciaga.com","Loro Piana":"https://www.loropiana.com",
+  "120% Lino":"https://www.120lino.com","Orlebar Brown":"https://www.orlebarbrown.com",
+  "Aspesi":"https://www.aspesi.com","Fred Perry":"https://www.fredperry.com",
+  "Ben Sherman":"https://www.bensherman.com","Baracuta":"https://www.baracuta.com",
+  "Merc London":"https://merclondon.com","John Smedley":"https://www.johnsmedley.com",
+  "Gloverall":"https://gloverall.com","Alex Mill":"https://alexmill.com",
+  "Universal Works":"https://www.universalworks.co.uk","Belstaff":"https://www.belstaff.com",
+  "Aigle":"https://www.aigle.com","Story Mfg.":"https://www.story-mfg.com",
+  "YMC":"https://youmustcreate.com","De Bonne Facture":"https://www.debonnefacture.fr",
+  "Saint Laurent":"https://www.ysl.com","Chrome Hearts":"https://chromehearts.com",
+  "John Varvatos":"https://www.johnvarvatos.com","Vineyard Vines":"https://www.vineyardvines.com",
+  "Sperry":"https://www.sperry.com","Saint James":"https://www.saint-james.fr",
+  "Armor Lux":"https://www.armorlux.com","J.Crew":"https://www.jcrew.com",
+  "Cottweiler":"https://cottweiler.com","1017 ALYX 9SM":"https://alyxstudio.com",
+  "Heliot Emil":"https://heliotemil.com","Diesel":"https://www.diesel.com",
+  "Alpha Industries":"https://www.alphaindustries.com","Nigel Cabourn":"https://www.nigelcabourn.com",
+  "Dickies":"https://www.dickies.com","Dr. Martens":"https://www.drmartens.com",
+  "Champion":"https://www.champion.com","Mitchell & Ness":"https://www.mitchellandness.com",
+  "New Balance":"https://www.newbalance.com","Nike":"https://www.nike.com",
+  "Adidas Originals":"https://www.adidas.com","Starter":"https://www.starter.com",
+  "Snow Peak":"https://www.snowpeak.com","Salomon":"https://www.salomon.com",
+  "Norrøna":"https://www.norrona.com","And Wander":"https://www.and-wander.com",
+  "Hermès":"https://www.hermes.com","Church's":"https://www.church-footwear.com",
+  "Anine Bing":"https://www.aninebing.com"
+};
+
+function brandUrl(rawName){
+  var base = rawName.replace(/\s*\([^)]*\)\s*$/, '').trim();
+  return BRAND_URLS[base] || null;
+}
+
+function brandsHTML(style, limit){
+  var list = limit ? style.brands.slice(0,limit) : style.brands;
+  return list.map(function(b){
+    var url = brandUrl(b);
+    return url
+      ? '<a href="'+escapeHtml(url)+'" target="_blank" rel="noopener"><b>'+escapeHtml(b)+'</b></a>'
+      : '<b>'+escapeHtml(b)+'</b>';
+  }).join('  •  ');
+}
+
+function shopSearchUrl(pickText){
+  return 'https://www.google.com/search?q=' + encodeURIComponent(pickText + ' buy');
+}
+
+function tierCard(label, tier){
+  if(!tier) return '';
+  return '' +
+    '<div class="tier-card">' +
+      '<div class="tier-label">'+escapeHtml(label)+'</div>' +
+      '<div class="tier-pick">'+escapeHtml(tier.pick)+'</div>' +
+      '<div class="tier-price">'+escapeHtml(tier.price)+'</div>' +
+      '<p class="tier-note">'+escapeHtml(tier.note)+'</p>' +
+      '<a class="tier-shop" href="'+shopSearchUrl(tier.pick)+'" target="_blank" rel="noopener">Shop this →</a>' +
+    '</div>';
+}
+
+function capsuleHTML(style){
+  if(!style.capsule || !style.capsule.length){
+    return '<p class="capsule-empty">A full capsule wardrobe for '+escapeHtml(style.name)+' hasn\'t been written yet.</p>';
+  }
+  return style.capsule.map(function(item){
+    return '' +
+      '<div class="capsule-item">' +
+        '<h4>'+escapeHtml(item.category)+'</h4>' +
+        '<p class="cap-bg">'+escapeHtml(item.background)+'</p>' +
+        '<div class="capsule-meta">' +
+          '<div><div class="cap-label">Look For</div><p>'+escapeHtml(item.lookFor)+'</p></div>' +
+          '<div><div class="cap-label">How To Wear It</div><p>'+escapeHtml(item.pairing)+'</p></div>' +
+        '</div>' +
+        '<div class="tier-grid">' +
+          tierCard('Low', item.tiers.low) +
+          tierCard('Mid', item.tiers.mid) +
+          tierCard('High', item.tiers.high) +
+        '</div>' +
+      '</div>';
+  }).join('');
+}
+
+/* ---------------- results ---------------- */
+function rankStyles(user){
+  return STYLES.map(function(s){
+    return {style:s, d: distance(user, s.vector)};
+  }).sort(function(a,b){ return a.d - b.d; });
+}
+
+function finishQuiz(){
+  rail.style.width = '100%';
+  var user = normalized();
+  saveResult(user);
+  renderResults(user);
+  showScreen('results');
+}
+
+function renderResults(user){
+  var ranked = rankStyles(user);
+  var primary = ranked[0].style;
+  var secondary = ranked[1].style;
+
+  document.getElementById('rName').textContent = primary.name;
+  document.getElementById('rDek').textContent = primary.dek;
+  document.getElementById('rPlate').innerHTML = renderPlate(primary, 300, 'hero');
+  document.getElementById('rEssay').innerHTML = essayHTML(primary);
+  document.getElementById('rTrademarks').innerHTML = trademarksListItems(primary);
+  document.getElementById('rBrands').innerHTML = brandsHTML(primary);
+  document.getElementById('rCapsule').innerHTML = capsuleHTML(primary);
+
+  var mEl = document.getElementById('rMeters');
+  mEl.innerHTML = '';
+  AXES.forEach(function(ax){
+    var meta = AXIS_META[ax];
+    var wrap = document.createElement('div');
+    wrap.className = 'meter';
+    var labels = document.createElement('div');
+    labels.className = 'plabels';
+    labels.innerHTML = '<span>'+escapeHtml(meta.poles[0])+'</span><b>'+escapeHtml(meta.label)+'</b><span>'+escapeHtml(meta.poles[1])+'</span>';
+    var track = document.createElement('div');
+    track.className = 'track';
+    var dot = document.createElement('div');
+    dot.className = 'dot';
+    dot.style.left = '50%'; // start centered, then glide to the real value below
+    track.appendChild(dot);
+    wrap.appendChild(labels);
+    wrap.appendChild(track);
+    mEl.appendChild(wrap);
+    requestAnimationFrame(function(){ dot.style.left = (user[ax]/10*100) + '%'; });
+  });
+
+  document.getElementById('sPlate').innerHTML = renderPlate(secondary, 160);
+  document.getElementById('sName').textContent = secondary.name;
+  document.getElementById('sBrief').textContent = secondary.brief;
+  document.getElementById('sBrands').innerHTML = brandsHTML(secondary, 5);
+
+  renderCompareList(ranked);
+}
+
+/* Shared full write-up markup, used both in the results-page "How You
+   Compare" accordion and the no-quiz-required "Browse Every Style" index. */
+function styleDetailHTML(style){
+  return '' +
+    '<div class="dek">'+escapeHtml(style.dek)+'</div>' +
+    renderPlate(style, 160) +
+    essayHTML(style) +
+    '<div class="mini-title">Trademark Features</div>' +
+    '<ul class="trademarks">'+trademarksListItems(style)+'</ul>' +
+    '<div class="mini-title">The Wardrobe</div>' +
+    '<div class="brandline">'+brandsHTML(style)+'</div>' +
+    '<div class="mini-title">The Capsule Wardrobe</div>' +
+    '<div class="capsule-list">'+capsuleHTML(style)+'</div>';
+}
+
+function buildAccordion(containerEl, items){
+  containerEl.innerHTML = '';
+  items.forEach(function(row){
+    var item = document.createElement('div');
+    item.className = 'compare-item';
+    item.dataset.open = 'false';
+
+    var head = document.createElement('button');
+    head.className = 'compare-head';
+    head.setAttribute('aria-expanded','false');
+    head.innerHTML = row.headHTML;
+
+    var body = document.createElement('div');
+    body.className = 'compare-body';
+    body.innerHTML = '<div class="compare-body-inner">' + row.bodyHTML + '</div>';
+
+    head.addEventListener('click', function(){
+      var open = item.dataset.open === 'true';
+      item.dataset.open = open ? 'false' : 'true';
+      head.setAttribute('aria-expanded', open ? 'false' : 'true');
+    });
+
+    item.appendChild(head);
+    item.appendChild(body);
+    containerEl.appendChild(item);
+  });
+}
+
+function renderCompareList(ranked){
+  var rows = ranked.map(function(entry, i){
+    var style = entry.style;
+    var pct = pctMatch(entry.d);
+    var tag = i===0 ? '<span class="compare-tag">Primary</span>' : (i===1 ? '<span class="compare-tag">Secondary</span>' : '');
+    return {
+      headHTML:
+        '<span class="compare-rank">'+pad(i+1)+'</span>' +
+        '<span class="compare-main">' +
+          '<span class="compare-name">'+escapeHtml(style.name)+'</span>' + tag +
+          '<span class="compare-bar-track"><span class="compare-bar-fill" style="width:'+pct+'%"></span></span>' +
+        '</span>' +
+        '<span class="compare-pct">'+pct+'%</span>' +
+        CHEVRON,
+      bodyHTML: styleDetailHTML(style)
+    };
+  });
+  buildAccordion(document.getElementById('compareList'), rows);
+}
+
+function renderStyleIndex(){
+  document.getElementById('idxCount').textContent = STYLES.length;
+  var rows = STYLES.map(function(style){
+    return {
+      headHTML:
+        '<span class="compare-main">' +
+          '<span class="compare-name">'+escapeHtml(style.name)+'</span>' +
+          '<span class="section-note" style="margin:6px 0 0;">'+escapeHtml(style.dek)+'</span>' +
+        '</span>' +
+        CHEVRON,
+      bodyHTML: styleDetailHTML(style)
+    };
+  });
+  buildAccordion(document.getElementById('styleIndexList'), rows);
+}
+
+}
+})();
