@@ -1,9 +1,10 @@
 // Scans images/generated/<key>/ for each style and, wherever a file exists,
-// points that style's `photo` (the outfit shot) or `flatlay` (the combined
-// "shop the look" flat-lay) at it. Safe to re-run any time -- only touches
-// entries whose generated file actually exists, so partial batches wire in
-// cleanly without clobbering the Unsplash fallback for styles that haven't
-// been generated yet.
+// points that style's `photo` (the outfit shot), `flatlay` (the combined
+// "shop the look" flat-lay), or a capsule item's `photo` (one product shot
+// per garment, item-<index>.jpg matching capsule array order) at it. Safe
+// to re-run any time -- only touches entries whose generated file actually
+// exists, so partial batches wire in cleanly without clobbering the
+// Unsplash fallback for styles that haven't been generated yet.
 
 const fs = require('fs');
 const path = require('path');
@@ -12,7 +13,7 @@ const STYLES_PATH = path.join(__dirname, '..', 'data', 'styles.json');
 const GEN_ROOT = path.join(__dirname, '..', 'images', 'generated');
 
 const styles = JSON.parse(fs.readFileSync(STYLES_PATH, 'utf8'));
-let wiredOutfits = 0, wiredFlatlays = 0;
+let wiredOutfits = 0, wiredFlatlays = 0, wiredItems = 0;
 
 styles.forEach(style => {
   const dir = path.join(GEN_ROOT, style.key);
@@ -30,9 +31,17 @@ styles.forEach(style => {
     wiredFlatlays++;
   }
 
-  // clean up the superseded per-item image field from the earlier approach
+  // clean up the superseded per-item image field from the earlier, abandoned approach
   style.capsule.forEach(item => { delete item.image; });
+
+  style.capsule.forEach((item, i) => {
+    const itemPath = path.join(dir, 'item-' + i + '.jpg');
+    if(fs.existsSync(itemPath)){
+      item.photo = { url: 'images/generated/' + style.key + '/item-' + i + '.jpg', generated: true };
+      wiredItems++;
+    }
+  });
 });
 
 fs.writeFileSync(STYLES_PATH, JSON.stringify(styles, null, 2) + '\n', 'utf8');
-console.log('Wired ' + wiredOutfits + ' outfit shot(s) and ' + wiredFlatlays + ' flat-lay(s).');
+console.log('Wired ' + wiredOutfits + ' outfit shot(s), ' + wiredFlatlays + ' flat-lay(s), and ' + wiredItems + ' capsule item photo(s).');

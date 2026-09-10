@@ -414,8 +414,15 @@ h1,h2,h3,.display{
 
 /* ---------- capsule wardrobe ---------- */
 .capsule-list{ display:flex; flex-direction:column; }
-.capsule-item{ padding:28px 0; border-bottom:1px solid var(--rule); }
+.capsule-item{ padding:28px 0; border-bottom:1px solid var(--rule); display:flow-root; }
 .capsule-item:first-child{ padding-top:0; }
+.capsule-photo{ float:left; width:180px; margin:0 24px 16px 0; border:1px solid var(--rule); }
+.capsule-photo img{ display:block; width:100%; height:auto; aspect-ratio:1/1; object-fit:cover; }
+.capsule-photo .photo-credit{ font-size:10px; text-align:center; margin-top:4px; }
+.tier-grid{ clear:both; }
+@media (max-width:480px){
+  .capsule-photo{ float:none; width:100%; max-width:280px; margin:0 auto 16px; }
+}
 .capsule-item h4{
   font-size:23px; font-style:italic; margin-bottom:12px;
 }

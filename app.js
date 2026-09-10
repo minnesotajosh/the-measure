@@ -487,6 +487,7 @@ function capsuleHTML(style){
   return style.capsule.map(function(item){
     return '' +
       '<div class="capsule-item">' +
+        (item.photo ? '<div class="capsule-photo"><img src="'+escapeHtml(item.photo.url)+'" alt="'+escapeHtml(item.category)+'" loading="lazy">'+photoCreditHTML(item.photo)+'</div>' : '') +
         '<h4>'+escapeHtml(item.category)+'</h4>' +
         '<p class="cap-bg">'+escapeHtml(item.background)+'</p>' +
         '<div class="capsule-meta">' +

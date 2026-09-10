@@ -271,6 +271,41 @@ async function generateFlatlay(style){
   return saved;
 }
 
+// One product-style photo per capsule-wardrobe item (the 5 named garments/
+// accessories, e.g. "The Sack Jacket", "The Penny Loafer") -- no low/mid/high
+// price-tier variants, just one image per garment TYPE. Reuses the same
+// IMAGE_SAFE_TRADEMARKS override (by index) for the 3 styles whose real
+// capsule copy names actual brands, exactly as the outfit/flatlay prompts do.
+async function generateItemShot(style, index){
+  const item = style.capsule[index];
+  const desc = IMAGE_SAFE_TRADEMARKS[style.key]
+    ? IMAGE_SAFE_TRADEMARKS[style.key][index]
+    : item.category + ' -- ' + item.lookFor;
+  const prompt = HOUSE_STYLE + ' ' + paletteNote(style) + ' A single-item product photograph ' +
+    'for a menswear style guide: ' + desc + '. Shot on a plain, softly lit neutral background ' +
+    '-- cream, warm white, or light grey seamless paper -- centered in frame, filling most of ' +
+    'it. Only this one item, nothing else in frame -- no other garments, no accessories, no ' +
+    'person, no mannequin, no hanger unless the item is a coat or jacket that reads better hung. ' +
+    'Soft, even studio lighting, true-to-life color and texture, the kind of clean product shot ' +
+    'a shopper could buy from.' + denimNote(desc) + sneakerNote(desc);
+  const inline = await callGemini(prompt, '1:1');
+  const outPath = path.join(OUT_ROOT, style.key, 'item-' + index + '.png');
+  const saved = await saveInline(inline, outPath);
+  console.log('   item ' + index + ' (' + item.category + ') saved: ' + path.relative(process.cwd(), saved));
+  return saved;
+}
+
+async function generateAllItems(style){
+  console.log('-> ' + style.key + ' (' + style.name + ')');
+  for(let i = 0; i < style.capsule.length; i++){
+    try{
+      await generateItemShot(style, i);
+    }catch(err){
+      console.error('   FAILED item ' + i + ' for ' + style.key + ': ' + err.message);
+    }
+  }
+}
+
 async function generateForStyle(style){
   console.log('-> ' + style.key + ' (' + style.name + ')');
   try{
@@ -299,12 +334,32 @@ async function main(){
     for(const style of targets){
       console.log('-> ' + style.key);
       try{
+        const itemMatch = /^item([0-4])$/.exec(which || '');
         if(which === 'outfit') await generateOutfitShot(style);
         else if(which === 'flatlay') await generateFlatlay(style);
-        else { console.error('Unknown type: ' + which + ' (use "outfit" or "flatlay")'); process.exit(1); }
+        else if(itemMatch) await generateItemShot(style, Number(itemMatch[1]));
+        else { console.error('Unknown type: ' + which + ' (use "outfit", "flatlay", or "item0".."item4")'); process.exit(1); }
       }catch(err){
         console.error('   FAILED: ' + err.message);
       }
+    }
+    console.log('Done.');
+    return;
+  }
+
+  // --items <key> [<key>...] | --items --all : the 5 per-garment product
+  // shots, kept separate from the default outfit+flatlay run since it's
+  // 5x the images/cost and not something every regen should redo.
+  if(args[0] === '--items'){
+    const rest = args.slice(1);
+    const targets = rest.includes('--all')
+      ? styles
+      : styles.filter(s => rest.includes(s.key));
+    if(!targets.length){ console.error('Usage: node scripts/generate-images.js --items <key> [<key>...] | --items --all'); process.exit(1); }
+    console.log('Model: ' + MODEL);
+    console.log('Generating item shots for ' + targets.length + ' style(s), 5 images each...');
+    for(const style of targets){
+      await generateAllItems(style);
     }
     console.log('Done.');
     return;
@@ -319,7 +374,7 @@ async function main(){
     const missing = args.filter(a => !styles.some(s => s.key === a));
     if(missing.length){ console.error('Unknown style key(s): ' + missing.join(', ')); process.exit(1); }
   } else {
-    console.error('Usage: node scripts/generate-images.js <key> [<key>...] | --all | --only <outfit|flatlay> <key>...');
+    console.error('Usage: node scripts/generate-images.js <key> [<key>...] | --all | --only <outfit|flatlay> <key>... | --items <key>... | --items --all');
     process.exit(1);
   }
 
