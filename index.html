@@ -38,7 +38,7 @@
 
 <div class="page" id="app" hidden>
 
-  <header id="cover">
+  <header id="cover" class="reading-col">
     <div class="kicker eyebrow">A Style Diagnostic, in <span id="coverQCount">—</span> Questions</div>
     <h1>The Measure</h1>
     <div class="dek">On the theory that a man's closet is a confession he keeps making, one garment at a time.</div>
@@ -67,15 +67,17 @@
       <span class="brand">The Measure</span>
       <span class="meta" id="qCounter"></span>
     </div></div>
-    <div class="qphoto" id="qPhoto" hidden></div>
-    <div class="qhead">
-      <div class="qnum" id="qKicker"></div>
-      <div class="qtext fade-in" id="qText">Which is closer to true?</div>
-    </div>
-    <div class="choices" id="choices"></div>
-    <div class="qfoot">
-      <button id="backBtn">← Previous</button>
-      <span class="dots" id="qProgressText"></span>
+    <div class="reading-col">
+      <div class="qphoto" id="qPhoto" hidden></div>
+      <div class="qhead">
+        <div class="qnum" id="qKicker"></div>
+        <div class="qtext fade-in" id="qText">Which is closer to true?</div>
+      </div>
+      <div class="choices" id="choices"></div>
+      <div class="qfoot">
+        <button id="backBtn">← Previous</button>
+        <span class="dots" id="qProgressText"></span>
+      </div>
     </div>
   </main>
 
@@ -96,6 +98,7 @@
       <span class="brand">The Measure</span>
       <span class="meta">The Reading</span>
     </div></div>
+    <div class="reading-col">
     <div id="rPlate"></div>
 
     <div class="shop-look">
@@ -167,6 +170,7 @@
     <div class="btn-row" style="margin-top:48px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
       <a class="btn" id="rSharePage" href="#">Get a Shareable Link to This Result</a>
       <button class="btn btn-ghost" id="retakeBtn">Retake the Interview</button>
+    </div>
     </div>
 
   </main>

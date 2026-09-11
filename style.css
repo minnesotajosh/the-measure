@@ -86,7 +86,13 @@ h1,h2,h3,.display{
 }
 
 /* ---------- shell ---------- */
-.page{ max-width:900px; margin:0 auto; padding:64px 24px 96px; position:relative; z-index:1; }
+/* .page itself is unconstrained (full body width) specifically so header/
+   footer, as its direct (or near-direct) children, are trivially full-width
+   too -- no viewport-unit arithmetic required. The actual reading measure
+   lives one level down, in .reading-col, wrapped around everything except
+   the masthead/footer in each screen. */
+.page{ position:relative; z-index:1; }
+.reading-col{ max-width:900px; margin:0 auto; padding:64px 24px 96px; }
 [hidden]{ display:none !important; }
 
 /* Each reading section is its own translucent card rather than one solid
@@ -156,7 +162,6 @@ h1,h2,h3,.display{
    header/footer chrome should read as a solid, always-legible surface. */
 .masthead{
   position:sticky; top:0; z-index:20;
-  width:100vw; margin:0 calc(50% - 50vw) 40px;
   background:var(--paper); border-bottom:1px solid var(--rule);
 }
 .masthead-inner{
@@ -584,7 +589,6 @@ h1,h2,h3,.display{
    on a page this long. */
 .site-footer{
   position:sticky; bottom:0; z-index:20;
-  width:100vw; margin:0 calc(50% - 50vw);
   background:var(--paper); border-top:1px solid var(--rule);
 }
 .site-footer-inner{ max-width:900px; margin:0 auto; padding:14px 24px; text-align:center; }

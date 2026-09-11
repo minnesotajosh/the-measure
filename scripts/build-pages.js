@@ -260,6 +260,7 @@ function pageHTML(style, all){
 '    <a class="brand" href="../../index.html" style="text-decoration:none;color:inherit;">The Measure</a>\n' +
 '    <span class="meta"><a href="../index.html" style="color:inherit;">All Styles</a></span>\n' +
 '  </div></div>\n' +
+'  <div class="reading-col">\n' +
 '  <div id="rPlate"><div class="hero-photo"><img src="' + escapeHtml(heroSrc) + '" alt="' + escapeHtml(style.name) + '" loading="eager"><div class="hero-scrim"></div>' + photoCreditHTML(style.photo) + '</div></div>\n' +
 (style.flatlay ? '  <div class="shop-look"><div class="shop-look-label">Shop The Look</div><img src="' + escapeHtml('../../' + style.flatlay.url) + '" alt="The ' + escapeHtml(style.name) + ' capsule wardrobe, flat-laid">' + photoCreditHTML(style.flatlay) + '</div>\n' : '') +
 '  <section class="content-block" id="sec-essay" data-bg="photo">\n' +
@@ -301,6 +302,7 @@ function pageHTML(style, all){
 '    <div class="other-styles">' + otherStylesHTML(style, all) + '</div>\n' +
 '    <div class="btn-row" style="margin-top:40px;"><a class="btn" href="../../index.html">Take The Full Interview</a></div>\n' +
 '  </section>\n' +
+'  </div>\n' +
 '  <footer class="site-footer"><div class="site-footer-inner">\n' +
 '    <div class="colophon">The Measure — a style diagnostic, drafted for one reader at a time. This page is one of 27 style profiles; <a href="../index.html">see them all</a> or <a href="../../index.html">take the quiz</a> to find your own.</div>\n' +
 '  </div></footer>\n' +
