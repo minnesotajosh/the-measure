@@ -133,10 +133,44 @@ var VARIANT_LABELS = {
 };
 var VARIANT_ORDER = ['hot','cold','rain','snow','dressedUp'];
 
-function lifeGridHTML(obj, labels, order){
+function variantsGridHTML(obj, labels, order){
   return order.map(function(k){
     return '<div class="life-item"><div class="life-label">'+escapeHtml(labels[k])+'</div><p>'+escapeHtml(obj[k])+'</p></div>';
   }).join('');
+}
+
+// Mirrors app.js's LIFE_LINKS / lifeHTML exactly -- each non-travel section
+// links out to a real search on whichever service fits it, built from a
+// short query rather than a hand-curated URL per style.
+var LIFE_LINKS = {
+  reading: { label: 'Find it on Amazon', build: function(q){ return 'https://www.amazon.com/s?k=' + encodeURIComponent(q); } },
+  music: { label: 'Listen on YouTube', build: function(q){ return 'https://www.youtube.com/results?search_query=' + encodeURIComponent(q); } },
+  home: { label: 'See more on Pinterest', build: function(q){ return 'https://www.pinterest.com/search/pins/?q=' + encodeURIComponent(q); } },
+  pastimes: { label: 'Learn more', build: function(q){ return 'https://www.google.com/search?q=' + encodeURIComponent(q); } }
+};
+
+function lifestyleGridHTML(lifestyle, name){
+  return LIFE_ORDER.map(function(k){
+    var section = lifestyle[k];
+    var paragraphs = (section.paragraphs || [section]).map(function(p){ return '<p>'+escapeHtml(p)+'</p>'; }).join('');
+    var photoSrc = section.photo && (section.photo.generated ? '../../' + section.photo.url : section.photo.url + '&w=1200&h=900&q=80&auto=format&fit=crop');
+    var photo = (k === 'travel' && photoSrc)
+      ? '<div class="life-photo"><img src="'+escapeHtml(photoSrc)+'" alt="'+escapeHtml(name)+' — '+escapeHtml(LIFE_LABELS[k])+'" loading="lazy">'+photoCreditHTML(section.photo)+'</div>'
+      : '';
+    var link = (LIFE_LINKS[k] && section.query)
+      ? '<a class="life-link" href="'+escapeHtml(LIFE_LINKS[k].build(section.query))+'" target="_blank" rel="noopener">'+LIFE_LINKS[k].label+' →</a>'
+      : '';
+    return '<div class="life-item"><div class="life-label">'+escapeHtml(LIFE_LABELS[k])+'</div>'+photo+paragraphs+link+'</div>';
+  }).join('');
+}
+
+function guidanceGridHTML(guidance){
+  var side = function(slug, label, paragraphs){
+    return '<div class="guidance-side guidance-'+slug+'"><div class="guidance-label">'+label+'</div>' +
+      paragraphs.map(function(p){ return '<p>'+escapeHtml(p)+'</p>'; }).join('') +
+    '</div>';
+  };
+  return side('do', 'Do', guidance.dos) + side('dont', "Don't", guidance.donts);
 }
 
 function tierCardHTML(label, tier){
@@ -189,7 +223,7 @@ function pageHTML(style, all){
   // styles/<key>/index.html, so image src attributes need "../../" prepended.
   // og:image stays a full absolute URL, which needed no such adjustment.
   var photoPath = '../../' + style.photo.url;
-  var heroSrc = style.photo.generated ? photoPath : photoPath + '?w=2000&h=1000&q=80&auto=format&fit=crop';
+  var heroSrc = style.photo.generated ? photoPath : photoPath + '&w=2000&h=1000&q=80&auto=format&fit=crop';
   var ogImage = SITE_URL + '/' + style.photo.url;
   var canonical = SITE_URL + '/styles/' + style.key + '/';
   var title = style.name + ' — Full Style Profile | The Measure';
@@ -211,7 +245,17 @@ function pageHTML(style, all){
 'if(/\\/index\\.html$/.test(location.pathname)){history.replaceState(null,"",location.pathname.replace(/index\\.html$/,"")+location.search+location.hash);}</script>\n' +
 '<link rel="stylesheet" href="../../style.css">\n' +
 '</head>\n<body>\n' +
+'<div class="scroll-visual" id="scrollVisual" aria-hidden="true"></div>\n' +
 '<div class="page">\n' +
+'  <nav class="side-nav" aria-label="Jump to section">\n' +
+'    <a href="#sec-essay" data-target="sec-essay">The Argument</a>\n' +
+'    <a href="#sec-trademarks" data-target="sec-trademarks">Trademarks</a>\n' +
+'    <a href="#sec-wardrobe" data-target="sec-wardrobe">The Wardrobe</a>\n' +
+'    <a href="#sec-capsule" data-target="sec-capsule">Capsule</a>\n' +
+'    <a href="#sec-guidance" data-target="sec-guidance">Do\'s &amp; Don\'ts</a>\n' +
+'    <a href="#sec-dressing" data-target="sec-dressing">Dressing For It</a>\n' +
+'    <a href="#sec-lifestyle" data-target="sec-lifestyle">Beyond The Closet</a>\n' +
+'  </nav>\n' +
 '  <div class="masthead">\n' +
 '    <a class="brand" href="../../index.html" style="text-decoration:none;color:inherit;">The Measure</a>\n' +
 '    <span class="meta"><a href="../index.html" style="color:inherit;">All Styles</a></span>\n' +
@@ -221,28 +265,73 @@ function pageHTML(style, all){
 '  <div class="r-eyebrow eyebrow">A Style Profile</div>\n' +
 '  <h1 class="r-name">' + escapeHtml(style.name) + '</h1>\n' +
 '  <div class="r-dek">' + escapeHtml(style.dek) + '</div>\n' +
-'  <div class="essay">' + style.essay.map(function(p,i){ return '<p'+(i===0?' class="dropcap"':'')+'>'+escapeHtml(p)+'</p>'; }).join('') + '</div>\n' +
-'  <div class="section-title">Trademark Features</div>\n' +
+'  <div class="essay" id="sec-essay" data-bg="photo">' + style.essay.map(function(p,i){ return '<p'+(i===0?' class="dropcap"':'')+'>'+escapeHtml(p)+'</p>'; }).join('') + '</div>\n' +
+'  <div class="section-title" id="sec-trademarks" data-bg="photo">Trademark Features</div>\n' +
 '  <ul class="trademarks">' + style.trademarks.map(function(t){ return '<li>'+escapeHtml(t)+'</li>'; }).join('') + '</ul>\n' +
-'  <div class="section-title">The Wardrobe</div>\n' +
+'  <div class="section-title" id="sec-wardrobe" data-bg="flatlay">The Wardrobe</div>\n' +
 '  <div class="brandline">' + brandsHTML(style.brands) + '</div>\n' +
-'  <div class="section-title">The Capsule Wardrobe</div>\n' +
+'  <div class="section-title" id="sec-capsule" data-bg="flatlay">The Capsule Wardrobe</div>\n' +
 '  <div class="section-note">Five pieces that define the style, each with a low, mid, and high budget entry point.</div>\n' +
 '  <div class="capsule-list">' + capsuleHTML(style.capsule) + '</div>\n' +
-'  <div class="section-title">Dressing For It</div>\n' +
+(style.guidance ? '  <div class="section-title" id="sec-guidance" data-bg="photo">Do\'s and Don\'ts</div>\n' +
+'  <div class="section-note">Every style has a right context and a wrong one, and one similar-looking garment easily mistaken for another.</div>\n' +
+'  <div class="guidance-grid">' + guidanceGridHTML(style.guidance) + '</div>\n' : '') +
+'  <div class="section-title" id="sec-dressing" data-bg="flatlay">Dressing For It</div>\n' +
 '  <div class="section-note">The same wardrobe, adjusted for what the day actually throws at it.</div>\n' +
-'  <div class="life-grid">' + lifeGridHTML(style.variants, VARIANT_LABELS, VARIANT_ORDER) + '</div>\n' +
-'  <div class="section-title">Beyond the Closet</div>\n' +
+'  <div class="life-grid">' + variantsGridHTML(style.variants, VARIANT_LABELS, VARIANT_ORDER) + '</div>\n' +
+'  <div class="section-title" id="sec-lifestyle" data-bg="travel">Beyond the Closet</div>\n' +
 '  <div class="section-note">A personal style was never just the clothes.</div>\n' +
-'  <div class="life-grid">' + lifeGridHTML(style.lifestyle, LIFE_LABELS, LIFE_ORDER) + '</div>\n' +
-'  <div class="section-title">Other Styles</div>\n' +
+'  <div class="life-grid">' + lifestyleGridHTML(style.lifestyle, style.name) + '</div>\n' +
+'  <div class="section-title" data-bg="none">Other Styles</div>\n' +
 '  <div class="other-styles">' + otherStylesHTML(style, all) + '</div>\n' +
 '  <div class="btn-row" style="margin-top:40px;"><a class="btn" href="../../index.html">Take The Full Interview</a></div>\n' +
-'  <footer class="site-footer" style="padding:0 0 48px;">\n' +
+'  <footer class="site-footer">\n' +
 '    <div class="colophon">The Measure — a style diagnostic, drafted for one reader at a time. This page is one of 27 style profiles; <a href="../index.html">see them all</a> or <a href="../../index.html">take the quiz</a> to find your own.</div>\n' +
 '  </footer>\n' +
 '</div>\n' +
+scrollEffectsScript(style) +
 '</body>\n</html>\n';
+}
+
+// Mirrors app.js's setupScrollEffects() -- same two IntersectionObservers
+// (swap the background layer behind the reading column, highlight the
+// current side-nav link) -- but for a static page whose content already
+// exists in the DOM at load, rather than content just inserted by a
+// render function, so it runs directly instead of being triggered by one.
+function scrollEffectsScript(style){
+  var travelPhoto = style.lifestyle && style.lifestyle.travel && style.lifestyle.travel.photo;
+  var images = {
+    photo: style.photo && ('../../' + style.photo.url),
+    flatlay: style.flatlay && ('../../' + style.flatlay.url),
+    travel: travelPhoto && (travelPhoto.generated ? '../../' + travelPhoto.url : travelPhoto.url + '&w=1600&h=1200&q=80&auto=format&fit=crop')
+  };
+  var layerDivs = Object.keys(images).filter(function(k){ return images[k]; }).map(function(k){
+    return '<div class="scroll-visual-layer" data-layer="' + k + '" style="background-image:url(\'' + escapeHtml(images[k]) + '\')"></div>';
+  }).join('');
+  return '<script>(function(){\n' +
+'  document.getElementById("scrollVisual").innerHTML = ' + JSON.stringify(layerDivs) + ';\n' +
+'  if(typeof IntersectionObserver === "undefined") return;\n' +
+'  var hasImage = ' + JSON.stringify(Object.keys(images).reduce(function(o,k){ if(images[k]) o[k]=true; return o; }, {})) + ';\n' +
+'  var layers = document.querySelectorAll(".scroll-visual-layer");\n' +
+'  function activateLayer(key){ layers.forEach(function(l){ l.classList.toggle("active", l.dataset.layer === key); }); }\n' +
+'  activateLayer("photo");\n' +
+'  var bgObserver = new IntersectionObserver(function(entries){\n' +
+'    entries.forEach(function(entry){\n' +
+'      if(!entry.isIntersecting) return;\n' +
+'      var key = entry.target.dataset.bg;\n' +
+'      if(key && key !== "none" && hasImage[key]) activateLayer(key);\n' +
+'    });\n' +
+'  }, { rootMargin: "-40% 0px -40% 0px" });\n' +
+'  document.querySelectorAll("[data-bg]").forEach(function(t){ bgObserver.observe(t); });\n' +
+'  var navLinks = document.querySelectorAll(".side-nav a");\n' +
+'  var navObserver = new IntersectionObserver(function(entries){\n' +
+'    entries.forEach(function(entry){\n' +
+'      if(!entry.isIntersecting) return;\n' +
+'      navLinks.forEach(function(a){ a.classList.toggle("active", a.dataset.target === entry.target.id); });\n' +
+'    });\n' +
+'  }, { rootMargin: "-20% 0px -70% 0px" });\n' +
+'  Array.prototype.slice.call(navLinks).map(function(a){ return document.getElementById(a.dataset.target); }).filter(Boolean).forEach(function(t){ navObserver.observe(t); });\n' +
+'})();</script>\n';
 }
 
 function indexPageHTML(all){

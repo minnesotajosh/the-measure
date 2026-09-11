@@ -509,15 +509,48 @@ var LIFE_LABELS = {
 };
 var LIFE_ORDER = ['travel','reading','music','home','pastimes'];
 
+// Each non-travel section links out to whichever real service actually fits
+// what it's linking to, built from a short search query rather than a
+// hand-curated URL (27 styles x 4 sections is too many real links to keep
+// correct by hand, and a search always resolves to something relevant).
+var LIFE_LINKS = {
+  reading: { label: 'Find it on Amazon', build: function(q){ return 'https://www.amazon.com/s?k=' + encodeURIComponent(q); } },
+  music: { label: 'Listen on YouTube', build: function(q){ return 'https://www.youtube.com/results?search_query=' + encodeURIComponent(q); } },
+  home: { label: 'See more on Pinterest', build: function(q){ return 'https://www.pinterest.com/search/pins/?q=' + encodeURIComponent(q); } },
+  pastimes: { label: 'Learn more', build: function(q){ return 'https://www.google.com/search?q=' + encodeURIComponent(q); } }
+};
+
 function lifeHTML(style){
   if(!style.lifestyle) return '<p class="capsule-empty">This dimension hasn\'t been written for '+escapeHtml(style.name)+' yet.</p>';
   return LIFE_ORDER.map(function(k){
+    var section = style.lifestyle[k];
+    var paragraphs = (section.paragraphs || [section]).map(function(p){ return '<p>'+escapeHtml(p)+'</p>'; }).join('');
+    var photoSrc = section.photo && (section.photo.generated ? section.photo.url : section.photo.url + '&w=1200&h=900&q=80&auto=format&fit=crop');
+    var photo = (k === 'travel' && photoSrc)
+      ? '<div class="life-photo"><img src="'+escapeHtml(photoSrc)+'" alt="'+escapeHtml(style.name)+' — '+escapeHtml(LIFE_LABELS[k])+'" loading="lazy">'+photoCreditHTML(section.photo)+'</div>'
+      : '';
+    var link = (LIFE_LINKS[k] && section.query)
+      ? '<a class="life-link" href="'+escapeHtml(LIFE_LINKS[k].build(section.query))+'" target="_blank" rel="noopener">'+LIFE_LINKS[k].label+' →</a>'
+      : '';
     return '' +
       '<div class="life-item">' +
         '<div class="life-label">'+escapeHtml(LIFE_LABELS[k])+'</div>' +
-        '<p>'+escapeHtml(style.lifestyle[k])+'</p>' +
+        photo +
+        paragraphs +
+        link +
       '</div>';
   }).join('');
+}
+
+function guidanceHTML(style){
+  if(!style.guidance) return '<p class="capsule-empty">Do\'s and don\'ts haven\'t been written for '+escapeHtml(style.name)+' yet.</p>';
+  var side = function(slug, label, paragraphs){
+    return '<div class="guidance-side guidance-'+slug+'">' +
+      '<div class="guidance-label">'+label+'</div>' +
+      paragraphs.map(function(p){ return '<p>'+escapeHtml(p)+'</p>'; }).join('') +
+    '</div>';
+  };
+  return side("do", "Do", style.guidance.dos) + side("dont", "Don't", style.guidance.donts);
 }
 
 var VARIANT_LABELS = {
@@ -566,6 +599,7 @@ function renderResults(user){
   document.getElementById('rTrademarks').innerHTML = trademarksListItems(primary);
   document.getElementById('rBrands').innerHTML = brandsHTML(primary);
   document.getElementById('rCapsule').innerHTML = capsuleHTML(primary);
+  document.getElementById('rGuidance').innerHTML = guidanceHTML(primary);
   document.getElementById('rVariants').innerHTML = variantsHTML(primary);
   document.getElementById('rLife').innerHTML = lifeHTML(primary);
 
@@ -596,6 +630,67 @@ function renderResults(user){
   document.getElementById('sBrands').innerHTML = brandsHTML(secondary, 5);
 
   renderCompareList(ranked);
+  setupScrollEffects(primary);
+}
+
+/* ---------------- scroll effects: side nav + swapping background ----------------
+   Every major section carries a data-bg attribute naming which of the
+   style's images belongs behind it ("photo", "flatlay", "travel", or
+   "none"). One IntersectionObserver drives two things at once as the
+   reader scrolls: which background layer is faded in behind the sticky
+   hero (the hero itself just gets covered by the content column scrolling
+   over it -- pure CSS, no JS needed for that part), and which side-nav
+   link is highlighted. Re-run on every renderResults() call so a retake
+   doesn't leave stale observers watching a previous style's images. */
+var scrollObservers = [];
+function teardownScrollEffects(){
+  scrollObservers.forEach(function(o){ o.disconnect(); });
+  scrollObservers = [];
+}
+
+function setupScrollEffects(style){
+  teardownScrollEffects();
+  if(typeof IntersectionObserver === 'undefined') return;
+
+  var visual = document.getElementById('scrollVisual');
+  var travelPhoto = style.lifestyle && style.lifestyle.travel && style.lifestyle.travel.photo;
+  var images = {
+    photo: style.photo && style.photo.url,
+    flatlay: style.flatlay && style.flatlay.url,
+    travel: travelPhoto && (travelPhoto.generated ? travelPhoto.url : travelPhoto.url + '&w=1600&h=1200&q=80&auto=format&fit=crop')
+  };
+  visual.innerHTML = Object.keys(images).filter(function(k){ return images[k]; }).map(function(k){
+    return '<div class="scroll-visual-layer" data-layer="'+k+'" style="background-image:url(\''+escapeHtml(images[k])+'\')"></div>';
+  }).join('');
+  var layers = visual.querySelectorAll('.scroll-visual-layer');
+  function activateLayer(key){
+    layers.forEach(function(l){ l.classList.toggle('active', l.dataset.layer === key); });
+  }
+  activateLayer('photo');
+
+  var bgTargets = document.querySelectorAll('#results [data-bg]');
+  var bgObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(!entry.isIntersecting) return;
+      var key = entry.target.dataset.bg;
+      if(key && key !== 'none' && images[key]) activateLayer(key);
+    });
+  }, { rootMargin: '-40% 0px -40% 0px' }); // fires as a section crosses the vertical center of the viewport
+  bgTargets.forEach(function(t){ bgObserver.observe(t); });
+  scrollObservers.push(bgObserver);
+
+  var navLinks = document.querySelectorAll('#sideNav a');
+  var navTargets = Array.prototype.slice.call(navLinks).map(function(a){
+    return document.getElementById(a.dataset.target);
+  }).filter(Boolean);
+  var navObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(!entry.isIntersecting) return;
+      navLinks.forEach(function(a){ a.classList.toggle('active', a.dataset.target === entry.target.id); });
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  navTargets.forEach(function(t){ navObserver.observe(t); });
+  scrollObservers.push(navObserver);
 }
 
 // Each row links straight to that style's real page (styles/<key>/) rather

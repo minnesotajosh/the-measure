@@ -32,6 +32,8 @@
 
 <div id="railWrap"><div id="rail"></div></div>
 
+<div class="scroll-visual" id="scrollVisual" aria-hidden="true"></div>
+
 <div id="loadState">Loading the questionnaire&hellip;</div>
 
 <div class="page" id="app" hidden>
@@ -78,6 +80,18 @@
   </main>
 
   <main id="results" hidden>
+    <nav class="side-nav" id="sideNav" aria-label="Jump to section">
+      <a href="#rEssay" data-target="rEssay">The Argument</a>
+      <a href="#sec-trademarks" data-target="sec-trademarks">Trademarks</a>
+      <a href="#sec-wardrobe" data-target="sec-wardrobe">The Wardrobe</a>
+      <a href="#sec-capsule" data-target="sec-capsule">Capsule</a>
+      <a href="#sec-guidance" data-target="sec-guidance">Do's &amp; Don'ts</a>
+      <a href="#sec-dressing" data-target="sec-dressing">Dressing For It</a>
+      <a href="#sec-lifestyle" data-target="sec-lifestyle">Beyond The Closet</a>
+      <a href="#sec-numbers" data-target="sec-numbers">By The Numbers</a>
+      <a href="#sec-compare" data-target="sec-compare">Compare</a>
+    </nav>
+
     <div class="masthead">
       <span class="brand">The Measure</span>
       <span class="meta">The Reading</span>
@@ -93,27 +107,31 @@
     <h2 class="r-name" id="rName"></h2>
     <div class="r-dek" id="rDek"></div>
 
-    <div class="essay" id="rEssay"></div>
+    <div class="essay" id="rEssay" data-bg="photo"></div>
 
-    <div class="section-title">Trademark Features</div>
+    <div class="section-title" id="sec-trademarks" data-bg="photo">Trademark Features</div>
     <ul class="trademarks" id="rTrademarks"></ul>
 
-    <div class="section-title">The Wardrobe</div>
+    <div class="section-title" id="sec-wardrobe" data-bg="flatlay">The Wardrobe</div>
     <div class="brandline" id="rBrands"></div>
 
-    <div class="section-title">The Capsule Wardrobe</div>
+    <div class="section-title" id="sec-capsule" data-bg="flatlay">The Capsule Wardrobe</div>
     <div class="section-note">Five pieces that define the style, each with a low, mid, and high budget entry point — what to look for regardless of price, and how to wear it with the rest.</div>
     <div class="capsule-list" id="rCapsule"></div>
 
-    <div class="section-title">Dressing For It</div>
+    <div class="section-title" id="sec-guidance" data-bg="photo">Do's and Don'ts</div>
+    <div class="section-note">Every style has a right context and a wrong one. Where the line actually falls, and how to tell one similar-looking garment from another.</div>
+    <div class="guidance-grid" id="rGuidance"></div>
+
+    <div class="section-title" id="sec-dressing" data-bg="flatlay">Dressing For It</div>
     <div class="section-note">The same wardrobe, adjusted for what the day actually throws at it.</div>
     <div class="life-grid" id="rVariants"></div>
 
-    <div class="section-title">Beyond the Closet</div>
+    <div class="section-title" id="sec-lifestyle" data-bg="travel">Beyond the Closet</div>
     <div class="section-note">A personal style was never just the clothes. Where this one would go, what it would read, and how it would spend a Saturday.</div>
     <div class="life-grid" id="rLife"></div>
 
-    <div class="section-title">The Reading, By the Numbers</div>
+    <div class="section-title" id="sec-numbers" data-bg="none">The Reading, By the Numbers</div>
     <div class="section-note">Where you fell on every axis measured — not just the two that decided your result.</div>
     <div class="meters" id="rMeters"></div>
 
@@ -125,7 +143,7 @@
       <div class="brandline" id="sBrands"></div>
     </div>
 
-    <div class="section-title">How You Compare</div>
+    <div class="section-title" id="sec-compare" data-bg="none">How You Compare</div>
     <div class="section-note">Every style on file, ranked by fit. Each links to its full profile page — including the ones you didn't get, worth a look on their own.</div>
     <div class="compare-list" id="compareList"></div>
 

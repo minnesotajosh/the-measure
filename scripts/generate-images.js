@@ -271,6 +271,21 @@ async function generateFlatlay(style){
   return saved;
 }
 
+// One location/landscape photo for the "Where They'd Go" lifestyle section --
+// no person, since this is a place, not an outfit. Falls back to nothing if
+// the style hasn't got a lifestyle.travel.prompt yet (expansion content not
+// written for it).
+async function generateTravelShot(style){
+  const prompt = style.lifestyle && style.lifestyle.travel && style.lifestyle.travel.prompt;
+  if(!prompt) throw new Error('No lifestyle.travel.prompt for ' + style.key + ' -- run apply-expansion-content.js first');
+  const fullPrompt = HOUSE_STYLE + ' ' + prompt + ' Absolutely no people, no human figures, no text.';
+  const inline = await callGemini(fullPrompt, '4:3');
+  const outPath = path.join(OUT_ROOT, style.key, 'travel.png');
+  const saved = await saveInline(inline, outPath);
+  console.log('   travel saved: ' + path.relative(process.cwd(), saved));
+  return saved;
+}
+
 // One product-style photo per capsule-wardrobe item (the 5 named garments/
 // accessories, e.g. "The Sack Jacket", "The Penny Loafer") -- no low/mid/high
 // price-tier variants, just one image per garment TYPE. Reuses the same
@@ -337,11 +352,31 @@ async function main(){
         const itemMatch = /^item([0-4])$/.exec(which || '');
         if(which === 'outfit') await generateOutfitShot(style);
         else if(which === 'flatlay') await generateFlatlay(style);
+        else if(which === 'travel') await generateTravelShot(style);
         else if(itemMatch) await generateItemShot(style, Number(itemMatch[1]));
-        else { console.error('Unknown type: ' + which + ' (use "outfit", "flatlay", or "item0".."item4")'); process.exit(1); }
+        else { console.error('Unknown type: ' + which + ' (use "outfit", "flatlay", "travel", or "item0".."item4")'); process.exit(1); }
       }catch(err){
         console.error('   FAILED: ' + err.message);
       }
+    }
+    console.log('Done.');
+    return;
+  }
+
+  // --travel <key> [<key>...] | --travel --all : the "Where They'd Go"
+  // location photo, one per style, only possible once expansion content
+  // (lifestyle.travel.prompt) has been written for that style.
+  if(args[0] === '--travel'){
+    const rest = args.slice(1);
+    const targets = (rest.includes('--all') ? styles : styles.filter(s => rest.includes(s.key)))
+      .filter(s => s.lifestyle && s.lifestyle.travel && s.lifestyle.travel.prompt);
+    if(!targets.length){ console.error('Usage: node scripts/generate-images.js --travel <key> [<key>...] | --travel --all (styles need lifestyle.travel.prompt first)'); process.exit(1); }
+    console.log('Model: ' + MODEL);
+    console.log('Generating travel shots for ' + targets.length + ' style(s)...');
+    for(const style of targets){
+      console.log('-> ' + style.key);
+      try{ await generateTravelShot(style); }
+      catch(err){ console.error('   FAILED: ' + err.message); }
     }
     console.log('Done.');
     return;

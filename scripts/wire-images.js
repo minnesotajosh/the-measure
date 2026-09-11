@@ -13,7 +13,7 @@ const STYLES_PATH = path.join(__dirname, '..', 'data', 'styles.json');
 const GEN_ROOT = path.join(__dirname, '..', 'images', 'generated');
 
 const styles = JSON.parse(fs.readFileSync(STYLES_PATH, 'utf8'));
-let wiredOutfits = 0, wiredFlatlays = 0, wiredItems = 0;
+let wiredOutfits = 0, wiredFlatlays = 0, wiredItems = 0, wiredTravel = 0;
 
 styles.forEach(style => {
   const dir = path.join(GEN_ROOT, style.key);
@@ -31,6 +31,12 @@ styles.forEach(style => {
     wiredFlatlays++;
   }
 
+  const travelPath = path.join(dir, 'travel.jpg');
+  if(fs.existsSync(travelPath) && style.lifestyle && style.lifestyle.travel){
+    style.lifestyle.travel.photo = { url: 'images/generated/' + style.key + '/travel.jpg', generated: true };
+    wiredTravel++;
+  }
+
   // clean up the superseded per-item image field from the earlier, abandoned approach
   style.capsule.forEach(item => { delete item.image; });
 
@@ -44,4 +50,4 @@ styles.forEach(style => {
 });
 
 fs.writeFileSync(STYLES_PATH, JSON.stringify(styles, null, 2) + '\n', 'utf8');
-console.log('Wired ' + wiredOutfits + ' outfit shot(s), ' + wiredFlatlays + ' flat-lay(s), and ' + wiredItems + ' capsule item photo(s).');
+console.log('Wired ' + wiredOutfits + ' outfit shot(s), ' + wiredFlatlays + ' flat-lay(s), ' + wiredItems + ' capsule item photo(s), and ' + wiredTravel + ' travel photo(s).');
