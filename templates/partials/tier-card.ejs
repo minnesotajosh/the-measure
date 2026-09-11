@@ -1,0 +1,7 @@
+<% if (tier) { %><div class="tier-card">
+  <div class="tier-label"><%= label %></div>
+  <div class="tier-pick"><%= tier.pick %></div>
+  <div class="tier-price"><%= tier.price %></div>
+  <p class="tier-note"><%= tier.note %></p>
+  <a class="tier-shop" href="<%= shopSearchUrl(tier.pick) %>" target="_blank" rel="noopener">Shop this →</a>
+</div><% } %>

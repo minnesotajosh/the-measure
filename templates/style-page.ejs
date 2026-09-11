@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><%= title %></title>
+<meta name="description" content="<%= description %>">
+<link rel="canonical" href="<%= canonical %>">
+<meta property="og:type" content="article">
+<meta property="og:title" content="<%= style.name %> — The Measure">
+<meta property="og:description" content="<%= description %>">
+<meta property="og:image" content="<%= ogImage %>">
+<meta property="og:url" content="<%= canonical %>">
+<meta name="twitter:card" content="summary_large_image">
+<script>(function(){try{var t=localStorage.getItem("measure:theme");document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){document.documentElement.setAttribute("data-theme","light");}})();if(/\/index\.html$/.test(location.pathname)){history.replaceState(null,"",location.pathname.replace(/index\.html$/,"")+location.search+location.hash);}</script>
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<div class="scroll-visual" id="scrollVisual" aria-hidden="true"></div>
+<div class="page">
+  <nav class="side-nav" aria-label="Jump to section">
+    <a href="#sec-essay" data-target="sec-essay">The Argument</a>
+    <a href="#sec-trademarks" data-target="sec-trademarks">Trademarks</a>
+    <a href="#sec-wardrobe" data-target="sec-wardrobe">The Wardrobe</a>
+    <% if (style.guidance) { %><a href="#sec-guidance" data-target="sec-guidance">Do's &amp; Don'ts</a><% } %>
+    <a href="#sec-dressing" data-target="sec-dressing">Dressing For It</a>
+    <a href="#sec-lifestyle" data-target="sec-lifestyle">Beyond The Closet</a>
+  </nav>
+  <div class="masthead"><div class="masthead-inner">
+    <a class="brand" href="../../index.html" style="text-decoration:none;color:inherit;">The Measure</a>
+    <span class="meta"><a href="../index.html" style="color:inherit;">All Styles</a></span>
+  </div></div>
+  <div class="reading-col">
+  <div class="hero-title">
+    <div class="r-eyebrow eyebrow">A Style Profile</div>
+    <h1 class="r-name"><%= style.name %></h1>
+    <div class="r-dek"><%= style.dek %></div>
+  </div>
+
+  <%- include('partials/section', {
+    id: 'sec-essay', dataBg: 'photo', title: null, note: null,
+    body: include('partials/body-essay', { style: style })
+  }) %>
+
+  <%- include('partials/section', {
+    id: 'sec-trademarks', dataBg: 'item-0', title: 'Trademark Features', note: null,
+    body: include('partials/body-trademarks', { style: style })
+  }) %>
+
+  <%- include('partials/section', {
+    id: 'sec-wardrobe', dataBg: 'flatlay', title: 'The Wardrobe',
+    note: 'The capsule flat-laid, the brands behind it, and five pieces that define the style — each with a low, mid, and high budget entry point.',
+    body: include('partials/body-wardrobe', { style: style, prefix: prefix, brandUrl: brandUrl, shopSearchUrl: shopSearchUrl })
+  }) %>
+
+  <% if (style.guidance) { %>
+  <%- include('partials/section', {
+    id: 'sec-guidance', dataBg: 'item-1', title: "Do's and Don'ts",
+    note: 'Every style has a right context and a wrong one, and one similar-looking garment easily mistaken for another.',
+    body: include('partials/body-guidance', { style: style })
+  }) %>
+  <% } %>
+
+  <%- include('partials/section', {
+    id: 'sec-dressing', dataBg: 'item-2', title: 'Dressing For It',
+    note: 'The same wardrobe, adjusted for what the day actually throws at it.',
+    body: include('partials/body-dressing', { style: style, VARIANT_ORDER: VARIANT_ORDER, VARIANT_LABELS: VARIANT_LABELS })
+  }) %>
+
+  <%- include('partials/section', {
+    id: 'sec-lifestyle', dataBg: 'travel', title: 'Beyond the Closet',
+    note: 'A personal style was never just the clothes.',
+    body: include('partials/body-lifestyle', { style: style, prefix: prefix, photoSrc: photoSrc, LIFE_LABELS: LIFE_LABELS, LIFE_GRID_ORDER: LIFE_GRID_ORDER, LIFE_LINKS: LIFE_LINKS })
+  }) %>
+
+  <%- include('partials/section', {
+    dataBg: 'item-4', title: 'Other Styles', last: true,
+    body: include('partials/body-other-styles', { picks: otherStylePicks })
+  }) %>
+
+  </div>
+  <footer class="site-footer"><div class="site-footer-inner">
+    <div class="colophon">The Measure — a style diagnostic, drafted for one reader at a time. This page is one of 27 style profiles; <a href="../index.html">see them all</a> or <a href="../../index.html">take the quiz</a> to find your own.</div>
+  </div></footer>
+</div>
+<script type="application/json" id="scrollImages"><%- JSON.stringify(scrollImages) %></script>
+<script src="../../scroll-effects.js"></script>
+</body>
+</html>

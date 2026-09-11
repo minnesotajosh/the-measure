@@ -1,0 +1,1 @@
+<% if (photo) { %><% if (photo.generated) { %><div class="photo-credit">AI-generated image</div><% } else { %><div class="photo-credit">Photo by <a href="<%= photo.profile %>" target="_blank" rel="noopener"><%= photo.credit %></a> on <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></div><% } %><% } %>

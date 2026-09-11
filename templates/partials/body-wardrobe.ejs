@@ -1,0 +1,13 @@
+<% if (style.flatlay) { %><div class="shop-look-inline">
+  <div class="shop-look-label">Shop The Look</div>
+  <img src="<%= prefix %><%= style.flatlay.url %>" alt="<%= style.name %> capsule wardrobe, flat-laid">
+  <%- include('photo-credit', { photo: style.flatlay }) %>
+</div><% } %>
+<div class="mini-title">The Brands</div>
+<div class="brandline">
+  <% style.brands.forEach(function(b, i){ %><% if (i > 0) { %>  •  <% } %><% var url = brandUrl(b); %><% if (url) { %><a href="<%= url %>" target="_blank" rel="noopener"><b><%= b %></b></a><% } else { %><b><%= b %></b><% } %><% }); %>
+</div>
+<div class="mini-title">The Capsule</div>
+<div class="capsule-list">
+  <% style.capsule.forEach(function(item){ %><%- include('capsule-item', { item: item, prefix: prefix, shopSearchUrl: shopSearchUrl }) %><% }); %>
+</div>

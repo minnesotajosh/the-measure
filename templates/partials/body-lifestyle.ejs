@@ -1,0 +1,24 @@
+<% var travel = style.lifestyle.travel; %>
+<% var travelSrc = photoSrc(travel.photo, prefix, 'w=1200&h=900&q=80&auto=format&fit=crop'); %>
+<div class="travel-feature">
+  <% if (travelSrc) { %><div class="life-photo">
+    <img src="<%= travelSrc %>" alt="<%= style.name %> — <%= LIFE_LABELS.travel %>" loading="lazy">
+    <%- include('photo-credit', { photo: travel.photo }) %>
+  </div><% } %>
+  <div class="life-label"><%= LIFE_LABELS.travel %></div>
+  <% (travel.paragraphs || [travel]).forEach(function(p){ %><p><%= p %></p>
+  <% }); %>
+</div>
+<div class="lifestyle-grid">
+  <% LIFE_GRID_ORDER.forEach(function(k){ %>
+  <% var section = style.lifestyle[k]; %><div class="life-item">
+    <div class="life-label"><%= LIFE_LABELS[k] %></div>
+    <% (section.paragraphs || [section]).forEach(function(p){ %><p><%= p %></p>
+    <% }); %>
+    <% if (k === 'reading' && section.magazines && section.magazines.length) { %><div class="magazine-links">
+      <% section.magazines.forEach(function(m, i){ %><% if (i > 0) { %> · <% } %><a href="<%= m.url %>" target="_blank" rel="noopener"><%= m.name %></a><% }); %>
+    </div><% } %>
+    <% if (LIFE_LINKS[k] && section.query) { %><a class="life-link" href="<%= LIFE_LINKS[k].build(section.query) %>" target="_blank" rel="noopener"><%= LIFE_LINKS[k].label %> →</a><% } %>
+  </div>
+  <% }); %>
+</div>

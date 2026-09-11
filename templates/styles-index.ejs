@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Every Style Profile | The Measure</title>
+<meta name="description" content="All 27 menswear style archetypes from The Measure, each with a full profile: history, capsule wardrobe, and more.">
+<link rel="canonical" href="<%= siteUrl %>/styles/">
+<script>(function(){try{var t=localStorage.getItem("measure:theme");document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){document.documentElement.setAttribute("data-theme","light");}})();if(/\/index\.html$/.test(location.pathname)){history.replaceState(null,"",location.pathname.replace(/index\.html$/,"")+location.search+location.hash);}</script>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="page">
+  <div class="masthead"><a class="brand" href="../index.html" style="text-decoration:none;color:inherit;">The Measure</a></div>
+  <h1 class="r-name" style="font-size:clamp(32px,6vw,46px);">Every Style Profile</h1>
+  <div class="r-dek">All 27 archetypes, each with its own page.</div>
+  <div class="style-index-list">
+    <% all.forEach(function(s){ %><a class="style-index-row" href="<%= s.key %>/">
+      <span class="style-index-name"><%= s.name %></span>
+      <span class="style-index-dek"><%= s.dek %></span>
+    </a>
+    <% }); %>
+  </div>
+  <div class="btn-row" style="margin-top:40px;"><a class="btn" href="../index.html">Take The Interview Instead</a></div>
+</div>
+</body>
+</html>
