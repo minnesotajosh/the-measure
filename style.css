@@ -328,10 +328,28 @@ h1,h2,h3,.display{
 .resume-banner{ animation:fadeIn .5s ease both; }
 
 /* ---------- results ---------- */
-#results .r-eyebrow{ text-align:center; margin-bottom:10px; margin-top:28px; }
+/* The style's own outfit shot is now the page's opening background layer
+   (the first scroll-visual image, active from load) rather than a separate
+   framed <img> -- this title block is what used to sit inside the hero
+   photo's dark scrim, so it keeps that light-on-photo treatment: no card
+   behind it, white text with a shadow strong enough to stay legible over
+   whatever the photo happens to look like. */
+.hero-title{
+  text-align:center; padding:64px 24px 48px; color:#fff;
+}
+.hero-title .r-eyebrow{ color:rgba(255,255,255,0.88); margin-bottom:16px; text-shadow:0 1px 8px rgba(0,0,0,0.5); }
+.hero-title .r-name{
+  font-size:clamp(76px, 14vw, 116px); font-style:italic; line-height:0.96;
+  margin-bottom:20px; color:#fff; text-wrap:balance;
+  text-shadow:0 4px 32px rgba(0,0,0,0.6), 0 1px 4px rgba(0,0,0,0.6);
+}
+.hero-title .r-dek{
+  font-size:19px; color:rgba(255,255,255,0.92); font-style:italic;
+  max-width:560px; margin:0 auto; text-shadow:0 2px 16px rgba(0,0,0,0.6);
+}
 
-/* "Shop the Look" flat-lay -- a contained boxed panel sitting right under
-   the full-bleed hero, like a sidebar callout in a real magazine spread. */
+/* "Shop the Look" flat-lay -- a contained boxed panel, now following
+   Trademark Features rather than opening the page. */
 .shop-look{
   margin:32px 0 clamp(40px, 6vw, 72px);
   border:1px solid color-mix(in srgb, var(--rule) 70%, transparent);
@@ -345,40 +363,6 @@ h1,h2,h3,.display{
 }
 .shop-look img{ display:block; width:100%; height:auto; border:1px solid var(--rule); }
 .shop-look .photo-credit{ text-align:center; margin-top:10px; }
-
-/* magazine-scale hero photo opening the primary result — breaks out to the
-   full viewport width, like a spread bleeding off the edge of a page, then
-   the rest of the essay returns to the normal reading column. */
-.hero-photo{
-  position:relative;
-  width:100vw; margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw);
-  overflow:hidden; animation:fadeIn .7s ease both;
-}
-.hero-photo img{
-  display:block; width:100%; aspect-ratio:16/9; max-height:620px;
-  object-fit:cover; object-position:center 30%;
-}
-.hero-photo .hero-scrim{
-  position:absolute; left:0; right:0; bottom:0; height:45%;
-  background:linear-gradient(to top, rgba(10,10,8,0.78), rgba(10,10,8,0));
-  pointer-events:none;
-}
-.hero-photo .photo-credit{
-  position:absolute; right:20px; bottom:14px; margin:0; color:rgba(255,255,255,0.82);
-}
-.hero-photo .photo-credit a{ color:rgba(255,255,255,0.92); }
-.hero-photo .photo-credit a:hover{ color:#fff; }
-@media (max-width:640px){
-  .hero-photo img{ max-height:70vh; }
-}
-#results .r-name{
-  text-align:center; font-size:clamp(38px,7vw,58px); font-style:italic; line-height:1.05;
-  margin-bottom:14px;
-}
-#results .r-dek{
-  text-align:center; font-size:18px; color:var(--ink-soft); font-style:italic;
-  max-width:520px; margin:0 auto 40px;
-}
 
 /* generated "swatch plate" visual — stands in for photography until real
    lookbook images are dropped into the images/ folder (see app.js loadPlate) */

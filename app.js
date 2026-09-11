@@ -315,15 +315,6 @@ function photoSrc(photo, w, h){
 
 function renderPlate(style, size, mode){
   size = size || 260;
-  if(style.photo && mode === 'hero'){
-    return '' +
-      '<div class="hero-photo">' +
-        '<img src="'+photoSrc(style.photo, 2000, 1000)+'" ' +
-             'alt="'+escapeHtml(style.name)+'" loading="eager">' +
-        '<div class="hero-scrim"></div>' +
-        photoCreditHTML(style.photo) +
-      '</div>';
-  }
   if(style.photo && mode === 'wide'){
     var ww = Math.round(size * 1.6), wh = Math.round(ww * 9/16);
     return '' +
@@ -600,7 +591,6 @@ function renderResults(user){
   document.getElementById('rName').textContent = primary.name;
   document.getElementById('rSharePage').href = 'styles/' + primary.key + '/';
   document.getElementById('rDek').textContent = primary.dek;
-  document.getElementById('rPlate').innerHTML = renderPlate(primary, 300, 'hero');
   document.getElementById('rFlatlay').innerHTML = flatlayHTML(primary);
   document.getElementById('rEssay').innerHTML = essayHTML(primary);
   document.getElementById('rTrademarks').innerHTML = trademarksListItems(primary);
