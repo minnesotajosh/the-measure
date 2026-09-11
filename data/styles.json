@@ -199,7 +199,17 @@
           "John Cheever and John O'Hara for the fiction — suburban discontent rendered in a prose style far more elegant than the subject matter deserves — and George Frazier's essays for the reference material on how any of this is supposed to look.",
           "The New Yorker read cover to cover, in print, and a battered Fitzgerald novel kept around less to reread than to have visibly on the shelf. A recent biography of whichever midcentury WASP novelist is having a moment gets added without much scrutiny of whether it will actually be finished."
         ],
-        "query": "John Cheever John O'Hara Fitzgerald novels"
+        "query": "John Cheever John O'Hara Fitzgerald novels",
+        "magazines": [
+          {
+            "name": "The New Yorker",
+            "url": "https://www.newyorker.com"
+          },
+          {
+            "name": "GQ",
+            "url": "https://www.gq.com"
+          }
+        ]
       },
       "music": {
         "paragraphs": [
@@ -445,7 +455,17 @@
           "Elena Ferrante for the city as much as the story, and Curzio Malaparte's The Skin for a darker, stranger version of the same place. Any biography of a Neapolitan tailor that happens to exist gets read cover to cover, footnotes included.",
           "Reads at a cafe table, not a desk, and rarely finishes a book in one sitting — the interruptions from people he knows are considered part of the experience, not an annoyance to it."
         ],
-        "query": "Elena Ferrante Naples novels"
+        "query": "Elena Ferrante Naples novels",
+        "magazines": [
+          {
+            "name": "Monocle",
+            "url": "https://monocle.com"
+          },
+          {
+            "name": "GQ",
+            "url": "https://www.gq.com"
+          }
+        ]
       },
       "music": {
         "paragraphs": [
@@ -691,7 +711,17 @@
           "Anthony Trollope and Evelyn Waugh, read less for plot than for the precise social comedy of people behaving exactly as their class expects them to. A well-thumbed Debrett's kept more as reference than aspiration.",
           "The Financial Times read in full at breakfast, paper edition only, in an order that never varies — front section, then the pink pages, obituaries checked out of habit rather than morbidity."
         ],
-        "query": "Anthony Trollope Evelyn Waugh novels"
+        "query": "Anthony Trollope Evelyn Waugh novels",
+        "magazines": [
+          {
+            "name": "The Rake",
+            "url": "https://therake.com"
+          },
+          {
+            "name": "Country Life",
+            "url": "https://www.countrylife.co.uk"
+          }
+        ]
       },
       "music": {
         "paragraphs": [
@@ -937,7 +967,17 @@
           "Cormac McCarthy and John Steinbeck, read for the landscape as much as the plot, and biographies of tradesmen and inventors who built something with their hands before anyone thought to write about them.",
           "Any well-illustrated history of American manufacturing gets picked up secondhand and actually read, not just displayed. Reads at night, after the work is actually done, and falls asleep doing it more often than not."
         ],
-        "query": "Cormac McCarthy John Steinbeck novels"
+        "query": "Cormac McCarthy John Steinbeck novels",
+        "magazines": [
+          {
+            "name": "Fine Woodworking",
+            "url": "https://www.finewoodworking.com"
+          },
+          {
+            "name": "GQ",
+            "url": "https://www.gq.com"
+          }
+        ]
       },
       "music": {
         "paragraphs": [
@@ -1183,7 +1223,17 @@
           "Marie Kondo taken more seriously than she's usually credited for, and Kenya Hara's writing on emptiness and design read closer to scripture than self-help.",
           "Scandinavian crime fiction, read for the atmosphere as much as the plot — the bleak weather and the sparse prose feel like a natural extension of everything else in the apartment."
         ],
-        "query": "Kenya Hara Marie Kondo design books"
+        "query": "Kenya Hara Marie Kondo design books",
+        "magazines": [
+          {
+            "name": "Kinfolk",
+            "url": "https://www.kinfolk.com"
+          },
+          {
+            "name": "Wallpaper*",
+            "url": "https://www.wallpaper.com"
+          }
+        ]
       },
       "music": {
         "paragraphs": [
@@ -1428,7 +1478,17 @@
           "Camus and Sartre, less for the philosophy than the posture, and Patrick Modiano for the melancholy, read in the original when the French is manageable and in translation without embarrassment when it isn't.",
           "Le Monde read at a cafe rather than a desk, folded a specific way, with opinions about the op-ed page voiced to no one in particular."
         ],
-        "query": "Camus Sartre Modiano novels"
+        "query": "Camus Sartre Modiano novels",
+        "magazines": [
+          {
+            "name": "Vogue",
+            "url": "https://www.vogue.com"
+          },
+          {
+            "name": "Monocle",
+            "url": "https://monocle.com"
+          }
+        ]
       },
       "music": {
         "paragraphs": [
@@ -1673,7 +1733,17 @@
           "Oscar Wilde, obviously, read as much for the epigrams as the plays, plus biographies of anyone who ever caused a genuine stir by what they wore — Beau Brummell, the Sitwells, early Bowie.",
           "A well-illustrated history of a specific decorative art movement — Aestheticism, or the Ballets Russes costume designs — gets kept on the coffee table and actually opened, not just displayed."
         ],
-        "query": "Oscar Wilde Beau Brummell biography"
+        "query": "Oscar Wilde Beau Brummell biography",
+        "magazines": [
+          {
+            "name": "The Chap",
+            "url": "https://thechap.co.uk"
+          },
+          {
+            "name": "GQ",
+            "url": "https://www.gq.com"
+          }
+        ]
       },
       "music": {
         "paragraphs": [
@@ -1919,7 +1989,17 @@
           "James Herriot for the vet stories, a well-worn field guide to birds or fly-fishing kept by the door rather than on a shelf, and Country Life read for the property listings as much as the articles.",
           "A stack of back issues never quite gets thrown out, on the theory that a piece about hedge-laying or a particular gundog breed might be needed again someday."
         ],
-        "query": "James Herriot country life books"
+        "query": "James Herriot country life books",
+        "magazines": [
+          {
+            "name": "Country Life",
+            "url": "https://www.countrylife.co.uk"
+          },
+          {
+            "name": "The Field",
+            "url": "https://www.thefield.co.uk"
+          }
+        ]
       },
       "music": {
         "paragraphs": [
@@ -2164,7 +2244,17 @@
           "Susan Sontag, Rei Kawakubo interviews wherever they can be found, and architecture and design monographs read as closely as novels.",
           "A heavily annotated copy of something genuinely difficult gets carried around for weeks, less to finish it than to keep thinking about it in public."
         ],
-        "query": "Susan Sontag Rei Kawakubo design"
+        "query": "Susan Sontag Rei Kawakubo design",
+        "magazines": [
+          {
+            "name": "Dazed",
+            "url": "https://www.dazeddigital.com"
+          },
+          {
+            "name": "i-D",
+            "url": "https://i-d.co"
+          }
+        ]
       },
       "music": {
         "paragraphs": [
@@ -2409,7 +2499,17 @@
           "Streetwear and culture archives read the way older generations read the sports page, plus biographies of genre-crossing designers who moved between sport, art, and fashion without apologizing for any of it.",
           "Graphic novels taken as seriously as literary fiction, with a specific, strong opinion about which ones actually hold up."
         ],
-        "query": "streetwear culture design books"
+        "query": "streetwear culture design books",
+        "magazines": [
+          {
+            "name": "Highsnobiety",
+            "url": "https://www.highsnobiety.com"
+          },
+          {
+            "name": "Complex",
+            "url": "https://www.complex.com"
+          }
+        ]
       },
       "music": {
         "paragraphs": [
@@ -2655,7 +2755,17 @@
           "Louis L'Amour and Larry McMurtry's Lonesome Dove, read and reread the way other people rewatch a favorite film. A well-worn almanac gets consulted more than any app ever could replace it.",
           "Reads outside, when there's time, which isn't often — a book gets picked up in short bursts across a season rather than finished in a sitting."
         ],
-        "query": "Louis L'Amour Larry McMurtry western novels"
+        "query": "Louis L'Amour Larry McMurtry western novels",
+        "magazines": [
+          {
+            "name": "Cowboys & Indians",
+            "url": "https://www.cowboysindians.com"
+          },
+          {
+            "name": "Garden & Gun",
+            "url": "https://gardenandgun.com"
+          }
+        ]
       },
       "music": {
         "paragraphs": [
@@ -2900,7 +3010,17 @@
           "Jack Kerouac and Hunter S. Thompson, read young and never entirely outgrown, plus motorcycle maintenance manuals read cover to cover more than once — genuinely, not for effect.",
           "A dog-eared paperback lives in the jacket pocket more often than it lives on a shelf."
         ],
-        "query": "Jack Kerouac Hunter S Thompson novels"
+        "query": "Jack Kerouac Hunter S Thompson novels",
+        "magazines": [
+          {
+            "name": "Rolling Stone",
+            "url": "https://www.rollingstone.com"
+          },
+          {
+            "name": "GQ",
+            "url": "https://www.gq.com"
+          }
+        ]
       },
       "music": {
         "paragraphs": [
@@ -3145,7 +3265,17 @@
           "Kem Nunn's surf noir and biographies of big-wave surfers, read in the kind of long, unhurried stretches that only a flat, waveless afternoon allows.",
           "Whatever paperback got left at the last Airbnb gets picked up without much discrimination and usually finished before the next one, out of a kind of traveler's obligation."
         ],
-        "query": "Kem Nunn surf noir books"
+        "query": "Kem Nunn surf noir books",
+        "magazines": [
+          {
+            "name": "The Surfer's Journal",
+            "url": "https://surfersjournal.com"
+          },
+          {
+            "name": "GQ",
+            "url": "https://www.gq.com"
+          }
+        ]
       },
       "music": {
         "paragraphs": [
@@ -3390,7 +3520,17 @@
           "The Wall Street Journal cover to cover, every morning, in an order that never changes, plus biographies of takeover artists read partly as instruction manuals.",
           "Liar's Poker gets reread every few years like a class reunion — less for new insight than for the comfort of a world that still, somehow, checks out."
         ],
-        "query": "Liar's Poker Wall Street books"
+        "query": "Liar's Poker Wall Street books",
+        "magazines": [
+          {
+            "name": "Robb Report",
+            "url": "https://robbreport.com"
+          },
+          {
+            "name": "WSJ Magazine",
+            "url": "https://www.wsj.com/magazine"
+          }
+        ]
       },
       "music": {
         "paragraphs": [
@@ -3635,7 +3775,17 @@
           "Rap biographies, especially the self-made ones, read partly as inspiration and partly as a business education that never got taught in school.",
           "Magazines get read more for the ads than the articles — a full-page campaign for a coveted release is studied the way other people study a stock chart."
         ],
-        "query": "hip hop rap biographies"
+        "query": "hip hop rap biographies",
+        "magazines": [
+          {
+            "name": "XXL",
+            "url": "https://www.xxlmag.com"
+          },
+          {
+            "name": "Robb Report",
+            "url": "https://robbreport.com"
+          }
+        ]
       },
       "music": {
         "paragraphs": [
@@ -3880,7 +4030,17 @@
           "Patricia Highsmith's Ripley novels, obviously, read partly for the plot and partly for the travelogue disguised inside it.",
           "Whatever paperback thriller matches the vacation's mood exactly gets bought at the airport and abandoned, half-finished, on a shelf at the villa for the next guest."
         ],
-        "query": "Patricia Highsmith Ripley novels"
+        "query": "Patricia Highsmith Ripley novels",
+        "magazines": [
+          {
+            "name": "Monocle",
+            "url": "https://monocle.com"
+          },
+          {
+            "name": "GQ",
+            "url": "https://www.gq.com"
+          }
+        ]
       },
       "music": {
         "paragraphs": [
@@ -4125,7 +4285,17 @@
           "Nik Cohn's Awopbopaloobop Alopbamboom and biographies of the Small Faces and the Jam, read as much for the scene's social history as the music itself.",
           "Mod-scene fanzines, vintage or otherwise, get collected and cross-referenced with an intensity that borders on academic."
         ],
-        "query": "Nik Cohn mod scene books"
+        "query": "Nik Cohn mod scene books",
+        "magazines": [
+          {
+            "name": "GQ",
+            "url": "https://www.gq.com"
+          },
+          {
+            "name": "Esquire",
+            "url": "https://www.esquire.com"
+          }
+        ]
       },
       "music": {
         "paragraphs": [
@@ -4370,7 +4540,17 @@
           "Everything, constantly, across several books at once, stacked in an order that makes sense to no one else. If pressed, George Eliot, and whatever journal in his own field just published something worth arguing about.",
           "A library card gets more genuine use than most people's gym membership, and an overdue notice is treated as a minor personal failing."
         ],
-        "query": "George Eliot classic literature"
+        "query": "George Eliot classic literature",
+        "magazines": [
+          {
+            "name": "The New Yorker",
+            "url": "https://www.newyorker.com"
+          },
+          {
+            "name": "The Atlantic",
+            "url": "https://www.theatlantic.com"
+          }
+        ]
       },
       "music": {
         "paragraphs": [
@@ -4615,7 +4795,17 @@
           "Hemingway's dispatches and Ryszard Kapuscinski, read as much for craft as content — the discipline of saying a great deal in very little space.",
           "Whatever local paper he can get his hands on, in whatever language, worked through slowly with a dictionary when necessary, on the theory that the real story is rarely in the English-language press."
         ],
-        "query": "Ryszard Kapuscinski Hemingway dispatches"
+        "query": "Ryszard Kapuscinski Hemingway dispatches",
+        "magazines": [
+          {
+            "name": "Foreign Affairs",
+            "url": "https://www.foreignaffairs.com"
+          },
+          {
+            "name": "National Geographic",
+            "url": "https://www.nationalgeographic.com"
+          }
+        ]
       },
       "music": {
         "paragraphs": [
@@ -4860,7 +5050,17 @@
           "Bowie biographies and glam-era music journalism, read for the reinvention as much as the music — a genuine study guide disguised as entertainment.",
           "Whatever's scandalous enough to read on a train specifically to be noticed doing so; the reaction is at least half the point."
         ],
-        "query": "David Bowie glam rock biography"
+        "query": "David Bowie glam rock biography",
+        "magazines": [
+          {
+            "name": "Dazed",
+            "url": "https://www.dazeddigital.com"
+          },
+          {
+            "name": "Mixmag",
+            "url": "https://mixmag.net"
+          }
+        ]
       },
       "music": {
         "paragraphs": [
@@ -5105,7 +5305,17 @@
           "Rilke and Anais Nin, read slowly and often aloud to whoever's around, plus whatever's dog-eared and borrowed from a friend rather than bought new.",
           "A book gets passed along again as soon as it's finished, with margin notes left in for the next reader as a kind of ongoing conversation."
         ],
-        "query": "Rilke Anais Nin poetry"
+        "query": "Rilke Anais Nin poetry",
+        "magazines": [
+          {
+            "name": "Kinfolk",
+            "url": "https://www.kinfolk.com"
+          },
+          {
+            "name": "Monocle",
+            "url": "https://monocle.com"
+          }
+        ]
       },
       "music": {
         "paragraphs": [
@@ -5349,7 +5559,17 @@
           "Whatever's been passed around the van, zines more than books, and liner notes read as closely as literature — often more closely.",
           "A book's condition rarely survives the trip intact, and that's treated as a feature of having actually been read rather than a problem."
         ],
-        "query": "punk zine culture books"
+        "query": "punk zine culture books",
+        "magazines": [
+          {
+            "name": "Thrasher",
+            "url": "https://www.thrashermagazine.com"
+          },
+          {
+            "name": "Rolling Stone",
+            "url": "https://www.rollingstone.com"
+          }
+        ]
       },
       "music": {
         "paragraphs": [
@@ -5594,7 +5814,17 @@
           "Patrick O'Brian's naval novels, worked through in order more than once, and sailing memoirs read partly for practical tips and partly for the romance of it.",
           "The yacht club newsletter, read cover to cover the day it arrives, mostly for the regatta results and who's selling what boat."
         ],
-        "query": "Patrick O'Brian naval novels"
+        "query": "Patrick O'Brian naval novels",
+        "magazines": [
+          {
+            "name": "Yachting",
+            "url": "https://www.yachtingmagazine.com"
+          },
+          {
+            "name": "Sail",
+            "url": "https://www.sailmagazine.com"
+          }
+        ]
       },
       "music": {
         "paragraphs": [
@@ -5839,7 +6069,17 @@
           "Cyberpunk fiction — Gibson, obviously — read partly as aesthetic reference and partly as genuine prediction, and rave-culture oral histories that treat the scene with real historical seriousness.",
           "Whatever's trending in three different feeds at once gets skimmed constantly, less for information than for staying ahead of what everyone else will be talking about next week."
         ],
-        "query": "William Gibson cyberpunk novels"
+        "query": "William Gibson cyberpunk novels",
+        "magazines": [
+          {
+            "name": "Mixmag",
+            "url": "https://mixmag.net"
+          },
+          {
+            "name": "Dazed",
+            "url": "https://www.dazeddigital.com"
+          }
+        ]
       },
       "music": {
         "paragraphs": [
@@ -6084,7 +6324,17 @@
           "Military history almost exclusively, plus memoirs of specific campaigns read with the kind of close attention other people give a mystery novel.",
           "Field manuals get read for the writing as much as the content — the plain, exact language is admired on its own terms, independent of the subject."
         ],
-        "query": "military history memoirs"
+        "query": "military history memoirs",
+        "magazines": [
+          {
+            "name": "Military Times",
+            "url": "https://www.militarytimes.com"
+          },
+          {
+            "name": "Recoil",
+            "url": "https://www.recoilweb.com"
+          }
+        ]
       },
       "music": {
         "paragraphs": [
@@ -6329,7 +6579,17 @@
           "Jon Krakauer and mountaineering memoirs, read partly for inspiration and partly as genuine risk research before the next trip.",
           "Gear reviews get read with the seriousness other people reserve for stock picks — a new shell's seam construction gets debated at real length."
         ],
-        "query": "Jon Krakauer mountaineering memoirs"
+        "query": "Jon Krakauer mountaineering memoirs",
+        "magazines": [
+          {
+            "name": "Alpinist",
+            "url": "https://alpinist.com"
+          },
+          {
+            "name": "Climbing",
+            "url": "https://www.climbing.com"
+          }
+        ]
       },
       "music": {
         "paragraphs": [
@@ -6574,7 +6834,17 @@
           "Sports biographies almost exclusively, and box scores read the way other people read the news — first thing, every day, without fail.",
           "Not much else, by choice; a novel gets picked up occasionally but rarely finishes ahead of whatever game is on that night."
         ],
-        "query": "sports biographies athletes"
+        "query": "sports biographies athletes",
+        "magazines": [
+          {
+            "name": "Sports Illustrated",
+            "url": "https://www.si.com"
+          },
+          {
+            "name": "SLAM",
+            "url": "https://www.slamonline.com"
+          }
+        ]
       },
       "music": {
         "paragraphs": [

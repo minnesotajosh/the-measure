@@ -95,43 +95,47 @@ h1,h2,h3,.display{
 .reading-col{ max-width:900px; margin:0 auto; padding:64px 24px 96px; }
 [hidden]{ display:none !important; }
 
-/* Each reading section is its own translucent card rather than one solid
-   column -- the gap between cards is where the swapping background photo
-   actually shows through as the reader scrolls, which was the whole point
-   of having it change per section. backdrop-filter keeps type legible over
-   a busy photo without needing a fully opaque card. */
+/* Each reading section is a .section-wrap: its title sits directly on the
+   swapping background (same treatment as .hero-title -- no card, light
+   text with a shadow), then a translucent .content-block carries the
+   actual copy. A generous 50vh gap after each section is what gives the
+   background room to fully crossfade to the next image before the next
+   section's title arrives. */
+.section-wrap{ margin-bottom:50vh; }
+.section-wrap.last-section{ margin-bottom:clamp(48px, 8vw, 96px); } /* no need for a half-viewport of empty space right before the footer */
+.section-wrap .section-title{
+  color:#fff; text-shadow:0 3px 20px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.6);
+}
 .content-block{
   background:color-mix(in srgb, var(--paper) 82%, transparent);
   backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
   padding:40px clamp(24px, 5vw, 56px);
-  margin-bottom:clamp(40px, 6vw, 72px);
   border:1px solid color-mix(in srgb, var(--rule) 70%, transparent);
 }
-.content-block:first-child{ margin-top:0; }
 @supports not (backdrop-filter: blur(1px)){
   .content-block{ background:var(--paper); } /* older browsers: opaque fallback over transparency they can't blur */
 }
 
 /* ---------- scroll visual: swapping background behind the reading column ----------
-   A fixed, full-viewport stack of images sits behind .page. Each reading
-   section is its own translucent .content-block, so the photo shows through
-   both the gaps between blocks and, softly, through the blocks themselves --
-   and it swaps to a different one of the style's own images (outfit shot,
-   flat-lay, individual capsule items, travel photo) as each section scrolls
-   into view, via the same IntersectionObserver that drives the side nav. */
+   A fixed, full-viewport stack of images sits behind .page. Each
+   .section-wrap names one of the style's own images (outfit shot, flat-lay,
+   individual capsule items, travel photo) via data-bg, and opacity is
+   driven directly by scroll position (see setupScrollEffects in app.js /
+   scrollEffectsScript in build-pages.js) rather than a CSS transition --
+   crossing the 50vh gap between two sections crossfades their backgrounds
+   in step with the scroll itself, reaching an even 50/50 blend exactly at
+   the gap's midpoint. */
 .scroll-visual{
   position:fixed; inset:0; z-index:0; overflow:hidden; background:var(--ink);
 }
 .scroll-visual-layer{
   position:absolute; inset:0; background-size:cover; background-position:center;
-  opacity:0; transition:opacity 1.1s ease;
+  opacity:0;
 }
-.scroll-visual-layer.active{ opacity:1; }
 .scroll-visual::after{
   content:""; position:absolute; inset:0;
   background:linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.8));
 }
-@media (prefers-reduced-motion: reduce){ .scroll-visual-layer{ transition:none; } }
 
 /* ---------- side nav: jump-to-section rail, wide viewports only ---------- */
 .side-nav{
@@ -348,21 +352,16 @@ h1,h2,h3,.display{
   max-width:560px; margin:0 auto; text-shadow:0 2px 16px rgba(0,0,0,0.6);
 }
 
-/* "Shop the Look" flat-lay -- a contained boxed panel, now following
-   Trademark Features rather than opening the page. */
-.shop-look{
-  margin:32px 0 clamp(40px, 6vw, 72px);
-  border:1px solid color-mix(in srgb, var(--rule) 70%, transparent);
-  background:color-mix(in srgb, var(--paper-raised) 85%, transparent);
-  backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
-  padding:22px; animation:fadeIn .6s ease .1s both;
-}
+/* "Shop the Look" flat-lay -- folded into The Wardrobe section, alongside
+   the brand list and capsule breakdown, rather than a separate section of
+   its own. No card treatment needed here; it's already inside one. */
+.shop-look-inline{ margin:0 0 28px; }
 .shop-look-label{
   font-family:'Archivo', sans-serif; font-size:11px; font-weight:700; letter-spacing:0.14em;
   text-transform:uppercase; color:var(--brass); text-align:center; margin-bottom:16px;
 }
-.shop-look img{ display:block; width:100%; height:auto; border:1px solid var(--rule); }
-.shop-look .photo-credit{ text-align:center; margin-top:10px; }
+.shop-look-inline img{ display:block; width:100%; height:auto; border:1px solid var(--rule); }
+.shop-look-inline .photo-credit{ text-align:center; margin-top:10px; }
 
 /* generated "swatch plate" visual — stands in for photography until real
    lookbook images are dropped into the images/ folder (see app.js loadPlate) */
@@ -401,6 +400,13 @@ h1,h2,h3,.display{
 .trademarks li::before{
   content:"—"; position:absolute; left:0; color:var(--brass);
 }
+/* Sub-header for a subsection nested inside a larger .content-block --
+   "The Brands", "The Capsule" under the merged Wardrobe section title. */
+.mini-title{
+  font-family:'Archivo', sans-serif; font-size:11px; font-weight:700; letter-spacing:0.14em;
+  text-transform:uppercase; color:var(--brass); margin:28px 0 14px;
+}
+.mini-title:first-child{ margin-top:0; }
 .brandline{
   font-family:'Fraunces', serif; font-style:italic; font-size:17px; line-height:1.9;
   color:var(--ink-soft);
@@ -432,7 +438,7 @@ h1,h2,h3,.display{
   backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
   border:1px solid color-mix(in srgb, var(--rule) 70%, transparent);
   padding:30px 26px;
-  margin:0 0 clamp(40px, 6vw, 72px);
+  margin:0 0 50vh;
 }
 .sidebar .section-title{
   font-family:'Archivo', sans-serif; font-style:normal; font-size:12px; font-weight:700;
@@ -541,6 +547,30 @@ h1,h2,h3,.display{
   text-decoration:none; border-bottom:1px solid var(--oxblood); padding-bottom:1px;
 }
 .life-link:hover{ color:var(--oxblood-soft); border-color:var(--oxblood-soft); }
+
+/* "Where They'd Go" is featured on its own, with its photo, above the
+   four-row list below rather than sharing a grid cell with it. */
+.travel-feature{ margin-bottom:28px; }
+.travel-feature .life-photo{ margin-bottom:16px; }
+.travel-feature .life-photo img{ aspect-ratio:16/9; }
+.travel-feature .life-label{
+  font-family:'Archivo', sans-serif; font-size:10px; font-weight:700; letter-spacing:0.1em;
+  text-transform:uppercase; color:var(--brass); margin-bottom:9px;
+}
+.travel-feature p{ font-size:15px; margin:0 0 12px; color:var(--ink); }
+.travel-feature p:last-of-type{ margin-bottom:0; }
+
+/* The remaining four lifestyle sections -- reading, music, home, pastimes --
+   as a plain single-column, four-row list (distinct from the 2-column
+   .life-grid still used by "Dressing For It"). */
+.lifestyle-grid{ display:flex; flex-direction:column; gap:1px; background:var(--rule); border:1px solid var(--rule); }
+
+.magazine-links{
+  margin-top:10px; font-family:'Fraunces', serif; font-style:italic; font-size:14.5px;
+  color:var(--ink-soft);
+}
+.magazine-links a{ color:var(--ink-soft); text-decoration:none; border-bottom:1px solid transparent; transition:border-color .15s ease; }
+.magazine-links a:hover{ color:var(--oxblood); border-color:var(--oxblood); }
 
 /* ---------- do's and don'ts ---------- */
 .guidance-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); }

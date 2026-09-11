@@ -505,39 +505,58 @@ var LIFE_LABELS = {
   travel: "Where They'd Go", reading: "What They'd Read", music: "What They'd Listen To",
   home: "How They'd Furnish a Room", pastimes: "How They'd Spend a Saturday"
 };
-var LIFE_ORDER = ['travel','reading','music','home','pastimes'];
+// Travel is featured on its own, with its photo, above the grid rather than
+// as a fifth grid cell -- the remaining four (reading, music, home,
+// pastimes) form a plain single-column, four-row list.
+var LIFE_GRID_ORDER = ['reading','music','home','pastimes'];
 
-// Each non-travel section links out to whichever real service actually fits
-// what it's linking to, built from a short search query rather than a
-// hand-curated URL (27 styles x 4 sections is too many real links to keep
-// correct by hand, and a search always resolves to something relevant).
+// Each links out to whichever real service actually fits what it's linking
+// to, built from a short search query rather than a hand-curated URL (27
+// styles x several sections is too many real links to keep correct by
+// hand). Pastimes has no outbound link -- "how they'd spend a Saturday"
+// isn't really a search query the way the others are.
 var LIFE_LINKS = {
   reading: { label: 'Find it on Amazon', build: function(q){ return 'https://www.amazon.com/s?k=' + encodeURIComponent(q); } },
   music: { label: 'Listen on YouTube', build: function(q){ return 'https://www.youtube.com/results?search_query=' + encodeURIComponent(q); } },
-  home: { label: 'See more on Pinterest', build: function(q){ return 'https://www.pinterest.com/search/pins/?q=' + encodeURIComponent(q); } },
-  pastimes: { label: 'Learn more', build: function(q){ return 'https://www.google.com/search?q=' + encodeURIComponent(q); } }
+  home: { label: 'See more on Pinterest', build: function(q){ return 'https://www.pinterest.com/search/pins/?q=' + encodeURIComponent(q); } }
 };
+
+function magazinesHTML(magazines){
+  if(!magazines || !magazines.length) return '';
+  return '<div class="magazine-links">' + magazines.map(function(m){
+    return '<a href="'+escapeHtml(m.url)+'" target="_blank" rel="noopener">'+escapeHtml(m.name)+'</a>';
+  }).join(' · ') + '</div>';
+}
 
 function lifeHTML(style){
   if(!style.lifestyle) return '<p class="capsule-empty">This dimension hasn\'t been written for '+escapeHtml(style.name)+' yet.</p>';
-  return LIFE_ORDER.map(function(k){
+
+  var travel = style.lifestyle.travel;
+  var travelPhotoSrc = travel.photo && (travel.photo.generated ? travel.photo.url : travel.photo.url + '&w=1200&h=900&q=80&auto=format&fit=crop');
+  var travelFeature = '' +
+    '<div class="travel-feature">' +
+      (travelPhotoSrc ? '<div class="life-photo"><img src="'+escapeHtml(travelPhotoSrc)+'" alt="'+escapeHtml(style.name)+' — '+escapeHtml(LIFE_LABELS.travel)+'" loading="lazy">'+photoCreditHTML(travel.photo)+'</div>' : '') +
+      '<div class="life-label">'+escapeHtml(LIFE_LABELS.travel)+'</div>' +
+      (travel.paragraphs || [travel]).map(function(p){ return '<p>'+escapeHtml(p)+'</p>'; }).join('') +
+    '</div>';
+
+  var grid = '<div class="lifestyle-grid">' + LIFE_GRID_ORDER.map(function(k){
     var section = style.lifestyle[k];
     var paragraphs = (section.paragraphs || [section]).map(function(p){ return '<p>'+escapeHtml(p)+'</p>'; }).join('');
-    var photoSrc = section.photo && (section.photo.generated ? section.photo.url : section.photo.url + '&w=1200&h=900&q=80&auto=format&fit=crop');
-    var photo = (k === 'travel' && photoSrc)
-      ? '<div class="life-photo"><img src="'+escapeHtml(photoSrc)+'" alt="'+escapeHtml(style.name)+' — '+escapeHtml(LIFE_LABELS[k])+'" loading="lazy">'+photoCreditHTML(section.photo)+'</div>'
-      : '';
+    var magazines = k === 'reading' ? magazinesHTML(section.magazines) : '';
     var link = (LIFE_LINKS[k] && section.query)
       ? '<a class="life-link" href="'+escapeHtml(LIFE_LINKS[k].build(section.query))+'" target="_blank" rel="noopener">'+LIFE_LINKS[k].label+' →</a>'
       : '';
     return '' +
       '<div class="life-item">' +
         '<div class="life-label">'+escapeHtml(LIFE_LABELS[k])+'</div>' +
-        photo +
         paragraphs +
+        magazines +
         link +
       '</div>';
-  }).join('');
+  }).join('') + '</div>';
+
+  return travelFeature + grid;
 }
 
 function guidanceHTML(style){
@@ -631,23 +650,35 @@ function renderResults(user){
 }
 
 /* ---------------- scroll effects: side nav + swapping background ----------------
-   Every major section carries a data-bg attribute naming which of the
-   style's images belongs behind it ("photo", "flatlay", "travel", or
-   "none"). One IntersectionObserver drives two things at once as the
-   reader scrolls: which background layer is faded in behind the sticky
-   hero (the hero itself just gets covered by the content column scrolling
-   over it -- pure CSS, no JS needed for that part), and which side-nav
-   link is highlighted. Re-run on every renderResults() call so a retake
-   doesn't leave stale observers watching a previous style's images. */
+   Every major .section-wrap carries a data-bg attribute naming which of the
+   style's images belongs behind it ("photo", "flatlay", "travel", "item-N",
+   or "none"). Two independent mechanisms drive the reader's view of this as
+   they scroll:
+     - Background opacity is a direct function of scroll position (not an
+       on/off toggle): while a section's own body is in view its image sits
+       at full opacity, and crossing the 50vh gap to the next section
+       crossfades linearly, reaching an even 50/50 blend exactly at the
+       gap's midpoint. Recomputed on a rAF-throttled scroll/resize listener
+       rather than an IntersectionObserver, since that only fires at
+       threshold crossings, not continuously.
+     - Which side-nav link is "active" is a simpler on/off call, still
+       handled by an IntersectionObserver watching each section's midline.
+   Both are re-run on every renderResults() call so a retake doesn't leave
+   stale listeners watching a previous style's images. */
 var scrollObservers = [];
+var scrollBgHandler = null;
 function teardownScrollEffects(){
   scrollObservers.forEach(function(o){ o.disconnect(); });
   scrollObservers = [];
+  if(scrollBgHandler){
+    window.removeEventListener('scroll', scrollBgHandler);
+    window.removeEventListener('resize', scrollBgHandler);
+    scrollBgHandler = null;
+  }
 }
 
 function setupScrollEffects(style){
   teardownScrollEffects();
-  if(typeof IntersectionObserver === 'undefined') return;
 
   var visual = document.getElementById('scrollVisual');
   visual.hidden = false;
@@ -664,21 +695,55 @@ function setupScrollEffects(style){
     return '<div class="scroll-visual-layer" data-layer="'+k+'" style="background-image:url(\''+escapeHtml(images[k])+'\')"></div>';
   }).join('');
   var layers = visual.querySelectorAll('.scroll-visual-layer');
-  function activateLayer(key){
-    layers.forEach(function(l){ l.classList.toggle('active', l.dataset.layer === key); });
-  }
-  activateLayer('photo');
 
-  var bgTargets = document.querySelectorAll('#results [data-bg]');
-  var bgObserver = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(!entry.isIntersecting) return;
-      var key = entry.target.dataset.bg;
-      if(key && key !== 'none' && images[key]) activateLayer(key);
+  // Only sections with a real image participate in the crossfade timeline --
+  // a "none" section (by-the-numbers, compare) just leaves the previous
+  // image in place, since there's nothing more fitting to show behind it.
+  var bgTargets = Array.prototype.slice.call(document.querySelectorAll('#results [data-bg]'))
+    .filter(function(t){ return t.dataset.bg !== 'none' && images[t.dataset.bg]; });
+
+  function updateBgOpacity(){
+    if(!bgTargets.length) return;
+    var vCenter = window.innerHeight / 2;
+    var rects = bgTargets.map(function(t){ return t.getBoundingClientRect(); });
+    var opacities = {};
+
+    if(vCenter <= rects[0].top){
+      opacities[bgTargets[0].dataset.bg] = 1;
+    } else if(vCenter >= rects[rects.length - 1].bottom){
+      opacities[bgTargets[bgTargets.length - 1].dataset.bg] = 1;
+    } else {
+      for(var i = 0; i < bgTargets.length; i++){
+        if(vCenter >= rects[i].top && vCenter <= rects[i].bottom){
+          opacities[bgTargets[i].dataset.bg] = 1;
+          break;
+        }
+        if(i < bgTargets.length - 1 && vCenter > rects[i].bottom && vCenter < rects[i+1].top){
+          var progress = (vCenter - rects[i].bottom) / (rects[i+1].top - rects[i].bottom);
+          opacities[bgTargets[i].dataset.bg] = 1 - progress;
+          opacities[bgTargets[i+1].dataset.bg] = progress;
+          break;
+        }
+      }
+    }
+
+    layers.forEach(function(l){
+      var v = opacities[l.dataset.layer];
+      l.style.opacity = v == null ? 0 : v;
     });
-  }, { rootMargin: '-40% 0px -40% 0px' }); // fires as a section crosses the vertical center of the viewport
-  bgTargets.forEach(function(t){ bgObserver.observe(t); });
-  scrollObservers.push(bgObserver);
+  }
+
+  var ticking = false;
+  scrollBgHandler = function(){
+    if(ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){ updateBgOpacity(); ticking = false; });
+  };
+  window.addEventListener('scroll', scrollBgHandler, { passive: true });
+  window.addEventListener('resize', scrollBgHandler);
+  updateBgOpacity();
+
+  if(typeof IntersectionObserver === 'undefined') return;
 
   var navLinks = document.querySelectorAll('#sideNav a');
   var navTargets = Array.prototype.slice.call(navLinks).map(function(a){

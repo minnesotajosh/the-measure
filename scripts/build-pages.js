@@ -126,7 +126,6 @@ var LIFE_LABELS = {
   travel: "Where They'd Go", reading: "What They'd Read", music: "What They'd Listen To",
   home: "How They'd Furnish a Room", pastimes: "How They'd Spend a Saturday"
 };
-var LIFE_ORDER = ['travel','reading','music','home','pastimes'];
 var VARIANT_LABELS = {
   hot: "In Hot Weather", cold: "In Cold Weather", rain: "In the Rain",
   snow: "In the Snow", dressedUp: "Dressing It Up"
@@ -139,29 +138,43 @@ function variantsGridHTML(obj, labels, order){
   }).join('');
 }
 
-// Mirrors app.js's LIFE_LINKS / lifeHTML exactly -- each non-travel section
-// links out to a real search on whichever service fits it, built from a
-// short query rather than a hand-curated URL per style.
+// Mirrors app.js's LIFE_LINKS / lifeHTML exactly -- travel is featured on
+// its own with its photo, and the remaining four form a plain single-
+// column, four-row list. Pastimes carries no outbound link.
 var LIFE_LINKS = {
   reading: { label: 'Find it on Amazon', build: function(q){ return 'https://www.amazon.com/s?k=' + encodeURIComponent(q); } },
   music: { label: 'Listen on YouTube', build: function(q){ return 'https://www.youtube.com/results?search_query=' + encodeURIComponent(q); } },
-  home: { label: 'See more on Pinterest', build: function(q){ return 'https://www.pinterest.com/search/pins/?q=' + encodeURIComponent(q); } },
-  pastimes: { label: 'Learn more', build: function(q){ return 'https://www.google.com/search?q=' + encodeURIComponent(q); } }
+  home: { label: 'See more on Pinterest', build: function(q){ return 'https://www.pinterest.com/search/pins/?q=' + encodeURIComponent(q); } }
 };
+var LIFE_GRID_ORDER = ['reading','music','home','pastimes'];
+
+function magazinesHTML(magazines){
+  if(!magazines || !magazines.length) return '';
+  return '<div class="magazine-links">' + magazines.map(function(m){
+    return '<a href="'+escapeHtml(m.url)+'" target="_blank" rel="noopener">'+escapeHtml(m.name)+'</a>';
+  }).join(' · ') + '</div>';
+}
 
 function lifestyleGridHTML(lifestyle, name){
-  return LIFE_ORDER.map(function(k){
+  var travel = lifestyle.travel;
+  var travelPhotoSrc = travel.photo && (travel.photo.generated ? '../../' + travel.photo.url : travel.photo.url + '&w=1200&h=900&q=80&auto=format&fit=crop');
+  var travelFeature = '<div class="travel-feature">' +
+    (travelPhotoSrc ? '<div class="life-photo"><img src="'+escapeHtml(travelPhotoSrc)+'" alt="'+escapeHtml(name)+' — '+escapeHtml(LIFE_LABELS.travel)+'" loading="lazy">'+photoCreditHTML(travel.photo)+'</div>' : '') +
+    '<div class="life-label">'+escapeHtml(LIFE_LABELS.travel)+'</div>' +
+    (travel.paragraphs || [travel]).map(function(p){ return '<p>'+escapeHtml(p)+'</p>'; }).join('') +
+  '</div>';
+
+  var grid = '<div class="lifestyle-grid">' + LIFE_GRID_ORDER.map(function(k){
     var section = lifestyle[k];
     var paragraphs = (section.paragraphs || [section]).map(function(p){ return '<p>'+escapeHtml(p)+'</p>'; }).join('');
-    var photoSrc = section.photo && (section.photo.generated ? '../../' + section.photo.url : section.photo.url + '&w=1200&h=900&q=80&auto=format&fit=crop');
-    var photo = (k === 'travel' && photoSrc)
-      ? '<div class="life-photo"><img src="'+escapeHtml(photoSrc)+'" alt="'+escapeHtml(name)+' — '+escapeHtml(LIFE_LABELS[k])+'" loading="lazy">'+photoCreditHTML(section.photo)+'</div>'
-      : '';
+    var magazines = k === 'reading' ? magazinesHTML(section.magazines) : '';
     var link = (LIFE_LINKS[k] && section.query)
       ? '<a class="life-link" href="'+escapeHtml(LIFE_LINKS[k].build(section.query))+'" target="_blank" rel="noopener">'+LIFE_LINKS[k].label+' →</a>'
       : '';
-    return '<div class="life-item"><div class="life-label">'+escapeHtml(LIFE_LABELS[k])+'</div>'+photo+paragraphs+link+'</div>';
-  }).join('');
+    return '<div class="life-item"><div class="life-label">'+escapeHtml(LIFE_LABELS[k])+'</div>'+paragraphs+magazines+link+'</div>';
+  }).join('') + '</div>';
+
+  return travelFeature + grid;
 }
 
 function guidanceGridHTML(guidance){
@@ -247,7 +260,6 @@ function pageHTML(style, all){
 '    <a href="#sec-essay" data-target="sec-essay">The Argument</a>\n' +
 '    <a href="#sec-trademarks" data-target="sec-trademarks">Trademarks</a>\n' +
 '    <a href="#sec-wardrobe" data-target="sec-wardrobe">The Wardrobe</a>\n' +
-'    <a href="#sec-capsule" data-target="sec-capsule">Capsule</a>\n' +
 '    <a href="#sec-guidance" data-target="sec-guidance">Do\'s &amp; Don\'ts</a>\n' +
 '    <a href="#sec-dressing" data-target="sec-dressing">Dressing For It</a>\n' +
 '    <a href="#sec-lifestyle" data-target="sec-lifestyle">Beyond The Closet</a>\n' +
@@ -262,42 +274,55 @@ function pageHTML(style, all){
 '    <h1 class="r-name">' + escapeHtml(style.name) + '</h1>\n' +
 '    <div class="r-dek">' + escapeHtml(style.dek) + '</div>\n' +
 '  </div>\n' +
-'  <section class="content-block" id="sec-essay" data-bg="photo">\n' +
-'    <div class="essay">' + style.essay.map(function(p,i){ return '<p'+(i===0?' class="dropcap"':'')+'>'+escapeHtml(p)+'</p>'; }).join('') + '</div>\n' +
+'  <section class="section-wrap" id="sec-essay" data-bg="photo">\n' +
+'    <div class="content-block">\n' +
+'      <div class="essay">' + style.essay.map(function(p,i){ return '<p'+(i===0?' class="dropcap"':'')+'>'+escapeHtml(p)+'</p>'; }).join('') + '</div>\n' +
+'    </div>\n' +
 '  </section>\n' +
-'  <section class="content-block" id="sec-trademarks" data-bg="item-0">\n' +
+'  <section class="section-wrap" id="sec-trademarks" data-bg="item-0">\n' +
 '    <div class="section-title">Trademark Features</div>\n' +
-'    <ul class="trademarks">' + style.trademarks.map(function(t){ return '<li>'+escapeHtml(t)+'</li>'; }).join('') + '</ul>\n' +
+'    <div class="content-block">\n' +
+'      <ul class="trademarks">' + style.trademarks.map(function(t){ return '<li>'+escapeHtml(t)+'</li>'; }).join('') + '</ul>\n' +
+'    </div>\n' +
 '  </section>\n' +
-(style.flatlay ? '  <div class="shop-look"><div class="shop-look-label">Shop The Look</div><img src="' + escapeHtml('../../' + style.flatlay.url) + '" alt="The ' + escapeHtml(style.name) + ' capsule wardrobe, flat-laid">' + photoCreditHTML(style.flatlay) + '</div>\n' : '') +
-'  <section class="content-block" id="sec-wardrobe" data-bg="item-1">\n' +
+'  <section class="section-wrap" id="sec-wardrobe" data-bg="flatlay">\n' +
 '    <div class="section-title">The Wardrobe</div>\n' +
-'    <div class="brandline">' + brandsHTML(style.brands) + '</div>\n' +
+'    <div class="content-block">\n' +
+'      <div class="section-note">The capsule flat-laid, the brands behind it, and five pieces that define the style — each with a low, mid, and high budget entry point.</div>\n' +
+(style.flatlay ? '      <div class="shop-look-inline"><div class="shop-look-label">Shop The Look</div><img src="' + escapeHtml('../../' + style.flatlay.url) + '" alt="The ' + escapeHtml(style.name) + ' capsule wardrobe, flat-laid">' + photoCreditHTML(style.flatlay) + '</div>\n' : '') +
+'      <div class="mini-title">The Brands</div>\n' +
+'      <div class="brandline">' + brandsHTML(style.brands) + '</div>\n' +
+'      <div class="mini-title">The Capsule</div>\n' +
+'      <div class="capsule-list">' + capsuleHTML(style.capsule) + '</div>\n' +
+'    </div>\n' +
 '  </section>\n' +
-'  <section class="content-block" id="sec-capsule" data-bg="flatlay">\n' +
-'    <div class="section-title">The Capsule Wardrobe</div>\n' +
-'    <div class="section-note">Five pieces that define the style, each with a low, mid, and high budget entry point.</div>\n' +
-'    <div class="capsule-list">' + capsuleHTML(style.capsule) + '</div>\n' +
-'  </section>\n' +
-(style.guidance ? '  <section class="content-block" id="sec-guidance" data-bg="item-2">\n' +
+(style.guidance ? '  <section class="section-wrap" id="sec-guidance" data-bg="item-1">\n' +
 '    <div class="section-title">Do\'s and Don\'ts</div>\n' +
-'    <div class="section-note">Every style has a right context and a wrong one, and one similar-looking garment easily mistaken for another.</div>\n' +
-'    <div class="guidance-grid">' + guidanceGridHTML(style.guidance) + '</div>\n' +
+'    <div class="content-block">\n' +
+'      <div class="section-note">Every style has a right context and a wrong one, and one similar-looking garment easily mistaken for another.</div>\n' +
+'      <div class="guidance-grid">' + guidanceGridHTML(style.guidance) + '</div>\n' +
+'    </div>\n' +
 '  </section>\n' : '') +
-'  <section class="content-block" id="sec-dressing" data-bg="item-3">\n' +
+'  <section class="section-wrap" id="sec-dressing" data-bg="item-2">\n' +
 '    <div class="section-title">Dressing For It</div>\n' +
-'    <div class="section-note">The same wardrobe, adjusted for what the day actually throws at it.</div>\n' +
-'    <div class="life-grid">' + variantsGridHTML(style.variants, VARIANT_LABELS, VARIANT_ORDER) + '</div>\n' +
+'    <div class="content-block">\n' +
+'      <div class="section-note">The same wardrobe, adjusted for what the day actually throws at it.</div>\n' +
+'      <div class="life-grid">' + variantsGridHTML(style.variants, VARIANT_LABELS, VARIANT_ORDER) + '</div>\n' +
+'    </div>\n' +
 '  </section>\n' +
-'  <section class="content-block" id="sec-lifestyle" data-bg="travel">\n' +
+'  <section class="section-wrap" id="sec-lifestyle" data-bg="travel">\n' +
 '    <div class="section-title">Beyond the Closet</div>\n' +
-'    <div class="section-note">A personal style was never just the clothes.</div>\n' +
-'    <div class="life-grid">' + lifestyleGridHTML(style.lifestyle, style.name) + '</div>\n' +
+'    <div class="content-block">\n' +
+'      <div class="section-note">A personal style was never just the clothes.</div>\n' +
+'      <div class="life-grid">' + lifestyleGridHTML(style.lifestyle, style.name) + '</div>\n' +
+'    </div>\n' +
 '  </section>\n' +
-'  <section class="content-block" data-bg="item-4">\n' +
+'  <section class="section-wrap last-section" data-bg="item-4">\n' +
 '    <div class="section-title">Other Styles</div>\n' +
+'    <div class="content-block">\n' +
 '    <div class="other-styles">' + otherStylesHTML(style, all) + '</div>\n' +
 '    <div class="btn-row" style="margin-top:40px;"><a class="btn" href="../../index.html">Take The Full Interview</a></div>\n' +
+'    </div>\n' +
 '  </section>\n' +
 '  </div>\n' +
 '  <footer class="site-footer"><div class="site-footer-inner">\n' +
@@ -328,19 +353,35 @@ function scrollEffectsScript(style){
   }).join('');
   return '<script>(function(){\n' +
 '  document.getElementById("scrollVisual").innerHTML = ' + JSON.stringify(layerDivs) + ';\n' +
-'  if(typeof IntersectionObserver === "undefined") return;\n' +
 '  var hasImage = ' + JSON.stringify(Object.keys(images).reduce(function(o,k){ if(images[k]) o[k]=true; return o; }, {})) + ';\n' +
 '  var layers = document.querySelectorAll(".scroll-visual-layer");\n' +
-'  function activateLayer(key){ layers.forEach(function(l){ l.classList.toggle("active", l.dataset.layer === key); }); }\n' +
-'  activateLayer("photo");\n' +
-'  var bgObserver = new IntersectionObserver(function(entries){\n' +
-'    entries.forEach(function(entry){\n' +
-'      if(!entry.isIntersecting) return;\n' +
-'      var key = entry.target.dataset.bg;\n' +
-'      if(key && key !== "none" && hasImage[key]) activateLayer(key);\n' +
-'    });\n' +
-'  }, { rootMargin: "-40% 0px -40% 0px" });\n' +
-'  document.querySelectorAll("[data-bg]").forEach(function(t){ bgObserver.observe(t); });\n' +
+'  var bgTargets = Array.prototype.slice.call(document.querySelectorAll("[data-bg]")).filter(function(t){ return t.dataset.bg !== "none" && hasImage[t.dataset.bg]; });\n' +
+'  function updateBgOpacity(){\n' +
+'    if(!bgTargets.length) return;\n' +
+'    var vCenter = window.innerHeight / 2;\n' +
+'    var rects = bgTargets.map(function(t){ return t.getBoundingClientRect(); });\n' +
+'    var opacities = {};\n' +
+'    if(vCenter <= rects[0].top){ opacities[bgTargets[0].dataset.bg] = 1; }\n' +
+'    else if(vCenter >= rects[rects.length-1].bottom){ opacities[bgTargets[bgTargets.length-1].dataset.bg] = 1; }\n' +
+'    else {\n' +
+'      for(var i=0;i<bgTargets.length;i++){\n' +
+'        if(vCenter >= rects[i].top && vCenter <= rects[i].bottom){ opacities[bgTargets[i].dataset.bg] = 1; break; }\n' +
+'        if(i < bgTargets.length-1 && vCenter > rects[i].bottom && vCenter < rects[i+1].top){\n' +
+'          var progress = (vCenter - rects[i].bottom) / (rects[i+1].top - rects[i].bottom);\n' +
+'          opacities[bgTargets[i].dataset.bg] = 1 - progress;\n' +
+'          opacities[bgTargets[i+1].dataset.bg] = progress;\n' +
+'          break;\n' +
+'        }\n' +
+'      }\n' +
+'    }\n' +
+'    layers.forEach(function(l){ var v = opacities[l.dataset.layer]; l.style.opacity = v == null ? 0 : v; });\n' +
+'  }\n' +
+'  var ticking = false;\n' +
+'  function onScroll(){ if(ticking) return; ticking = true; requestAnimationFrame(function(){ updateBgOpacity(); ticking = false; }); }\n' +
+'  window.addEventListener("scroll", onScroll, { passive: true });\n' +
+'  window.addEventListener("resize", onScroll);\n' +
+'  updateBgOpacity();\n' +
+'  if(typeof IntersectionObserver === "undefined") return;\n' +
 '  var navLinks = document.querySelectorAll(".side-nav a");\n' +
 '  var navObserver = new IntersectionObserver(function(entries){\n' +
 '    entries.forEach(function(entry){\n' +

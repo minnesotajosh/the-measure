@@ -26,10 +26,12 @@ styles.forEach(style => {
   if(extra.lifestyle){
     Object.keys(extra.lifestyle).forEach(section => {
       const existing = style.lifestyle[section];
-      // Preserve a photo already wired in by wire-images.js (travel) --
-      // this script only owns paragraphs/query/prompt, not the image path.
+      // Preserve fields this script doesn't own: a travel photo wired in by
+      // wire-images.js, and a reading section's magazine links (added
+      // directly to styles.json by scripts/add-magazines.js).
       const photo = existing && typeof existing === 'object' ? existing.photo : undefined;
-      style.lifestyle[section] = Object.assign({}, extra.lifestyle[section], photo ? { photo } : {});
+      const magazines = existing && typeof existing === 'object' ? existing.magazines : undefined;
+      style.lifestyle[section] = Object.assign({}, extra.lifestyle[section], photo ? { photo } : {}, magazines ? { magazines } : {});
     });
   }
 
