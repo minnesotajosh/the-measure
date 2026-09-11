@@ -86,19 +86,33 @@ h1,h2,h3,.display{
 }
 
 /* ---------- shell ---------- */
-.page{ max-width:680px; margin:0 auto; padding:64px 24px 96px; position:relative; z-index:1; background:var(--paper); }
+.page{ max-width:900px; margin:0 auto; padding:64px 24px 96px; position:relative; z-index:1; }
 [hidden]{ display:none !important; }
 
+/* Each reading section is its own translucent card rather than one solid
+   column -- the gap between cards is where the swapping background photo
+   actually shows through as the reader scrolls, which was the whole point
+   of having it change per section. backdrop-filter keeps type legible over
+   a busy photo without needing a fully opaque card. */
+.content-block{
+  background:color-mix(in srgb, var(--paper) 82%, transparent);
+  backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  padding:40px clamp(24px, 5vw, 56px);
+  margin-bottom:clamp(40px, 6vw, 72px);
+  border:1px solid color-mix(in srgb, var(--rule) 70%, transparent);
+}
+.content-block:first-child{ margin-top:0; }
+@supports not (backdrop-filter: blur(1px)){
+  .content-block{ background:var(--paper); } /* older browsers: opaque fallback over transparency they can't blur */
+}
+
 /* ---------- scroll visual: swapping background behind the reading column ----------
-   A fixed, full-viewport stack of images sits behind .page (z-index:0, vs.
-   .page's z-index:1). .page's own opaque background covers it edge-to-edge
-   on narrow viewports -- the point isn't a peekaboo effect at any width, it's
-   that the *hero* image, sitting at the very top before any text column has
-   scrolled over it, naturally fades from view as reading content covers it,
-   and the layer underneath swaps to match whichever section comes next, so
-   the transition from one image to the next happens right as the content
-   above it changes too. On wide viewports the current layer is also visible
-   in the margins beside the text column, as a quiet ambient wash of color. */
+   A fixed, full-viewport stack of images sits behind .page. Each reading
+   section is its own translucent .content-block, so the photo shows through
+   both the gaps between blocks and, softly, through the blocks themselves --
+   and it swaps to a different one of the style's own images (outfit shot,
+   flat-lay, individual capsule items, travel photo) as each section scrolls
+   into view, via the same IntersectionObserver that drives the side nav. */
 .scroll-visual{
   position:fixed; inset:0; z-index:0; overflow:hidden; background:var(--ink);
 }
@@ -137,15 +151,18 @@ h1,h2,h3,.display{
 
 /* masthead used across screens -- sticky on the results/style-page reading
    view specifically (long-scroll content genuinely benefits from a pinned
-   masthead); harmless on the shorter cover/quiz screens too. */
+   masthead); harmless on the shorter cover/quiz screens too. Full-bleed and
+   fully opaque -- unlike the translucent content-blocks below it, the
+   header/footer chrome should read as a solid, always-legible surface. */
 .masthead{
-  display:flex; align-items:baseline; justify-content:space-between;
-  border-bottom:1px solid var(--rule);
-  padding:14px 24px; margin:0 -24px 40px;
-  font-family:'Archivo', sans-serif;
   position:sticky; top:0; z-index:20;
-  background:var(--paper); background:color-mix(in srgb, var(--paper) 92%, transparent);
-  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  width:100vw; margin:0 calc(50% - 50vw) 40px;
+  background:var(--paper); border-bottom:1px solid var(--rule);
+}
+.masthead-inner{
+  max-width:900px; margin:0 auto; padding:14px 24px;
+  display:flex; align-items:baseline; justify-content:space-between;
+  font-family:'Archivo', sans-serif;
 }
 .masthead .brand{
   font-family:'Fraunces', serif; font-style:italic; font-weight:600;
@@ -311,7 +328,10 @@ h1,h2,h3,.display{
 /* "Shop the Look" flat-lay -- a contained boxed panel sitting right under
    the full-bleed hero, like a sidebar callout in a real magazine spread. */
 .shop-look{
-  margin:32px 0 8px; border:1px solid var(--rule); background:var(--paper-raised);
+  margin:32px 0 clamp(40px, 6vw, 72px);
+  border:1px solid color-mix(in srgb, var(--rule) 70%, transparent);
+  background:color-mix(in srgb, var(--paper-raised) 85%, transparent);
+  backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
   padding:22px; animation:fadeIn .6s ease .1s both;
 }
 .shop-look-label{
@@ -372,13 +392,17 @@ h1,h2,h3,.display{
   line-height:0.78; padding-right:10px; padding-top:6px; color:var(--oxblood);
 }
 #results .essay p{ margin:0 0 20px; font-size:17px; }
+/* Large magazine-headline treatment, same face as the masthead's own logo --
+   sits at the top of its .content-block, which now provides the visual
+   separation a border-top used to, so no rule/padding-top needed here. */
 .section-title{
-  font-family:'Archivo', sans-serif; font-size:12px; font-weight:700; letter-spacing:0.14em;
-  text-transform:uppercase; color:var(--brass); margin:44px 0 16px;
-  border-top:1px solid var(--rule); padding-top:18px;
+  font-family:'Fraunces', serif; font-style:italic; font-weight:600;
+  font-size:clamp(30px, 4.2vw, 44px); line-height:1.08; text-wrap:balance;
+  color:var(--ink); margin:0 0 18px; letter-spacing:0;
+  text-transform:none; border-top:none; padding-top:0;
 }
-.section-title.no-rule{ border-top:none; padding-top:0; margin-top:0; }
-.section-note{ font-size:14px; color:var(--ink-faint); font-style:italic; margin:-8px 0 20px; }
+.section-title.no-rule{ margin-top:0; }
+.section-note{ font-size:15px; color:var(--ink-faint); font-style:italic; margin:-8px 0 24px; }
 
 .trademarks{ list-style:none; margin:0; padding:0; }
 .trademarks li{
@@ -415,10 +439,16 @@ h1,h2,h3,.display{
 }
 
 .sidebar{
-  background:var(--paper-raised); border:1px solid var(--rule); padding:30px 26px;
-  margin-top:46px;
+  background:color-mix(in srgb, var(--paper-raised) 85%, transparent);
+  backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  border:1px solid color-mix(in srgb, var(--rule) 70%, transparent);
+  padding:30px 26px;
+  margin:0 0 clamp(40px, 6vw, 72px);
 }
-.sidebar .section-title{ margin-top:0; border-top:none; padding-top:0; }
+.sidebar .section-title{
+  font-family:'Archivo', sans-serif; font-style:normal; font-size:12px; font-weight:700;
+  letter-spacing:0.14em; text-transform:uppercase; color:var(--brass); margin:0 0 14px;
+}
 .sidebar h3{ font-size:26px; font-style:italic; margin-bottom:10px; }
 .sidebar p{ font-size:15.5px; margin:0 0 14px; }
 .sidebar .brandline{ font-size:15px; }
@@ -553,12 +583,11 @@ h1,h2,h3,.display{
    the theme toggle and "browse all styles" link are always one glance away
    on a page this long. */
 .site-footer{
-  max-width:680px; margin:0 auto; padding:14px 24px; text-align:center;
   position:sticky; bottom:0; z-index:20;
-  background:var(--paper); background:color-mix(in srgb, var(--paper) 92%, transparent);
-  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
-  border-top:1px solid var(--rule);
+  width:100vw; margin:0 calc(50% - 50vw);
+  background:var(--paper); border-top:1px solid var(--rule);
 }
+.site-footer-inner{ max-width:900px; margin:0 auto; padding:14px 24px; text-align:center; }
 .footer-nav{ margin-bottom:18px; }
 .footer-link{
   background:none; border:none; cursor:pointer; font-family:'Archivo', sans-serif;

@@ -105,6 +105,13 @@ function showScreen(name){
   el.classList.add('screen-in');
   currentScreen = name;
   window.scrollTo({top:0, behavior:'instant'});
+  // The scroll-visual background layer only has images to show once
+  // renderResults() populates it -- everywhere else, .page's own background
+  // shows through instead of an empty, un-themed void.
+  if(name !== 'results'){
+    document.getElementById('scrollVisual').hidden = true;
+    teardownScrollEffects();
+  }
 }
 
 /* ---------------- local persistence ----------------
@@ -653,12 +660,16 @@ function setupScrollEffects(style){
   if(typeof IntersectionObserver === 'undefined') return;
 
   var visual = document.getElementById('scrollVisual');
+  visual.hidden = false;
   var travelPhoto = style.lifestyle && style.lifestyle.travel && style.lifestyle.travel.photo;
   var images = {
     photo: style.photo && style.photo.url,
     flatlay: style.flatlay && style.flatlay.url,
     travel: travelPhoto && (travelPhoto.generated ? travelPhoto.url : travelPhoto.url + '&w=1600&h=1200&q=80&auto=format&fit=crop')
   };
+  (style.capsule || []).forEach(function(item, i){
+    if(item.photo) images['item-'+i] = item.photo.url;
+  });
   visual.innerHTML = Object.keys(images).filter(function(k){ return images[k]; }).map(function(k){
     return '<div class="scroll-visual-layer" data-layer="'+k+'" style="background-image:url(\''+escapeHtml(images[k])+'\')"></div>';
   }).join('');

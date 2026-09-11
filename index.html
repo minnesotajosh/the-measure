@@ -32,7 +32,7 @@
 
 <div id="railWrap"><div id="rail"></div></div>
 
-<div class="scroll-visual" id="scrollVisual" aria-hidden="true"></div>
+<div class="scroll-visual" id="scrollVisual" aria-hidden="true" hidden></div>
 
 <div id="loadState">Loading the questionnaire&hellip;</div>
 
@@ -63,10 +63,10 @@
   </header>
 
   <main id="quiz" hidden>
-    <div class="masthead">
+    <div class="masthead"><div class="masthead-inner">
       <span class="brand">The Measure</span>
       <span class="meta" id="qCounter"></span>
-    </div>
+    </div></div>
     <div class="qphoto" id="qPhoto" hidden></div>
     <div class="qhead">
       <div class="qnum" id="qKicker"></div>
@@ -81,7 +81,7 @@
 
   <main id="results" hidden>
     <nav class="side-nav" id="sideNav" aria-label="Jump to section">
-      <a href="#rEssay" data-target="rEssay">The Argument</a>
+      <a href="#sec-essay" data-target="sec-essay">The Argument</a>
       <a href="#sec-trademarks" data-target="sec-trademarks">Trademarks</a>
       <a href="#sec-wardrobe" data-target="sec-wardrobe">The Wardrobe</a>
       <a href="#sec-capsule" data-target="sec-capsule">Capsule</a>
@@ -92,10 +92,10 @@
       <a href="#sec-compare" data-target="sec-compare">Compare</a>
     </nav>
 
-    <div class="masthead">
+    <div class="masthead"><div class="masthead-inner">
       <span class="brand">The Measure</span>
       <span class="meta">The Reading</span>
-    </div>
+    </div></div>
     <div id="rPlate"></div>
 
     <div class="shop-look">
@@ -103,37 +103,52 @@
       <div id="rFlatlay"></div>
     </div>
 
-    <div class="r-eyebrow eyebrow">Your Primary Style</div>
-    <h2 class="r-name" id="rName"></h2>
-    <div class="r-dek" id="rDek"></div>
+    <section class="content-block" id="sec-essay" data-bg="photo">
+      <div class="r-eyebrow eyebrow">Your Primary Style</div>
+      <h2 class="r-name" id="rName"></h2>
+      <div class="r-dek" id="rDek"></div>
+      <div class="essay" id="rEssay"></div>
+    </section>
 
-    <div class="essay" id="rEssay" data-bg="photo"></div>
+    <section class="content-block" id="sec-trademarks" data-bg="item-0">
+      <div class="section-title">Trademark Features</div>
+      <ul class="trademarks" id="rTrademarks"></ul>
+    </section>
 
-    <div class="section-title" id="sec-trademarks" data-bg="photo">Trademark Features</div>
-    <ul class="trademarks" id="rTrademarks"></ul>
+    <section class="content-block" id="sec-wardrobe" data-bg="item-1">
+      <div class="section-title">The Wardrobe</div>
+      <div class="brandline" id="rBrands"></div>
+    </section>
 
-    <div class="section-title" id="sec-wardrobe" data-bg="flatlay">The Wardrobe</div>
-    <div class="brandline" id="rBrands"></div>
+    <section class="content-block" id="sec-capsule" data-bg="flatlay">
+      <div class="section-title">The Capsule Wardrobe</div>
+      <div class="section-note">Five pieces that define the style, each with a low, mid, and high budget entry point — what to look for regardless of price, and how to wear it with the rest.</div>
+      <div class="capsule-list" id="rCapsule"></div>
+    </section>
 
-    <div class="section-title" id="sec-capsule" data-bg="flatlay">The Capsule Wardrobe</div>
-    <div class="section-note">Five pieces that define the style, each with a low, mid, and high budget entry point — what to look for regardless of price, and how to wear it with the rest.</div>
-    <div class="capsule-list" id="rCapsule"></div>
+    <section class="content-block" id="sec-guidance" data-bg="item-2">
+      <div class="section-title">Do's and Don'ts</div>
+      <div class="section-note">Every style has a right context and a wrong one. Where the line actually falls, and how to tell one similar-looking garment from another.</div>
+      <div class="guidance-grid" id="rGuidance"></div>
+    </section>
 
-    <div class="section-title" id="sec-guidance" data-bg="photo">Do's and Don'ts</div>
-    <div class="section-note">Every style has a right context and a wrong one. Where the line actually falls, and how to tell one similar-looking garment from another.</div>
-    <div class="guidance-grid" id="rGuidance"></div>
+    <section class="content-block" id="sec-dressing" data-bg="item-3">
+      <div class="section-title">Dressing For It</div>
+      <div class="section-note">The same wardrobe, adjusted for what the day actually throws at it.</div>
+      <div class="life-grid" id="rVariants"></div>
+    </section>
 
-    <div class="section-title" id="sec-dressing" data-bg="flatlay">Dressing For It</div>
-    <div class="section-note">The same wardrobe, adjusted for what the day actually throws at it.</div>
-    <div class="life-grid" id="rVariants"></div>
+    <section class="content-block" id="sec-lifestyle" data-bg="travel">
+      <div class="section-title">Beyond the Closet</div>
+      <div class="section-note">A personal style was never just the clothes. Where this one would go, what it would read, and how it would spend a Saturday.</div>
+      <div class="life-grid" id="rLife"></div>
+    </section>
 
-    <div class="section-title" id="sec-lifestyle" data-bg="travel">Beyond the Closet</div>
-    <div class="section-note">A personal style was never just the clothes. Where this one would go, what it would read, and how it would spend a Saturday.</div>
-    <div class="life-grid" id="rLife"></div>
-
-    <div class="section-title" id="sec-numbers" data-bg="none">The Reading, By the Numbers</div>
-    <div class="section-note">Where you fell on every axis measured — not just the two that decided your result.</div>
-    <div class="meters" id="rMeters"></div>
+    <section class="content-block" id="sec-numbers" data-bg="item-4">
+      <div class="section-title">The Reading, By the Numbers</div>
+      <div class="section-note">Where you fell on every axis measured — not just the two that decided your result.</div>
+      <div class="meters" id="rMeters"></div>
+    </section>
 
     <div class="sidebar" id="rSidebar">
       <div class="plate-wrap"><div id="sPlate"></div></div>
@@ -143,9 +158,11 @@
       <div class="brandline" id="sBrands"></div>
     </div>
 
-    <div class="section-title" id="sec-compare" data-bg="none">How You Compare</div>
-    <div class="section-note">Every style on file, ranked by fit. Each links to its full profile page — including the ones you didn't get, worth a look on their own.</div>
-    <div class="compare-list" id="compareList"></div>
+    <section class="content-block" id="sec-compare" data-bg="none">
+      <div class="section-title">How You Compare</div>
+      <div class="section-note">Every style on file, ranked by fit. Each links to its full profile page — including the ones you didn't get, worth a look on their own.</div>
+      <div class="compare-list" id="compareList"></div>
+    </section>
 
     <div class="btn-row" style="margin-top:48px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
       <a class="btn" id="rSharePage" href="#">Get a Shareable Link to This Result</a>
@@ -154,14 +171,14 @@
 
   </main>
 
-  <footer class="site-footer" id="siteFooter">
+  <footer class="site-footer" id="siteFooter"><div class="site-footer-inner">
     <div class="footer-nav">
       <a class="footer-link" href="styles/index.html">Browse All Styles →</a>
       <span class="footer-sep">·</span>
       <button class="footer-link" id="themeToggle" aria-pressed="false">☾ Dark Mode</button>
     </div>
     <div class="colophon">The Measure — a style diagnostic, drafted for one reader at a time.<br>Your answers and result are saved to this browser only, never sent anywhere. Photography is AI-generated; see each style's page for details.</div>
-  </footer>
+  </div></footer>
 
 </div>
 

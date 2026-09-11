@@ -256,38 +256,54 @@ function pageHTML(style, all){
 '    <a href="#sec-dressing" data-target="sec-dressing">Dressing For It</a>\n' +
 '    <a href="#sec-lifestyle" data-target="sec-lifestyle">Beyond The Closet</a>\n' +
 '  </nav>\n' +
-'  <div class="masthead">\n' +
+'  <div class="masthead"><div class="masthead-inner">\n' +
 '    <a class="brand" href="../../index.html" style="text-decoration:none;color:inherit;">The Measure</a>\n' +
 '    <span class="meta"><a href="../index.html" style="color:inherit;">All Styles</a></span>\n' +
-'  </div>\n' +
+'  </div></div>\n' +
 '  <div id="rPlate"><div class="hero-photo"><img src="' + escapeHtml(heroSrc) + '" alt="' + escapeHtml(style.name) + '" loading="eager"><div class="hero-scrim"></div>' + photoCreditHTML(style.photo) + '</div></div>\n' +
 (style.flatlay ? '  <div class="shop-look"><div class="shop-look-label">Shop The Look</div><img src="' + escapeHtml('../../' + style.flatlay.url) + '" alt="The ' + escapeHtml(style.name) + ' capsule wardrobe, flat-laid">' + photoCreditHTML(style.flatlay) + '</div>\n' : '') +
-'  <div class="r-eyebrow eyebrow">A Style Profile</div>\n' +
-'  <h1 class="r-name">' + escapeHtml(style.name) + '</h1>\n' +
-'  <div class="r-dek">' + escapeHtml(style.dek) + '</div>\n' +
-'  <div class="essay" id="sec-essay" data-bg="photo">' + style.essay.map(function(p,i){ return '<p'+(i===0?' class="dropcap"':'')+'>'+escapeHtml(p)+'</p>'; }).join('') + '</div>\n' +
-'  <div class="section-title" id="sec-trademarks" data-bg="photo">Trademark Features</div>\n' +
-'  <ul class="trademarks">' + style.trademarks.map(function(t){ return '<li>'+escapeHtml(t)+'</li>'; }).join('') + '</ul>\n' +
-'  <div class="section-title" id="sec-wardrobe" data-bg="flatlay">The Wardrobe</div>\n' +
-'  <div class="brandline">' + brandsHTML(style.brands) + '</div>\n' +
-'  <div class="section-title" id="sec-capsule" data-bg="flatlay">The Capsule Wardrobe</div>\n' +
-'  <div class="section-note">Five pieces that define the style, each with a low, mid, and high budget entry point.</div>\n' +
-'  <div class="capsule-list">' + capsuleHTML(style.capsule) + '</div>\n' +
-(style.guidance ? '  <div class="section-title" id="sec-guidance" data-bg="photo">Do\'s and Don\'ts</div>\n' +
-'  <div class="section-note">Every style has a right context and a wrong one, and one similar-looking garment easily mistaken for another.</div>\n' +
-'  <div class="guidance-grid">' + guidanceGridHTML(style.guidance) + '</div>\n' : '') +
-'  <div class="section-title" id="sec-dressing" data-bg="flatlay">Dressing For It</div>\n' +
-'  <div class="section-note">The same wardrobe, adjusted for what the day actually throws at it.</div>\n' +
-'  <div class="life-grid">' + variantsGridHTML(style.variants, VARIANT_LABELS, VARIANT_ORDER) + '</div>\n' +
-'  <div class="section-title" id="sec-lifestyle" data-bg="travel">Beyond the Closet</div>\n' +
-'  <div class="section-note">A personal style was never just the clothes.</div>\n' +
-'  <div class="life-grid">' + lifestyleGridHTML(style.lifestyle, style.name) + '</div>\n' +
-'  <div class="section-title" data-bg="none">Other Styles</div>\n' +
-'  <div class="other-styles">' + otherStylesHTML(style, all) + '</div>\n' +
-'  <div class="btn-row" style="margin-top:40px;"><a class="btn" href="../../index.html">Take The Full Interview</a></div>\n' +
-'  <footer class="site-footer">\n' +
+'  <section class="content-block" id="sec-essay" data-bg="photo">\n' +
+'    <div class="r-eyebrow eyebrow">A Style Profile</div>\n' +
+'    <h1 class="r-name">' + escapeHtml(style.name) + '</h1>\n' +
+'    <div class="r-dek">' + escapeHtml(style.dek) + '</div>\n' +
+'    <div class="essay">' + style.essay.map(function(p,i){ return '<p'+(i===0?' class="dropcap"':'')+'>'+escapeHtml(p)+'</p>'; }).join('') + '</div>\n' +
+'  </section>\n' +
+'  <section class="content-block" id="sec-trademarks" data-bg="item-0">\n' +
+'    <div class="section-title">Trademark Features</div>\n' +
+'    <ul class="trademarks">' + style.trademarks.map(function(t){ return '<li>'+escapeHtml(t)+'</li>'; }).join('') + '</ul>\n' +
+'  </section>\n' +
+'  <section class="content-block" id="sec-wardrobe" data-bg="item-1">\n' +
+'    <div class="section-title">The Wardrobe</div>\n' +
+'    <div class="brandline">' + brandsHTML(style.brands) + '</div>\n' +
+'  </section>\n' +
+'  <section class="content-block" id="sec-capsule" data-bg="flatlay">\n' +
+'    <div class="section-title">The Capsule Wardrobe</div>\n' +
+'    <div class="section-note">Five pieces that define the style, each with a low, mid, and high budget entry point.</div>\n' +
+'    <div class="capsule-list">' + capsuleHTML(style.capsule) + '</div>\n' +
+'  </section>\n' +
+(style.guidance ? '  <section class="content-block" id="sec-guidance" data-bg="item-2">\n' +
+'    <div class="section-title">Do\'s and Don\'ts</div>\n' +
+'    <div class="section-note">Every style has a right context and a wrong one, and one similar-looking garment easily mistaken for another.</div>\n' +
+'    <div class="guidance-grid">' + guidanceGridHTML(style.guidance) + '</div>\n' +
+'  </section>\n' : '') +
+'  <section class="content-block" id="sec-dressing" data-bg="item-3">\n' +
+'    <div class="section-title">Dressing For It</div>\n' +
+'    <div class="section-note">The same wardrobe, adjusted for what the day actually throws at it.</div>\n' +
+'    <div class="life-grid">' + variantsGridHTML(style.variants, VARIANT_LABELS, VARIANT_ORDER) + '</div>\n' +
+'  </section>\n' +
+'  <section class="content-block" id="sec-lifestyle" data-bg="travel">\n' +
+'    <div class="section-title">Beyond the Closet</div>\n' +
+'    <div class="section-note">A personal style was never just the clothes.</div>\n' +
+'    <div class="life-grid">' + lifestyleGridHTML(style.lifestyle, style.name) + '</div>\n' +
+'  </section>\n' +
+'  <section class="content-block" data-bg="item-4">\n' +
+'    <div class="section-title">Other Styles</div>\n' +
+'    <div class="other-styles">' + otherStylesHTML(style, all) + '</div>\n' +
+'    <div class="btn-row" style="margin-top:40px;"><a class="btn" href="../../index.html">Take The Full Interview</a></div>\n' +
+'  </section>\n' +
+'  <footer class="site-footer"><div class="site-footer-inner">\n' +
 '    <div class="colophon">The Measure — a style diagnostic, drafted for one reader at a time. This page is one of 27 style profiles; <a href="../index.html">see them all</a> or <a href="../../index.html">take the quiz</a> to find your own.</div>\n' +
-'  </footer>\n' +
+'  </div></footer>\n' +
 '</div>\n' +
 scrollEffectsScript(style) +
 '</body>\n</html>\n';
@@ -305,6 +321,9 @@ function scrollEffectsScript(style){
     flatlay: style.flatlay && ('../../' + style.flatlay.url),
     travel: travelPhoto && (travelPhoto.generated ? '../../' + travelPhoto.url : travelPhoto.url + '&w=1600&h=1200&q=80&auto=format&fit=crop')
   };
+  (style.capsule || []).forEach(function(item, i){
+    if(item.photo) images['item-' + i] = '../../' + item.photo.url;
+  });
   var layerDivs = Object.keys(images).filter(function(k){ return images[k]; }).map(function(k){
     return '<div class="scroll-visual-layer" data-layer="' + k + '" style="background-image:url(\'' + escapeHtml(images[k]) + '\')"></div>';
   }).join('');
