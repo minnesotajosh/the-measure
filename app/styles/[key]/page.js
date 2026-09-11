@@ -109,7 +109,12 @@ export default async function StylePage({ params }) {
           <LifestyleSection style={style} />
         </Section>
 
-        <Section dataBg="item-4" title="Other Styles" last>
+        <Section
+          dataBg="item-4"
+          title="Other Styles"
+          note="Like what you see? Explore these crossover styles."
+          last
+        >
           <OtherStylesSection picks={picks} />
         </Section>
       </div>

@@ -11,8 +11,8 @@ export default function OtherStylesSection({ picks }) {
         ))}
       </div>
       <div className="btn-row" style={{ marginTop: 40 }}>
-        <Link className="btn" href="/">
-          Take The Full Interview
+        <Link className="btn" href="/styles">
+          View All Styles
         </Link>
       </div>
     </>
