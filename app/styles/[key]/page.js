@@ -22,8 +22,9 @@ export function generateStaticParams() {
   return styles.map((s) => ({ key: s.key }));
 }
 
-export function generateMetadata({ params }) {
-  const style = findStyle(params.key);
+export async function generateMetadata({ params }) {
+  const { key } = await params;
+  const style = findStyle(key);
   if (!style) return {};
   const canonical = SITE_URL + '/styles/' + style.key + '/';
   const ogImage = SITE_URL + '/' + style.photo.url;
@@ -42,8 +43,9 @@ export function generateMetadata({ params }) {
   };
 }
 
-export default function StylePage({ params }) {
-  const style = findStyle(params.key);
+export default async function StylePage({ params }) {
+  const { key } = await params;
+  const style = findStyle(key);
   if (!style) return null;
 
   const picks = otherStylePicks(style, styles);
