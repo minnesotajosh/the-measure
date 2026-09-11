@@ -1,7 +1,0 @@
-<section class="section-wrap<%= locals.last ? ' last-section' : '' %>"<% if (locals.id) { %> id="<%= id %>"<% } %> data-bg="<%= dataBg %>">
-<% if (locals.title) { %>  <div class="section-title"><%= title %></div>
-<% } %>  <div class="content-block">
-<% if (locals.note) { %>    <div class="section-note"><%= note %></div>
-<% } %>    <%- body %>
-  </div>
-</section>
